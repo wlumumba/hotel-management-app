@@ -1,6 +1,6 @@
 # IntelliJ Project Files
 .idea
 *.iml
-out
+out/
 
 
