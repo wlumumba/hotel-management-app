@@ -20,7 +20,6 @@ public class Controller {
         Connection connectDB = connectNow.getConnection();
 
         String connectQuery = "SELECT username FROM hotel_db.test";
-        String test = "balogner";
 
         try{
             Statement st = connectDB.createStatement();
