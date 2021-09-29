@@ -19,6 +19,9 @@ public class loginController {
     private Button adminButton;
 
     @FXML
+    private Button guestLog;
+
+    @FXML
     private Button customerButton;
 
     @FXML
