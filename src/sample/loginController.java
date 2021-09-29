@@ -34,7 +34,19 @@ public class loginController {
 
     @FXML
     public void adminButtonClicked(Event e){
+
         System.out.println("admin login");
+
+        String userName = userNameLog.getText();
+        String password = passwordLog.getText();
+        userNameLog.clear();
+        passwordLog.clear();
+
+        if(validateUser(0, userName, password))
+            System.out.println("Access granted");
+
+        else
+            System.out.println("Incorrect loggin info, please try again");
     }
 
     @FXML
@@ -43,19 +55,20 @@ public class loginController {
     }
 
     @FXML
-    public void createButtonClicked(Event e){
-        System.out.println("create login");
+    public void createButtonClicked(Event e) throws IOException {
+        //System.out.println("create login");
         String username = userNameCreate.getText();
         String password = passwordCreate.getText();
         userNameCreate.clear();
         passwordCreate.clear();
+
+        //System.out.println("test 1");
 
         if(username.isEmpty() || password.isEmpty())
             System.out.println("Please enter password and username");
 
         else if (userExist(username))
             System.out.println("username already exist, try again");
-
         else
             addUser(username, password);
 
@@ -72,11 +85,11 @@ public class loginController {
         boolean exist = false;
         BufferedReader reader;
         try {
-            reader = new BufferedReader(new FileReader("C:\\Users\\Aaron Gingrich\\OneDrive - Triada\\Desktop\\hotelManagmentApp\\src\\sample\\users.txt"));
+            reader = new BufferedReader(new FileReader("C:\\Users\\Aaron Gingrich\\OneDrive - Triada\\Desktop\\hotelManagmentApp\\src\\sample\\user.txt"));
             String line = reader.readLine();
             while (line != null) {
                // System.out.println(line);
-                String[] arrOfStr = line.split(" ");
+                String[] arrOfStr = line.split(",");
 
                 if(arrOfStr[1].equals(userName)) {
                     exist = true;
@@ -92,36 +105,41 @@ public class loginController {
         return exist;
     }
 
-    public static void addUser(String userName, String password){
-        String append = "0 " + userName + " " + password + "\n";
+    public static void addUser(String userName, String password) throws IOException {
+        String append = "0," + userName + "," + password + "\n";
+       // System.out.println("test 1");
 
-        FileWriter fw = null;
-        BufferedWriter bw = null;
-        PrintWriter pw = null;
+        File file = new File("C:\\Users\\Aaron Gingrich\\OneDrive - Triada\\Desktop\\hotelManagmentApp\\src\\sample\\user.txt");
+        FileWriter fr = new FileWriter(file, true);
+        fr.write(append);
+        fr.close();
 
+}
+
+    public static boolean validateUser(int accountType, String userName, String password){
+
+        boolean exist = false;
+        BufferedReader reader;
         try {
-            fw = new FileWriter("C:\\Users\\Aaron Gingrich\\OneDrive - Triada\\Desktop\\hotelManagmentApp\\src\\sample\\users.txt", true);
-            bw = new BufferedWriter(fw);
-            pw = new PrintWriter(bw);
+            reader = new BufferedReader(new FileReader("C:\\Users\\Aaron Gingrich\\OneDrive - Triada\\Desktop\\hotelManagmentApp\\src\\sample\\user.txt"));
+            String line = reader.readLine();
+            while (line != null) {
+                // System.out.println(line);
+                String[] arrOfStr = line.split(",");
 
-            pw.println(append);
+                if(arrOfStr[1].equals(userName) && arrOfStr[2].equals(password)) {
+                    exist = true;
 
-            System.out.println("Data Successfully appended into file");
-            pw.flush();
-
+                }
+                line = reader.readLine();
+            }
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                pw.close();
-                bw.close();
-                fw.close();
-            } catch (IOException io) {// can't do anything }
-            }
+        }
 
+        return exist;
 
 
     }
-
-}
 }
