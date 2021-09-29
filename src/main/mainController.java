@@ -1,4 +1,4 @@
-package sample;
+package main;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Controller {
+public class mainController {
 
     @FXML
     private Label dataLabel;
