@@ -17,8 +17,6 @@ public class customerHomeController {
     @FXML
     private Button customerLogoutButton;
 
-    @FXML
-    private TextField userName;
 
     @FXML
     void customerLogoutButtonClicked(ActionEvent event) throws IOException {
@@ -36,11 +34,7 @@ public class customerHomeController {
     }
 
 
-    //Receive message from scene 1
-    public void transferData(String message) {
-        //Display the message
-        userName.setText(message);
-    }
+
 
 }
 

@@ -71,7 +71,7 @@ public class loginController {
 
     public void guestButtonClicked(Event e) throws IOException {
 
-        System.out.println("customer login");
+        System.out.println("guest login");
         Stage stage;
         Scene scene;
         Parent root;
@@ -145,7 +145,7 @@ public class loginController {
         boolean exist = false;
         BufferedReader reader;
         try {
-            reader = new BufferedReader(new FileReader("C:\\Users\\Aaron Gingrich\\OneDrive - Triada\\Desktop\\hotelManagmentApp\\src\\sample\\user.txt"));
+            reader = new BufferedReader(new FileReader("src\\sample\\user.txt"));
             String line = reader.readLine();
             while (line != null) {
                // System.out.println(line);
@@ -169,7 +169,7 @@ public class loginController {
         String append = "0," + userName + "," + password + "\n";
        // System.out.println("test 1");
 
-        File file = new File("C:\\Users\\Aaron Gingrich\\OneDrive - Triada\\Desktop\\hotelManagmentApp\\src\\sample\\user.txt");
+        File file = new File("src\\sample\\user.txt");
         FileWriter fr = new FileWriter(file, true);
         fr.write(append);
         fr.close();
@@ -182,7 +182,7 @@ public class loginController {
         BufferedReader reader;
         int accType;
         try {
-            reader = new BufferedReader(new FileReader("C:\\Users\\Aaron Gingrich\\OneDrive - Triada\\Desktop\\hotelManagmentApp\\src\\sample\\user.txt"));
+            reader = new BufferedReader(new FileReader("src\\sample\\user.txt"));
             String line = reader.readLine();
             while (line != null) {
                 // System.out.println(line);
