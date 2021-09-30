@@ -14,6 +14,8 @@ import java.io.*;
 
 public class loginController {
 
+    User user = new User();
+
     @FXML
     private TextField userNameLog;
 
@@ -38,6 +40,15 @@ public class loginController {
     @FXML
     private TextField passwordCreate;
 
+    @FXML
+    private TextField firstNameCreate;
+
+    @FXML
+    private TextField lastNameCreate;
+
+    @FXML
+    private TextField emailCreate;
+
 
 
     @FXML
@@ -56,9 +67,7 @@ public class loginController {
             Scene scene;
             Parent root;
 
-            /////////////
 
-            //////////
             root = FXMLLoader.load(getClass().getResource("adminHome.fxml"));
             stage = (Stage)((Node)e.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -119,8 +128,26 @@ public class loginController {
         //System.out.println("create login");
         String username = userNameCreate.getText();
         String password = passwordCreate.getText();
+        String firstName = firstNameCreate.getText();
+        String lastName = lastNameCreate.getText();
+        String email = emailCreate.getText();
+        int accountType = 0;
+
+        user.setEmail(email);
+        user.setUserName(username);
+        user.setPassword(password);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setAccountType(accountType);
+
         userNameCreate.clear();
         passwordCreate.clear();
+        firstNameCreate.clear();
+        lastNameCreate.clear();
+        emailCreate.clear();
+
+        System.out.println(user.getAccountType() + " " + user.getEmail() + " " + user.getUserName()  + " " + user.getFirstName() + " " + user.getEmail() + " " + user.getLastName() + " " + user.getPassword());
+
 
         //System.out.println("test 1");
 
