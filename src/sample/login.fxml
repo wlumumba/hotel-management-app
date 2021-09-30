@@ -22,6 +22,6 @@
       <Line endY="329.89288330078125" layoutX="300.0" layoutY="71.0" startY="-71.0" />
       <Text layoutX="128.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOG IN" />
       <Text layoutX="404.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CREATE ACCOUNT" wrappingWidth="123.98480224609375" />
-      <Button fx:id="guestLog" layoutX="201.0" layoutY="231.0" mnemonicParsing="false" text="Guest" />
+      <Button fx:id="guestButton" layoutX="201.0" layoutY="231.0" mnemonicParsing="false" onAction="#guestButtonClicked" text="Guest" />
    </children>
 </AnchorPane>

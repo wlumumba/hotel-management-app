@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.guestHomeController">
+   <children>
+      <Label layoutX="264.0" layoutY="62.0" text="Guest page" />
+      <TextArea layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" text="Here we will only implement &#10;the search function, will need&#10;to be logged in to reserve&#10;&#10;Loggin button top right, takes&#10;you back to loggin page" />
+   </children>
+</AnchorPane>

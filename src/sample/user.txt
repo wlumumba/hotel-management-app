@@ -3,3 +3,5 @@
 0,pizzaman,pizza is cool
 0,burger guy,burgers are sweet
 0,dawn,pcode
+0,jesus,pass
+0,example,pass
