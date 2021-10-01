@@ -104,9 +104,37 @@ public class loginController {
         userNameLog.clear();
         passwordLog.clear();
 
+
+        user.setUserName(userName);
+        user.setPassword(password);
+
+
+
         if(validateUser(0, userName, password)) {
             System.out.println("Access granted");
 
+            Node node = (Node) e.getSource();
+            // Step 3
+
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            stage.close();
+
+
+                // Step 4
+
+                Parent root = FXMLLoader.load(getClass().getResource("customerHome.fxml"));
+                // Step 5
+
+                stage.setUserData(user);
+
+                // Step 6
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                // Step 7
+                stage.show();
+
+            /*
             Stage stage;
             Scene scene;
             Parent root;
@@ -116,7 +144,7 @@ public class loginController {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-
+            */
 
         }
         else
@@ -146,7 +174,7 @@ public class loginController {
         lastNameCreate.clear();
         emailCreate.clear();
 
-        System.out.println(user.getAccountType() + " " + user.getEmail() + " " + user.getUserName()  + " " + user.getFirstName() + " " + user.getEmail() + " " + user.getLastName() + " " + user.getPassword());
+        //System.out.println(user.getAccountType() + " " + user.getEmail() + " " + user.getUserName()  + " " + user.getFirstName() + " " + user.getEmail() + " " + user.getLastName() + " " + user.getPassword());
 
 
         //System.out.println("test 1");

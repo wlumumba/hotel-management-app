@@ -10,5 +10,8 @@
       <Label layoutX="256.0" layoutY="53.0" text="Customer Home" />
       <TextArea layoutX="200.0" layoutY="88.0" prefHeight="292.0" prefWidth="200.0" text="Functions&#10;* search&#10;* on the results, they will have &#10;reserve button. It will make&#10;reservation sense they are in the &#10;logged in version and their loggin&#10;info was passed from previus page&#10;* Edit reservation&#10;*cancel reservation&#10;&#10;&#10;Add loggout button that takes&#10;you back to loggin page&#10;" />
       <Button fx:id="customerLogoutButton" layoutX="31.0" layoutY="21.0" mnemonicParsing="false" onAction="#customerLogoutButtonClicked" text="log out" />
+      <Button fx:id="printUserDataButton" layoutX="31.0" layoutY="120.0" mnemonicParsing="false" onAction="#printUserDataButtonClicked" text="print user data" />
+      <Label fx:id="userNameLabel" layoutX="59.0" layoutY="172.0" text="Label" />
+      <Label fx:id="passwordLabel" layoutX="59.0" layoutY="192.0" text="Label" />
    </children>
 </AnchorPane>
