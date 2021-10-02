@@ -1,5 +1,6 @@
-package sample;
+package controller;
 
+import helpers.User;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -68,7 +69,7 @@ public class loginController {
             Parent root;
 
 
-            root = FXMLLoader.load(getClass().getResource("adminHome.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/styles/adminHome.fxml"));
             stage = (Stage)((Node)e.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
@@ -85,7 +86,7 @@ public class loginController {
         Scene scene;
         Parent root;
 
-        root = FXMLLoader.load(getClass().getResource("guestHome.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/styles/guestHome.fxml"));
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -123,7 +124,7 @@ public class loginController {
 
                 // Step 4
 
-                Parent root = FXMLLoader.load(getClass().getResource("customerHome.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/styles/customerHome.fxml"));
                 // Step 5
 
                 stage.setUserData(user);
@@ -200,7 +201,7 @@ public class loginController {
         boolean exist = false;
         BufferedReader reader;
         try {
-            reader = new BufferedReader(new FileReader("src\\sample\\user.txt"));
+            reader = new BufferedReader(new FileReader("src/controller/user.txt"));
             String line = reader.readLine();
             while (line != null) {
                // System.out.println(line);
@@ -224,7 +225,7 @@ public class loginController {
         String append = "0," + userName + "," + password + "\n";
        // System.out.println("test 1");
 
-        File file = new File("src\\sample\\user.txt");
+        File file = new File("src/controller/user.txt");
         FileWriter fr = new FileWriter(file, true);
         fr.write(append);
         fr.close();
@@ -237,7 +238,7 @@ public class loginController {
         BufferedReader reader;
         int accType;
         try {
-            reader = new BufferedReader(new FileReader("src\\sample\\user.txt"));
+            reader = new BufferedReader(new FileReader("src/controller/user.txt"));
             String line = reader.readLine();
             while (line != null) {
                 // System.out.println(line);

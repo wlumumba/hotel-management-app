@@ -4,5 +4,5 @@ module hotel.management.app {
     requires javafx.fxml;
     requires java.sql;
 
-    opens main;
+    opens controller;
 }
