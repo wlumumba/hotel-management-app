@@ -17,8 +17,7 @@
       <TextField fx:id="passwordLog" layoutX="64.0" layoutY="151.0" />
       <Text layoutX="227.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" />
       <Text layoutX="227.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" />
-      <Button fx:id="adminButton" layoutX="25.0" layoutY="231.0" mnemonicParsing="false" onAction="#adminButtonClicked" text="Admin" />
-      <Button fx:id="customerButton" layoutX="104.0" layoutY="231.0" mnemonicParsing="false" onAction="#customerButtonClicked" text="Customer" />
+      <Button fx:id="customerButton" layoutX="104.0" layoutY="231.0" mnemonicParsing="false" onAction="#customerButtonClicked" prefHeight="27.0" prefWidth="83.0" text="Continue" />
       <Button fx:id="createButton" layoutX="440.0" layoutY="225.0" mnemonicParsing="false" onAction="#createButtonClicked" text="Create" />
       <TextField fx:id="userNameCreate" layoutX="392.0" layoutY="71.0" />
       <TextField fx:id="passwordCreate" layoutX="392.0" layoutY="96.0" />
@@ -27,7 +26,6 @@
       <Line endY="329.89288330078125" layoutX="300.0" layoutY="71.0" startY="-71.0" />
       <Text layoutX="128.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOG IN" />
       <Text layoutX="404.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CREATE ACCOUNT" wrappingWidth="123.98480224609375" />
-      <Button fx:id="guestButton" layoutX="201.0" layoutY="231.0" mnemonicParsing="false" onAction="#guestButtonClicked" text="Guest" />
       <TextField fx:id="firstNameCreate" layoutX="392.0" layoutY="119.0" />
       <TextField fx:id="lastNameCreate" layoutX="392.0" layoutY="143.0" />
       <Text layoutX="331.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name" />

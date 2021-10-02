@@ -4,9 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBConnection {
-    public Connection dblink;
+    private static Connection dblink;
 
-    public Connection getConnection(){
+    public static Connection getConnection(){
         String dbuser = "admin";
         String dbpassword = "wa0T0WQF0Aip59H3G5K1";
         String url = "jdbc:mysql://hoteldb.cijrtaptpxkl.us-east-1.rds.amazonaws.com:3306";
@@ -17,6 +17,7 @@ public class DBConnection {
 
         } catch (Exception e){
             e.printStackTrace();
+            System.out.println("DB Connect FAILED");
         }
 
         return dblink;

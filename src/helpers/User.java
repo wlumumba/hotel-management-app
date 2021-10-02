@@ -2,38 +2,25 @@ package helpers;
 
 public class User {
 
-    String userName;
-    String firstName;
-    String lastName;
-    String email;
-    String password;
-    int accountType; // 1 for admin 0 for customer
+    //User attribute variables
+    private String userName;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String password;
+    private int accountType; // 1 for admin, 0 for customer
 
-
-    public void setUserName(String userName) {
+    //Default constructor
+    public User(String userName, String firstName, String lastName, String email, String password, int accountType) {
         this.userName = userName;
-    }
-
-    public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setAccountType(int accountType) {
+        this.password = password;
         this.accountType = accountType;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
+    //Getters
     public String getUserName() {
         return userName;
     }
@@ -58,5 +45,8 @@ public class User {
         return password;
     }
 
-
+    @Override
+    public String toString() {
+        return "User " + userName + " " + firstName + " " + lastName + " " + email + " " + password + " " + accountType;
+    }
 }
