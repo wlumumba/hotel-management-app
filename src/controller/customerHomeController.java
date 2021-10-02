@@ -52,7 +52,7 @@ public class customerHomeController {
         Scene scene;
         Parent root;
 
-        root = FXMLLoader.load(getClass().getResource("../styles/login.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/styles/login.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
