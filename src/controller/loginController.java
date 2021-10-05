@@ -164,4 +164,18 @@ public class loginController {
         }
     }
 
+    @FXML
+    public void guestButtonClicked(Event e) throws IOException {
+
+        Stage stage;
+        Scene scene;
+        Parent root;
+
+        root = FXMLLoader.load(getClass().getResource("/styles/guestHome.fxml"));
+        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }
