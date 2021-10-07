@@ -89,9 +89,12 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                </content>
             </Tab>
-            <Tab text="TBD ">
+            <Tab text="log out">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="52.0" layoutY="34.0" mnemonicParsing="false" onAction="#adminLogoutButtonClicked" text="log out" />
+                     </children></AnchorPane>
                </content>
             </Tab>
         </tabs>
