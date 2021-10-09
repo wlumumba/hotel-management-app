@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminAddUserController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminAddUserController">
    <children>
       <VBox layoutY="1.0" prefHeight="400.0" prefWidth="172.0">
          <children>
@@ -53,5 +56,6 @@
             </HBox>
          </children>
       </VBox>
+      <Text fx:id="outputForButton" layoutX="395.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="162.5771484375" />
    </children>
 </AnchorPane>

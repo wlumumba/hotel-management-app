@@ -1,32 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.loginController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.loginController">
    <children>
-      <TextField fx:id="userNameLog" layoutX="63.0" layoutY="119.0" />
-      <TextField fx:id="passwordLog" layoutX="64.0" layoutY="151.0" />
-      <Text layoutX="227.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" />
-      <Text layoutX="227.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" />
-      <Button fx:id="customerButton" layoutX="104.0" layoutY="231.0" mnemonicParsing="false" onAction="#customerButtonClicked" prefHeight="27.0" prefWidth="83.0" text="Continue" />
-      <Button fx:id="createButton" layoutX="440.0" layoutY="225.0" mnemonicParsing="false" onAction="#createButtonClicked" text="Create" />
-      <TextField fx:id="userNameCreate" layoutX="392.0" layoutY="71.0" />
-      <TextField fx:id="passwordCreate" layoutX="392.0" layoutY="96.0" />
-      <Text layoutX="331.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" />
-      <Text layoutX="331.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" />
+      <TextField fx:id="userNameLog" layoutX="97.0" layoutY="100.0" prefHeight="39.0" prefWidth="191.0" />
+      <TextField fx:id="passwordLog" layoutX="97.0" layoutY="151.0" prefHeight="39.0" prefWidth="191.0" />
+      <Text layoutX="14.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" />
+      <Text layoutX="15.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" />
+      <Button fx:id="customerButton" layoutX="68.0" layoutY="232.0" mnemonicParsing="false" onAction="#customerButtonClicked" prefHeight="39.0" prefWidth="178.0" text="Log In" />
+      <Button fx:id="createButton" layoutX="440.0" layoutY="310.0" mnemonicParsing="false" onAction="#createButtonClicked" text="Create" />
+      <TextField fx:id="userNameCreate" layoutX="392.0" layoutY="71.0" prefHeight="39.0" prefWidth="204.0" />
+      <TextField fx:id="passwordCreate" layoutX="392.0" layoutY="124.0" prefHeight="39.0" prefWidth="204.0" />
+      <Text layoutX="308.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" />
+      <Text layoutX="309.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" />
       <Line endY="329.89288330078125" layoutX="300.0" layoutY="71.0" startY="-71.0" />
       <Text layoutX="128.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOG IN" />
-      <Text layoutX="404.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CREATE ACCOUNT" wrappingWidth="123.98480224609375" />
-      <TextField fx:id="firstNameCreate" layoutX="392.0" layoutY="119.0" />
-      <TextField fx:id="lastNameCreate" layoutX="392.0" layoutY="143.0" />
-      <Text layoutX="331.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name" />
-      <Text layoutX="331.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name" />
-      <Text layoutX="344.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-      <TextField fx:id="emailCreate" layoutX="392.0" layoutY="164.0" />
-      <Button fx:id="guestButton" layoutX="106.0" layoutY="271.0" mnemonicParsing="false" onAction="#guestButtonClicked" prefHeight="25.0" prefWidth="83.0" text="Guest" />
+      <Text layoutX="401.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CREATE ACCOUNT" wrappingWidth="154.98480224609375" />
+      <TextField fx:id="firstNameCreate" layoutX="392.0" layoutY="169.0" prefHeight="39.0" prefWidth="204.0" />
+      <TextField fx:id="lastNameCreate" layoutX="392.0" layoutY="212.0" prefHeight="39.0" prefWidth="204.0" />
+      <Text layoutX="304.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name" />
+      <Text layoutX="305.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name" />
+      <Text layoutX="325.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+      <TextField fx:id="emailCreate" layoutX="392.0" layoutY="260.0" prefHeight="39.0" prefWidth="204.0" />
+      <Button fx:id="guestButton" layoutX="68.0" layoutY="280.0" mnemonicParsing="false" onAction="#guestButtonClicked" prefHeight="39.0" prefWidth="178.0" text="Guest" />
    </children>
 </AnchorPane>
