@@ -105,6 +105,8 @@
                         <TextField fx:id="createLastNAdmin" layoutX="166.0" layoutY="209.0" prefHeight="39.0" prefWidth="224.0" />
                         <TextField fx:id="createEmailAdmin" layoutX="166.0" layoutY="255.0" prefHeight="23.0" prefWidth="224.0" />
                         <Text fx:id="foutputForButton" layoutX="560.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <Label fx:id="labelAdminOuput" layoutX="544.0" layoutY="274.0" prefHeight="40.0" prefWidth="196.0" />
+                        <Label fx:id="errorAdminOutput" layoutX="462.0" layoutY="127.0" prefHeight="40.0" prefWidth="196.0" />
                      </children></AnchorPane>
                </content>
             </Tab>
