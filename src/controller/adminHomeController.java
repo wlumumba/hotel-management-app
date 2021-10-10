@@ -23,6 +23,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 public class adminHomeController {
 
     /**********************************WE SHALL PUT ALL OUR WORK FROM EACH ADMIN TAB IN HERE**************************/
+
     /**************************ADD ACCOUNT************************************************/
 
     //Instance Variable
@@ -50,8 +51,20 @@ public class adminHomeController {
         System.out.println("Create Admin Button");
 
         //checks for empty fields
-        if (createUserAdmin.getText().isEmpty() || createPassAdmin.getText().isEmpty()) { //create if statement for each textbox
-            System.out.println("Please enter username and password");
+        if (createUserAdmin.getText().isEmpty()) {
+            System.out.println("Please enter Username");
+        }
+        else if (createPassAdmin.getText().isEmpty()) {
+            System.out.println("Please enter Password");
+        }
+        else if (createFirstNAdmin.getText().isEmpty()) {
+            System.out.println("Please enter First Name");
+        }
+        else if (createLastNAdmin.getText().isEmpty()) {
+            System.out.println("Please enter Last Name");
+        }
+        else if (createEmailAdmin.getText().isEmpty()) {
+            System.out.println("Please enter Email");
         }
         else {
             currentUser = new User(createUserAdmin.getText(), createFirstNAdmin.getText(), createLastNAdmin.getText(), createEmailAdmin.getText(), createPassAdmin.getText(), 1);

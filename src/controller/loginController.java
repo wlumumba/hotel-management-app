@@ -125,8 +125,21 @@ public class loginController {
         System.out.println("create login button");
 
         //Check for empty fields
-        if(userNameCreate.getText().isEmpty() || passwordCreate.getText().isEmpty())
-           System.out.println("Please enter password and username");
+        if(userNameCreate.getText().isEmpty()) {
+            System.out.println("Please enter Username");
+        }
+        else if (passwordCreate.getText().isEmpty()) {
+            System.out.println("Please enter Password");
+        }
+        else if (firstNameCreate.getText().isEmpty()) {
+            System.out.println("Please enter First Name");
+        }
+        else if (lastNameCreate.getText().isEmpty()) {
+            System.out.println("Please enter Last Name");
+        }
+        else if (emailCreate.getText().isEmpty()) {
+            System.out.println("Please enter Email");
+        }
         else {
 
             currentUser = new User(userNameCreate.getText(), firstNameCreate.getText(), lastNameCreate.getText(), emailCreate.getText(), passwordCreate.getText(), 0);
