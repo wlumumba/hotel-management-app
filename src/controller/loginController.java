@@ -23,31 +23,22 @@ public class loginController {
     //FXML Variables
     @FXML
     private TextField userNameLog;
-
     @FXML
     private TextField passwordLog;
-
     @FXML
     private Button customerButton;
-
     @FXML
     private Button createButton;
-
     @FXML
     private Button guestButton;
-
     @FXML
     private TextField userNameCreate;
-
     @FXML
     private TextField passwordCreate;
-
     @FXML
     private TextField firstNameCreate;
-
     @FXML
     private TextField lastNameCreate;
-
     @FXML
     private TextField emailCreate;
 

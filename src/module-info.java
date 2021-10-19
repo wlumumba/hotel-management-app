@@ -5,4 +5,5 @@ module hotel.management.app {
     requires java.sql;
 
     opens controller;
+    opens helpers;
 }

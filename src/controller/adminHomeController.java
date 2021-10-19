@@ -1,38 +1,33 @@
 package controller;
 
 import helpers.DBConnection;
+import helpers.Hotel;
 import helpers.User;
 import javafx.animation.PauseTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.concurrent.TimeUnit;
+import java.net.URL;
+import java.sql.*;
+import java.util.ResourceBundle;
 
-public class adminHomeController {
-
-    /**********************************WE SHALL PUT ALL OUR WORK FROM EACH ADMIN TAB IN HERE**************************/
-
-    /**************************ADD ACCOUNT************************************************/
-
+public class adminHomeController implements Initializable {
     //Instance Variable
-    User currentUser; // not 100% sure on this. Gotta see what its purpose is overall.
-
+    User currentUser;
+    ObservableList<Hotel> hotelList;
 
     //FXML Variables
     @FXML
@@ -51,6 +46,33 @@ public class adminHomeController {
     private Label labelAdminOuput;
     @FXML
     private Label errorAdminOutput;
+    @FXML
+    private TableColumn<Hotel, Integer> col_qprice;
+    @FXML
+    private TableColumn<Hotel, Integer> col_id;
+    @FXML
+    private TableColumn<Hotel, String> col_type;
+    @FXML
+    private TableColumn<Hotel, Integer> col_kprice;
+    @FXML
+    private TableColumn<Hotel, Integer> col_rate;
+    @FXML
+    private TableColumn<Hotel, Integer> col_std;
+    @FXML
+    private TableColumn<Hotel, String> col_amen;
+    @FXML
+    private TableColumn<Hotel, Integer> col_max;
+    @FXML
+    private TableColumn<Hotel, String> col_name;
+    @FXML
+    private TableView<Hotel> table_hotel;
+
+
+    //Method called when screen is loaded
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        fillHotels();
+    }
 
     //Create Hotel Function
     @FXML
@@ -149,6 +171,44 @@ public class adminHomeController {
         stage.show();
 
     }
-    /************************************************************************/
+
+    //Fill addRoom Table
+    public void fillHotels()
+    {
+        //Populate cells to respective values
+        col_id.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("hotelID"));
+        col_name.setCellValueFactory(new PropertyValueFactory<Hotel, String>("hotelName"));
+        col_type.setCellValueFactory(new PropertyValueFactory<Hotel, String>("hotelType"));
+        col_amen.setCellValueFactory(new PropertyValueFactory<Hotel, String>("amenities"));
+        col_max.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("maxRooms"));
+        col_std.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("standardPrice"));
+        col_qprice.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("queenPrice"));
+        col_kprice.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("kingPrice"));
+        col_rate.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("weekendRate"));
+
+        //Launch DB instance
+        hotelList = FXCollections.observableArrayList();
+        Connection connectDB = DBConnection.getConnection();
+        String selectQuery = "SELECT * FROM hotel_db.Hotel";
+
+        try {
+            PreparedStatement ps = connectDB.prepareStatement(selectQuery);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                hotelList.add(new Hotel(rs.getInt("hotelID"), rs.getString("hotelName"), rs.getString("hotelType"), rs.getString("amenities"), rs.getInt("maxRooms"), rs.getInt("standardPrice"), rs.getInt("queenPrice"), rs.getInt("kingPrice"), rs.getInt("weekendRate")));
+            }
+
+            System.out.println(hotelList);
+            table_hotel.setItems(hotelList);
+
+        } catch (Exception e){
+            System.out.println(e);
+        }
+
+
+    }
+
+
 
 }

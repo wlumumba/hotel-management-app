@@ -40,10 +40,17 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="45.0" layoutY="12.0" prefHeight="200.0" prefWidth="611.0">
+                        <TableView fx:id="table_hotel" layoutX="2.0" layoutY="3.0" prefHeight="244.0" prefWidth="748.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
+                            <TableColumn fx:id="col_id" prefWidth="83.0" text="ID" />
+                            <TableColumn fx:id="col_name" prefWidth="83.0" text="Name" />
+                              <TableColumn fx:id="col_type" prefWidth="83.0" text="Type" />
+                              <TableColumn fx:id="col_amen" prefWidth="83.0" text="Amenities" />
+                              <TableColumn fx:id="col_max" prefWidth="83.0" text="maxRooms" />
+                              <TableColumn fx:id="col_std" prefWidth="83.0" text="stdPrice" />
+                              <TableColumn fx:id="col_qprice" prefWidth="83.0" text="queenPrice" />
+                              <TableColumn fx:id="col_kprice" prefWidth="83.0" text="kingPrice" />
+                              <TableColumn fx:id="col_rate" prefWidth="83.0" text="weekendRate" />
                           </columns>
                         </TableView>
                      </children>
