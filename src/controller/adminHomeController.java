@@ -52,7 +52,14 @@ public class adminHomeController {
     @FXML
     private Label errorAdminOutput;
 
+    //Create Hotel Function
+    @FXML
+    void addHotelButtonClicked(ActionEvent event) {
 
+    }
+
+
+    //Create Admin Account
     @FXML
     public void createAdminButtonClicked(Event e) throws IOException {
         System.out.println("Create Admin Button");
@@ -122,8 +129,6 @@ public class adminHomeController {
             }
         }
     }
-
-    /**************************************************************************/
 
     /************************LOGOUT TAB******************************************/
     @FXML

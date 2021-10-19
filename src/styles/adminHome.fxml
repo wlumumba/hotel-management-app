@@ -21,7 +21,17 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextArea layoutX="113.0" layoutY="87.0" prefHeight="200.0" prefWidth="200.0" text="Here is the admin home page&#10;Functions&#10; * add hotel&#10; * add room&#10; * cancel reservation&#10; * edit reservation?&#10; * add another admin user&#10;&#10;loggout button top right, takes&#10;back to loggin scene&#10;" />
+                        <TextArea layoutX="541.0" layoutY="129.0" prefHeight="200.0" prefWidth="200.0" text="Here is the admin home page&#10;Functions&#10; * add hotel&#10; * add room&#10; * cancel reservation&#10; * edit reservation?&#10; * add another admin user&#10;&#10;loggout button top right, takes&#10;back to loggin scene&#10;" />
+                        <TextField layoutX="53.0" layoutY="38.0" promptText="hotelID" />
+                        <TextField layoutX="53.0" layoutY="85.0" promptText="hotelName" />
+                        <TextField layoutX="53.0" layoutY="137.0" promptText="hotelType" />
+                        <TextField layoutX="53.0" layoutY="183.0" prefHeight="27.0" prefWidth="194.0" promptText="amenities (comma separated)" />
+                        <Button fx:id="addHotelButton" layoutX="289.0" layoutY="280.0" mnemonicParsing="false" onAction="#addHotelButtonClicked" text="Create" />
+                        <TextField layoutX="53.0" layoutY="228.0" prefHeight="27.0" prefWidth="194.0" promptText="maxRooms" />
+                        <TextField layoutX="253.0" layoutY="38.0" prefHeight="27.0" prefWidth="194.0" promptText="standardPrice" />
+                        <TextField layoutX="253.0" layoutY="85.0" prefHeight="27.0" prefWidth="194.0" promptText="queenPrice" />
+                        <TextField layoutX="272.0" layoutY="137.0" prefHeight="27.0" prefWidth="194.0" promptText="kingPrice" />
+                        <TextField layoutX="280.0" layoutY="183.0" prefHeight="27.0" prefWidth="194.0" promptText="weekendRate" />
                      </children>
                   </AnchorPane>
             </content>
@@ -30,50 +40,12 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <VBox layoutY="8.0" prefHeight="359.0" prefWidth="172.0">
-                           <children>
-                              <HBox alignment="CENTER" prefHeight="32.0" prefWidth="172.0">
-                                 <children>
-                                    <Label prefHeight="29.0" prefWidth="172.0" text="                Admin Panel" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="50.0" prefWidth="172.0">
-                                 <children>
-                                    <Button fx:id="adminLogoutButton" mnemonicParsing="false" onAction="#adminLogoutButtonClicked" prefHeight="59.0" prefWidth="179.0" text="Add Room" />
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="50.0" prefWidth="172.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" prefHeight="81.0" prefWidth="190.0" text="Add Hotel" textAlignment="CENTER" />
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="50.0" prefWidth="172.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" prefHeight="81.0" prefWidth="190.0" text="Add Room" textAlignment="CENTER" />
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="50.0" prefWidth="172.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" prefHeight="81.0" prefWidth="190.0" text="Cancel Reservation" textAlignment="CENTER" />
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="50.0" prefWidth="172.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" prefHeight="81.0" prefWidth="190.0" text="Edit Reservation" textAlignment="CENTER" />
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="50.0" prefWidth="172.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" prefHeight="81.0" prefWidth="190.0" text="Add Account" textAlignment="CENTER" />
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="50.0" prefWidth="172.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" prefHeight="81.0" prefWidth="190.0" text="TBD???" textAlignment="CENTER" />
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
+                        <TableView layoutX="45.0" layoutY="12.0" prefHeight="200.0" prefWidth="611.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
+                          </columns>
+                        </TableView>
                      </children>
                   </AnchorPane>
             </content>
