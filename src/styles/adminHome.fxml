@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminHomeController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminHomeController">
    <children>
       <TabPane prefHeight="400.0" prefWidth="754.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -22,16 +20,16 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TextArea layoutX="541.0" layoutY="129.0" prefHeight="200.0" prefWidth="200.0" text="Here is the admin home page&#10;Functions&#10; * add hotel&#10; * add room&#10; * cancel reservation&#10; * edit reservation?&#10; * add another admin user&#10;&#10;loggout button top right, takes&#10;back to loggin scene&#10;" />
-                        <TextField layoutX="53.0" layoutY="38.0" promptText="hotelID" />
-                        <TextField layoutX="53.0" layoutY="85.0" promptText="hotelName" />
-                        <TextField layoutX="53.0" layoutY="137.0" promptText="hotelType" />
-                        <TextField layoutX="53.0" layoutY="183.0" prefHeight="27.0" prefWidth="194.0" promptText="amenities (comma separated)" />
+                        <TextField fx:id="hotelIDField" layoutX="53.0" layoutY="38.0" promptText="hotelID" />
+                        <TextField fx:id="hotelNameField" layoutX="53.0" layoutY="85.0" promptText="hotelName" />
+                        <TextField fx:id="hotelTypeField" layoutX="53.0" layoutY="137.0" promptText="hotelType" />
+                        <TextField fx:id="amenitiesField" layoutX="53.0" layoutY="183.0" prefHeight="27.0" prefWidth="194.0" promptText="amenities (comma separated)" />
                         <Button fx:id="addHotelButton" layoutX="289.0" layoutY="280.0" mnemonicParsing="false" onAction="#addHotelButtonClicked" text="Create" />
-                        <TextField layoutX="53.0" layoutY="228.0" prefHeight="27.0" prefWidth="194.0" promptText="maxRooms" />
-                        <TextField layoutX="253.0" layoutY="38.0" prefHeight="27.0" prefWidth="194.0" promptText="standardPrice" />
-                        <TextField layoutX="253.0" layoutY="85.0" prefHeight="27.0" prefWidth="194.0" promptText="queenPrice" />
-                        <TextField layoutX="272.0" layoutY="137.0" prefHeight="27.0" prefWidth="194.0" promptText="kingPrice" />
-                        <TextField layoutX="280.0" layoutY="183.0" prefHeight="27.0" prefWidth="194.0" promptText="weekendRate" />
+                        <TextField fx:id="maxRoomsField" layoutX="53.0" layoutY="228.0" prefHeight="27.0" prefWidth="194.0" promptText="maxRooms" />
+                        <TextField fx:id="standardPriceField" layoutX="253.0" layoutY="38.0" prefHeight="27.0" prefWidth="194.0" promptText="standardPrice" />
+                        <TextField fx:id="queenPriceField" layoutX="253.0" layoutY="85.0" prefHeight="27.0" prefWidth="194.0" promptText="queenPrice" />
+                        <TextField fx:id="kingPriceField" layoutX="272.0" layoutY="137.0" prefHeight="27.0" prefWidth="194.0" promptText="kingPrice" />
+                        <TextField fx:id="weekendRateField" layoutX="280.0" layoutY="183.0" prefHeight="27.0" prefWidth="194.0" promptText="weekendRate" />
                      </children>
                   </AnchorPane>
             </content>

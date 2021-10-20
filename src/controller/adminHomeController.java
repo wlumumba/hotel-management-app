@@ -27,11 +27,29 @@ import java.util.ResourceBundle;
 public class adminHomeController implements Initializable {
     //Instance Variable
     User currentUser;
+    Hotel currentHotel;
     ObservableList<Hotel> hotelList;
 
     //FXML Variables
+    //Text Fields
     @FXML
-    private Button createAdminButton;
+    private TextField hotelIDField;
+    @FXML
+    private TextField hotelNameField;
+    @FXML
+    private TextField hotelTypeField;
+    @FXML
+    private TextField amenitiesField;
+    @FXML
+    private TextField maxRoomsField;
+    @FXML
+    private TextField standardPriceField;
+    @FXML
+    private TextField queenPriceField;
+    @FXML
+    private TextField kingPriceField;
+    @FXML
+    private TextField weekendRateField;
     @FXML
     private TextField createUserAdmin;
     @FXML
@@ -42,10 +60,15 @@ public class adminHomeController implements Initializable {
     private TextField createLastNAdmin;
     @FXML
     private TextField createEmailAdmin;
+
+    //Buttons
     @FXML
-    private Label labelAdminOuput;
+    private Button addHotelButton;
     @FXML
-    private Label errorAdminOutput;
+    private Button createAdminButton;
+
+
+    //columns
     @FXML
     private TableColumn<Hotel, Integer> col_qprice;
     @FXML
@@ -67,6 +90,11 @@ public class adminHomeController implements Initializable {
     @FXML
     private TableView<Hotel> table_hotel;
 
+    //labels
+    @FXML
+    private Label labelAdminOuput;
+    @FXML
+    private Label errorAdminOutput;
 
     //Method called when screen is loaded
     @Override
@@ -76,7 +104,112 @@ public class adminHomeController implements Initializable {
 
     //Create Hotel Function
     @FXML
-    void addHotelButtonClicked(ActionEvent event) {
+    public void addHotelButtonClicked(ActionEvent e) throws IOException{
+
+        System.out.println("Create hotel Button");
+
+        //checks for empty fields
+
+        if (hotelIDField.getText().isEmpty()) { //errors here if one text box is empty
+            System.out.println("Please enter hotel ID");
+            errorAdminOutput.setText("Please enter a hotel ID");
+        }
+        else if (hotelNameField.getText().isEmpty()) {
+            System.out.println("Please enter hotel Name");
+            errorAdminOutput.setText("Please enter a hotel Name");
+        }
+        else if (hotelTypeField.getText().isEmpty()) {
+            System.out.println("Please enter hotel type");
+            errorAdminOutput.setText("Please enter a hotel type");
+        }
+        else if (amenitiesField.getText().isEmpty()) {
+            System.out.println("Please enter amenities");
+            errorAdminOutput.setText("Please enter a amenities");
+        }
+        else if (maxRoomsField.getText().isEmpty()) {
+            System.out.println("Please enter max rooms");
+            errorAdminOutput.setText("Please enter max rooms");
+        }
+
+        else if (standardPriceField.getText().isEmpty()) {
+            System.out.println("Please enter standard room price");
+            errorAdminOutput.setText("Please enter standard room price");
+        }
+
+        else if (queenPriceField.getText().isEmpty()) {
+            System.out.println("Please enter queen room price");
+            errorAdminOutput.setText("Please enter queen room price");
+        }
+
+        else if (kingPriceField.getText().isEmpty()) {
+            System.out.println("Please enter king room price");
+            errorAdminOutput.setText("Please enter king room price");
+        }
+
+        else if (weekendRateField.getText().isEmpty()) {
+            System.out.println("Please enter weekend rate");
+            errorAdminOutput.setText("Please enter weekend rate");
+        }
+
+
+
+        else {
+
+
+
+            currentHotel = new Hotel(Integer.parseInt(hotelIDField.getText()), hotelNameField.getText(), hotelTypeField.getText(), amenitiesField.getText(), Integer.parseInt(maxRoomsField.getText()), Integer.parseInt(standardPriceField.getText()), Integer.parseInt(queenPriceField.getText()), Integer.parseInt(kingPriceField.getText()), Integer.parseInt(weekendRateField.getText()));
+
+            System.out.println(currentHotel.toString());
+            //Launching DataBase Instance
+            Connection connectDB = DBConnection.getConnection(); //Below is it hotel_db.Admin?
+            String insertQuery = "INSERT INTO hotel_db.Hotel (hotelID, hotelName, hotelType, amenities, maxRooms, standardPrice, queenPrice, kingPrice, weekendRate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            try {
+                //Create statement, fill empty fields
+                PreparedStatement statement = connectDB.prepareStatement(insertQuery);
+                statement.setInt(1, currentHotel.getHotelID());
+                statement.setString(2, currentHotel.getHotelName());
+                statement.setString(3, currentHotel.getHotelType());
+                statement.setString(4, currentHotel.getAmenities());
+                statement.setInt(5, currentHotel.getMaxRooms());
+                statement.setInt(6, currentHotel.getStandardPrice());
+                statement.setInt(7, currentHotel.getQueenPrice());
+                statement.setInt(8, currentHotel.getKingPrice());
+                statement.setInt(9, currentHotel.getWeekendRate());
+                statement.executeUpdate();
+
+                System.out.println("Success Inserted " + currentHotel.toString());
+
+                labelAdminOuput.setText("Success!"); //maybe?
+
+                //Clear ALL text fields
+                hotelIDField.clear();
+                hotelNameField.clear();
+                hotelTypeField.clear();
+                amenitiesField.clear();
+                maxRoomsField.clear();
+                standardPriceField.clear();
+                queenPriceField.clear();
+                kingPriceField.clear();
+                weekendRateField.clear();
+                errorAdminOutput.setText("");
+                //DISPLAYS TO THE USER SUCCESS THEN CLEARS DISPLAY TEXT
+                PauseTransition pause = new PauseTransition();
+                pause.setDuration(Duration.seconds(2));
+                pause.setOnFinished(event->labelAdminOuput.setText(" "));
+                pause.play();
+
+            }
+            catch (SQLIntegrityConstraintViolationException ex) {
+                System.out.println("hotelID taken! Try another one");
+            }
+            catch (SQLException ex) {
+                ex.printStackTrace();
+                System.out.println("Error: Failed to insert to DB");
+            }
+        }
+
+
 
     }
 
