@@ -25,13 +25,12 @@ import java.sql.*;
 import java.util.ResourceBundle;
 
 public class adminHomeController implements Initializable {
-    //Instance Variable
+    //Instance Variables
     User currentUser;
     Hotel currentHotel;
     ObservableList<Hotel> hotelList;
 
     //FXML Variables
-    //Text Fields
     @FXML
     private TextField hotelIDField;
     @FXML
@@ -65,6 +64,8 @@ public class adminHomeController implements Initializable {
     @FXML
     private Button addHotelButton;
     @FXML
+    private Label errorAdminOutput;
+    //// ADD ROOM ELEMENTS ///
     private Button createAdminButton;
 
 
@@ -89,12 +90,18 @@ public class adminHomeController implements Initializable {
     private TableColumn<Hotel, String> col_name;
     @FXML
     private TableView<Hotel> table_hotel;
+    @FXML
+    private Button addRoomButton;
+    @FXML
+    private TextField addroom_hotelid;
+    @FXML
+    private TextField addroom_bed;
+    @FXML
+    private TextField addroom_price;
 
     //labels
     @FXML
     private Label labelAdminOuput;
-    @FXML
-    private Label errorAdminOutput;
 
     //Method called when screen is loaded
     @Override
@@ -213,8 +220,29 @@ public class adminHomeController implements Initializable {
 
     }
 
+    //Create Room Function
+    @FXML
+    void addRoomButtonClicked(ActionEvent event){
+        System.out.println("Create Room Button");
+        Connection connectDB = DBConnection.getConnection();
+        String insertQuery = "INSERT INTO hotel_db.Room (bedType, price, Hotel_hotelID) VALUES (?, ?, ?)";
 
-    //Create Admin Account
+        // INSERT INTO `hotel_db`.`Room` (`roomID`, `bedType`, `price`, `Hotel_hotelID`) VALUES ('', 'Queen', '124', '1');
+        try{
+            PreparedStatement ps = connectDB.prepareStatement(insertQuery);
+            ps.setString(1, addroom_bed.getText());
+            ps.setInt(2, Integer.parseInt(addroom_price.getText()));
+            ps.setInt(3, Integer.parseInt(addroom_hotelid.getText()));
+
+            ps.executeUpdate();
+        }
+        catch(Exception ex) {
+            System.out.println(ex);
+        }
+    }
+
+
+    //Create Admin Account Function
     @FXML
     public void createAdminButtonClicked(Event e) throws IOException {
         System.out.println("Create Admin Button");

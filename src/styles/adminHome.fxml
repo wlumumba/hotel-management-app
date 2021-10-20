@@ -15,7 +15,7 @@
    <children>
       <TabPane prefHeight="400.0" prefWidth="754.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Add Hotel">
+          <Tab fx:id="h" text="Add Hotel">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -51,6 +51,10 @@
                               <TableColumn fx:id="col_rate" prefWidth="83.0" text="weekendRate" />
                           </columns>
                         </TableView>
+                        <TextField fx:id="addroom_hotelid" layoutX="112.0" layoutY="265.0" promptText="Enter hotel ID" />
+                        <TextField fx:id="addroom_bed" layoutX="296.0" layoutY="265.0" promptText="Enter bed type" />
+                        <TextField fx:id="addroom_price" layoutX="481.0" layoutY="265.0" promptText="Enter room price" />
+                        <Button fx:id="addRoomButton" layoutX="332.0" layoutY="313.0" mnemonicParsing="false" onAction="#addRoomButtonClicked" text="Create Room" />
                      </children>
                   </AnchorPane>
             </content>
