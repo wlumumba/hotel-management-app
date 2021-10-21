@@ -10,9 +10,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/styles/login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/styles/adminHome.fxml"));
         primaryStage.setTitle("Sleepless Nights B&B");
-        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setScene(new Scene(root, 754, 400));
         primaryStage.show();
     }
 

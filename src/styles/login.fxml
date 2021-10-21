@@ -17,7 +17,7 @@
       <TextField fx:id="passwordLog" layoutX="84.0" layoutY="151.0" prefHeight="39.0" prefWidth="191.0" />
       <Text layoutX="14.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" />
       <Text layoutX="15.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" />
-      <Button fx:id="customerButton" layoutX="68.0" layoutY="232.0" mnemonicParsing="false" onAction="#customerButtonClicked" prefHeight="39.0" prefWidth="178.0" text="Continue" />
+      <Button fx:id="customerButton" defaultButton="true" layoutX="68.0" layoutY="232.0" mnemonicParsing="false" onAction="#customerButtonClicked" prefHeight="39.0" prefWidth="178.0" text="Continue" />
       <Button fx:id="createButton" layoutX="440.0" layoutY="310.0" mnemonicParsing="false" onAction="#createButtonClicked" text="Create" />
       <TextField fx:id="userNameCreate" layoutX="392.0" layoutY="71.0" prefHeight="39.0" prefWidth="204.0" />
       <TextField fx:id="passwordCreate" layoutX="392.0" layoutY="124.0" prefHeight="39.0" prefWidth="204.0" />

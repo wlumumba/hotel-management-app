@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
@@ -11,7 +15,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminHomeController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminHomeController">
    <children>
       <TabPane prefHeight="400.0" prefWidth="754.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -50,9 +54,8 @@
                               <TableColumn fx:id="col_rate" prefWidth="83.0" text="weekendRate" />
                           </columns>
                         </TableView>
-                        <TextField fx:id="addroom_hotelid" layoutX="112.0" layoutY="265.0" promptText="Enter hotel ID" />
-                        <TextField fx:id="addroom_bed" layoutX="296.0" layoutY="265.0" promptText="Enter bed type" />
-                        <TextField fx:id="addroom_price" layoutX="481.0" layoutY="265.0" promptText="Enter room price" />
+                        <TextField fx:id="addroom_hotelid" layoutX="200.0" layoutY="265.0" promptText="Enter hotel ID" />
+                        <TextField fx:id="addroom_bed" layoutX="384.0" layoutY="265.0" promptText="Enter bed type" />
                         <Button fx:id="addRoomButton" layoutX="332.0" layoutY="313.0" mnemonicParsing="false" onAction="#addRoomButtonClicked" text="Create Room" />
                      </children>
                   </AnchorPane>

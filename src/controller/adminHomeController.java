@@ -134,29 +134,22 @@ public class adminHomeController implements Initializable {
             System.out.println("Please enter max rooms");
             errorAdminOutput.setText("Please enter max rooms");
         }
-
         else if (standardPriceField.getText().isEmpty()) {
             System.out.println("Please enter standard room price");
             errorAdminOutput.setText("Please enter standard room price");
         }
-
         else if (queenPriceField.getText().isEmpty()) {
             System.out.println("Please enter queen room price");
             errorAdminOutput.setText("Please enter queen room price");
         }
-
         else if (kingPriceField.getText().isEmpty()) {
             System.out.println("Please enter king room price");
             errorAdminOutput.setText("Please enter king room price");
         }
-
         else if (weekendRateField.getText().isEmpty()) {
             System.out.println("Please enter weekend rate");
             errorAdminOutput.setText("Please enter weekend rate");
         }
-
-
-
         else {
 
             //currentHotel = new Hotel(0, hotelNameField.getText(), hotelTypeField.getText(), amenitiesField.getText(), Integer.parseInt(maxRoomsField.getText()), Integer.parseInt(standardPriceField.getText()), Integer.parseInt(queenPriceField.getText()), Integer.parseInt(kingPriceField.getText()), Integer.parseInt(weekendRateField.getText()));
@@ -227,14 +220,15 @@ public class adminHomeController implements Initializable {
     void addRoomButtonClicked(ActionEvent event){
         System.out.println("Create Room Button");
         Connection connectDB = DBConnection.getConnection();
-        String insertQuery = "INSERT INTO hotel_db.Room (bedType, price, Hotel_hotelID) VALUES (?, ?, ?)";
+
+        String insertQuery = "INSERT INTO hotel_db.Room (bedType, Hotel_hotelID) VALUES (?, ?)";
 
         // INSERT INTO `hotel_db`.`Room` (`roomID`, `bedType`, `price`, `Hotel_hotelID`) VALUES ('', 'Queen', '124', '1');
+        // Run a query to get hotel entry with given hotelID, strip the price (error check room type)
         try{
             PreparedStatement ps = connectDB.prepareStatement(insertQuery);
             ps.setString(1, addroom_bed.getText());
-            ps.setInt(2, Integer.parseInt(addroom_price.getText()));
-            ps.setInt(3, Integer.parseInt(addroom_hotelid.getText()));
+            ps.setInt(2, Integer.parseInt(addroom_hotelid.getText()));
 
             ps.executeUpdate();
         }
