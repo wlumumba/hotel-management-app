@@ -117,11 +117,8 @@ public class adminHomeController implements Initializable {
 
         //checks for empty fields
 
-        if (hotelIDField.getText().isEmpty()) { //errors here if one text box is empty
-            System.out.println("Please enter hotel ID");
-            errorAdminOutput.setText("Please enter a hotel ID");
-        }
-        else if (hotelNameField.getText().isEmpty()) {
+
+        if (hotelNameField.getText().isEmpty()) {
             System.out.println("Please enter hotel Name");
             errorAdminOutput.setText("Please enter a hotel Name");
         }
@@ -162,18 +159,24 @@ public class adminHomeController implements Initializable {
 
         else {
 
+            //currentHotel = new Hotel(0, hotelNameField.getText(), hotelTypeField.getText(), amenitiesField.getText(), Integer.parseInt(maxRoomsField.getText()), Integer.parseInt(standardPriceField.getText()), Integer.parseInt(queenPriceField.getText()), Integer.parseInt(kingPriceField.getText()), Integer.parseInt(weekendRateField.getText()));
 
-
-            currentHotel = new Hotel(Integer.parseInt(hotelIDField.getText()), hotelNameField.getText(), hotelTypeField.getText(), amenitiesField.getText(), Integer.parseInt(maxRoomsField.getText()), Integer.parseInt(standardPriceField.getText()), Integer.parseInt(queenPriceField.getText()), Integer.parseInt(kingPriceField.getText()), Integer.parseInt(weekendRateField.getText()));
-
-            System.out.println(currentHotel.toString());
             //Launching DataBase Instance
             Connection connectDB = DBConnection.getConnection(); //Below is it hotel_db.Admin?
+            //Make query to find number of rows in a table
+            String countQuery = "select count(*) from hotel_db.Hotel";
             String insertQuery = "INSERT INTO hotel_db.Hotel (hotelID, hotelName, hotelType, amenities, maxRooms, standardPrice, queenPrice, kingPrice, weekendRate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             try {
                 //Create statement, fill empty fields
                 PreparedStatement statement = connectDB.prepareStatement(insertQuery);
+                ResultSet rs = statement.executeQuery(countQuery);
+                //Retrieving the result and adding 1 so this makes the new hotels ID 1 more than the number of rows
+                rs.next();
+                int rowCount = rs.getInt(1) + 1;
+
+                currentHotel = new Hotel(rowCount, hotelNameField.getText(), hotelTypeField.getText(), amenitiesField.getText(), Integer.parseInt(maxRoomsField.getText()), Integer.parseInt(standardPriceField.getText()), Integer.parseInt(queenPriceField.getText()), Integer.parseInt(kingPriceField.getText()), Integer.parseInt(weekendRateField.getText()));
+
                 statement.setInt(1, currentHotel.getHotelID());
                 statement.setString(2, currentHotel.getHotelName());
                 statement.setString(3, currentHotel.getHotelType());
