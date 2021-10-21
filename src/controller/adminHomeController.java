@@ -193,7 +193,6 @@ public class adminHomeController implements Initializable {
                 labelAdminOuput.setText("Success!"); //maybe?
 
                 //Clear ALL text fields
-                hotelIDField.clear();
                 hotelNameField.clear();
                 hotelTypeField.clear();
                 amenitiesField.clear();
