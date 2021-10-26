@@ -2,6 +2,7 @@ package controller;
 
 import helpers.DBConnection;
 import helpers.Hotel;
+import helpers.Reservation;
 import helpers.User;
 import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
@@ -107,6 +108,7 @@ public class adminHomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fillHotels();
+        DBConnection.createReservation(new Reservation(1, 6, 1, "01/1/2000", "02/2/2000", "test", true));
     }
 
     //Create Hotel Function
@@ -215,6 +217,8 @@ public class adminHomeController implements Initializable {
 
     }
 
+
+
     //Create Room Function
     @FXML
     void addRoomButtonClicked(ActionEvent event){
@@ -229,13 +233,15 @@ public class adminHomeController implements Initializable {
             PreparedStatement ps = connectDB.prepareStatement(insertQuery);
             ps.setString(1, addroom_bed.getText());
             ps.setInt(2, Integer.parseInt(addroom_hotelid.getText()));
-
+            
             ps.executeUpdate();
         }
         catch(Exception ex) {
             System.out.println(ex);
         }
     }
+
+
 
 
     //Create Admin Account Function
