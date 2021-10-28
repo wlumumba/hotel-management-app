@@ -24,6 +24,7 @@ public class DBConnection {
 
         return dblink;
     }
+/******************************LATER ON MOVE TO FUNCTIONS*******************************************************/
 
     public static void createReservation(Reservation r1)
     {
