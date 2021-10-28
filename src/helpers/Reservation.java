@@ -19,8 +19,6 @@ public class Reservation {
     }
 
     //Get methods
-
-
     public int getReservationID() {
         return reservationID;
     }

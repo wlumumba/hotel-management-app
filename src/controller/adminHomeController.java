@@ -1,9 +1,6 @@
 package controller;
 
-import helpers.DBConnection;
-import helpers.Hotel;
-import helpers.Reservation;
-import helpers.User;
+import helpers.*;
 import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -108,7 +105,7 @@ public class adminHomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fillHotels();
-        DBConnection.createReservation(new Reservation(1, 6, 1, "01/1/2000", "02/2/2000", "test", true));
+        //Functions.createReservation(new Reservation(1, 6, 1, "01/1/2000", "02/2/2000", "test", true));
     }
 
     //Create Hotel Function
