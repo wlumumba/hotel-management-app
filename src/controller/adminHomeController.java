@@ -57,6 +57,21 @@ public class adminHomeController implements Initializable {
     private TextField createLastNAdmin;
     @FXML
     private TextField createEmailAdmin;
+    @FXML
+    private TextField editHotelAmenities;
+    @FXML
+    private TextField editHotelType;
+    @FXML
+    private TextField editHotelWknPrice;
+    @FXML
+    private TextField editHotelKingPrice;
+    @FXML
+    private TextField editHotelStdPrice;
+    @FXML
+    private TextField editHotelQuePrice;
+    @FXML
+    private TextField hotelEditSearch;
+
 
     //Buttons
     @FXML
@@ -65,6 +80,10 @@ public class adminHomeController implements Initializable {
     private Label errorAdminOutput;
     //// ADD ROOM ELEMENTS ///
     private Button createAdminButton;
+    @FXML
+    private Button editHotelButton;
+    @FXML
+    private Button submitHotelEditButton;
 
 
     //columns
@@ -366,6 +385,38 @@ public class adminHomeController implements Initializable {
             System.out.println(e);
         }
 
+
+    }
+
+    @FXML
+    void editHotelButtonClicked(ActionEvent event) {
+        String input = hotelEditSearch.getText();
+
+        Hotel editHotel = Hotel.getHotelFromName(input);
+        System.out.println(editHotel.toString());
+
+        editHotelAmenities.setText(editHotel.getAmenities());
+        editHotelType.setText(editHotel.getHotelType());
+        editHotelStdPrice.setText(String.valueOf(editHotel.getStandardPrice()));
+        editHotelQuePrice.setText(String.valueOf(editHotel.getQueenPrice()));
+        editHotelKingPrice.setText(String.valueOf(editHotel.getKingPrice()));
+        editHotelWknPrice.setText(String.valueOf(editHotel.getWeekendRate()));
+
+    }
+
+    @FXML
+    void submitHotelEditButton(ActionEvent event) {
+
+        Hotel editHotel = new Hotel(0, hotelEditSearch.getText(), editHotelType.getText(), editHotelAmenities.getText(), 0, Integer.parseInt(editHotelStdPrice.getText()), Integer.parseInt(editHotelQuePrice.getText()), Integer.parseInt(editHotelKingPrice.getText()), Integer.parseInt(editHotelWknPrice.getText()));
+        Hotel.updateHotel(editHotel);
+
+        editHotelAmenities.clear();
+        editHotelType.clear();
+        editHotelStdPrice.clear();
+        editHotelQuePrice.clear();
+        editHotelKingPrice.clear();
+        editHotelWknPrice.clear();
+        hotelEditSearch.clear();
 
     }
 
