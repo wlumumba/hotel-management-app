@@ -273,7 +273,7 @@ public class adminHomeController implements Initializable {
         stage.show();
 
     }
-
+    /****************************************************************************/
     //Fill addRoom Table
     public void fillHotels()
     {
@@ -342,32 +342,15 @@ public class adminHomeController implements Initializable {
         hotelEditSearch.clear();
 
     }
-    /******************************************************************************************************/
-    /**
-     * Gets the users Input and then displays it in the next fxml.
-     * iTS STILL MISSING TO KEEP THE DATA FROM USER INPUT FOR NEW ROOM
-     */
+    /********************************************CREATE RESERVATION*****************************************/
     @FXML
     private TextField hotelNameR;
     @FXML
     private TextField maxPriceR;
     @FXML
     private TextField minPriceR;
-
-    private String stringHotelName;
-    private String stringMaxPrice;
-    private String stringMinPrice;
     @FXML
     private Label warningLabel;
-    /*******------------reservationRoom FXML-------------*****/
-    @FXML
-    private TextField roomR;
-    @FXML
-    private TextField email;
-
-
-
-    /********************************************************/
 
     /**
      * If the user submits all the correct data, then it will go to searchReservation.fxml
@@ -375,15 +358,13 @@ public class adminHomeController implements Initializable {
      */
 
     @FXML
-    private void searchButtonClicked (Event event) throws IOException {
+    private void searchButtonClicked (Event event) throws IOException { //Event or ActionEvent?
         System.out.println("Reservation Search Button Clicked");
-        /**---------------------------------------------**/
-        warningLabel.setText("");
+        warningLabel.setText(""); // USED TO RESET THE LABEL
         // Connection connectDB = DBConnection.getConnection();
-        //  String nameH = hotelNameR.getText();
        // System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
         try {
-            if (hotelNameR.getText().isEmpty() || (hotelList.equals(hotelNameR.getText()))) { //may be incorrect
+            if (hotelNameR.getText().isEmpty() || (hotelList.equals(hotelNameR.getText()))) {
                 System.out.println("Please enter a valid hotel\n");
                 warningLabel.setText("Enter a valid hotel");
             }
@@ -399,15 +380,10 @@ public class adminHomeController implements Initializable {
                 System.out.println("Please enter a valid Max price\n");
                 warningLabel.setText("Enter a valid Max Price");
             }
-            /*else if (Integer.parseInt(minPriceR.getText()) > Integer.parseInt(maxPriceR.getText())) {
-                System.out.println("Please enter a valid Min price\n");
-                warningLabel.setText("Enter a valid Min Price");
-            }*/
             else {
                     //compare to the SQL DATABASE FOR CORRECT HOTEL AND PRICE RANGE
                     // DISPLAY IT IN NEXT STAGE
                 System.out.println("Searching User Input");
-
 
                 Stage stage;
                 Scene scene;
@@ -421,38 +397,66 @@ public class adminHomeController implements Initializable {
                 stage.show();
             }
         }
-        catch (NullPointerException e) {
+        catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Error ");
+            System.out.println("Error in searchButtonClicked ");
         }
-
     }
-
 
     /**
      * Helper function, Checks if the maxPrice.getText and minPrice.getText is a numeric value
      * could be modified a bit
      */
-    public static boolean isNumeric (String input) {
+    public static boolean isNumeric (String input) { //maybe move inside searchButtonClicked function
         try {
             int val = Integer.parseInt(input);
             return true;
         }
         catch (NumberFormatException e) {
-            System.out.println(("Error can't be parsed"));
+            System.out.println(("Error in isNumeric"));
         }
         return false;
     }
 
+    /*******------------reservationRoom FXML-------------*****/
+    @FXML
+    private TextField roomR;
+    @FXML
+    private TextField emailR;
+    @FXML
+    private TextField startDate; //not sure about these yet
+    @FXML
+    private TextField endDate; //not sure about these yet
 
     /**
      * Maybe here check for account type or should it ask before? I think it should check
+     * This Function will let the user select the room and then reserve the room.
+     * Must provide a valid email and room
      */
     @FXML
     private void reserveButton(ActionEvent event) throws IOException  {
+        System.out.println("Reserve Room Button");
+      //  try {
+            if (emailR.getText().isEmpty()) {  //|| (hotelList.equals(hotelNameR.getText()))) { //may be incorrect
+                System.out.println("Please enter a valid email\n");
+                warningLabel.setText("Enter a valid email");
+            } else if (roomR.getText().isEmpty() || (!isNumeric(maxPriceR.getText()))) {
+                System.out.println("Please enter a valid Room\n");
+                warningLabel.setText("Enter a valid Room");
+            }
+            //MAYBE ASK USER TO SELECT FROM CALENDAR OR THE USER MUST PUT START DATE IN MONTH/DAY
+            //THEN END DATE MONTH/DAY AND THEN HAVE A DATABASE/RESERVATION FOR THE USER FOR THAT ROOM?
+            //THIS WILL HAVE TO CHECK IF ROOM IS AVAILABLE IF TRUE ELSE DON'T DISPLAY AND WAIT UNTIL ROOM IS AVAILABLE?
+            //DOES THIS HAVE TO BE IN REAL TIME?
+
+     //   }
+       /* catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error in ReserveButton");
+        }*/
 
     }
 
     /******************************************************************************************************/
 
-}
+} //PUBLIC CLASS END

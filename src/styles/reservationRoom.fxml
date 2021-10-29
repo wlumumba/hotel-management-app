@@ -23,19 +23,23 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="table_hotel1" layoutX="230.0" layoutY="9.0" prefHeight="337.0" prefWidth="524.0">
+                        <TableView fx:id="table_hotel1" layoutY="-3.0" prefHeight="284.0" prefWidth="581.0">
                            <columns>
-                              <TableColumn fx:id="col_id1" prefWidth="108.0" text="Hotel Type" />
+                              <TableColumn fx:id="col_id1" prefWidth="167.0" text="RoomType" />
                               <TableColumn fx:id="col_type1" minWidth="0.0" prefWidth="0.0" />
-                              <TableColumn fx:id="col_std1" minWidth="0.0" prefWidth="116.0" text="Hotel" />
-                              <TableColumn fx:id="col_name1" prefWidth="298.0" text="Amenties" />
+                              <TableColumn fx:id="col_std1" minWidth="0.0" prefWidth="222.0" text="Room" />
+                              <TableColumn fx:id="col_name1" prefWidth="133.0" text="Price" />
                            </columns>
                         </TableView>
-                        <TextField fx:id="roomR" layoutX="9.0" layoutY="158.0" prefHeight="27.0" prefWidth="194.0" promptText="Name of Hotel" />
-                        <Label layoutX="9.0" layoutY="117.0" prefHeight="27.0" prefWidth="191.0" text="Enter Room:" />
-                        <Label layoutX="21.0" layoutY="210.0" prefHeight="27.0" prefWidth="191.0" text="Enter Email" />
-                        <TextField fx:id="emailR" layoutX="15.0" layoutY="248.0" prefHeight="39.0" prefWidth="170.0" promptText="Maximum Price" />
-                        <Button fx:id="reserveButton" layoutX="66.0" layoutY="295.0" mnemonicParsing="false" onAction="#reserveButton" text="Reserve" />
+                        <TextField fx:id="roomR" layoutX="115.0" layoutY="308.0" prefHeight="27.0" prefWidth="194.0" promptText="Name of Room" />
+                        <Label layoutX="9.0" layoutY="314.0" prefHeight="27.0" prefWidth="106.0" text="Enter Room:" />
+                        <Label layoutX="320.0" layoutY="314.0" prefHeight="27.0" prefWidth="98.0" text="Enter Email:" />
+                        <TextField fx:id="emailR" layoutX="418.0" layoutY="308.0" prefHeight="39.0" prefWidth="170.0" promptText="Enter Email" />
+                        <Button fx:id="reserveButton" layoutX="614.0" layoutY="295.0" mnemonicParsing="false" onAction="#reserveButton" text="Reserve" />
+                        <TextField fx:id="endDate" layoutX="597.0" layoutY="232.0" prefHeight="39.0" prefWidth="118.0" promptText="End Date" />
+                        <TextField fx:id="startDate" layoutX="599.0" layoutY="139.0" prefHeight="39.0" prefWidth="113.0" promptText="Start Date" />
+                        <Label layoutX="598.0" layoutY="105.0" prefHeight="27.0" prefWidth="115.0" text="Start Date:" />
+                        <Label layoutX="599.0" layoutY="195.0" prefHeight="27.0" prefWidth="115.0" text="End Date:" />
                      </children></AnchorPane>
                </content>
             </Tab>
