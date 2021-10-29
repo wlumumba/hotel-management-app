@@ -66,6 +66,7 @@ public class adminHomeController implements Initializable {
     @FXML
     private Label errorAdminOutput;
     //// ADD ROOM ELEMENTS ///
+    @FXML
     private Button createAdminButton;
 
 
