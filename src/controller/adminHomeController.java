@@ -378,28 +378,40 @@ public class adminHomeController implements Initializable {
     private void searchButtonClicked (Event event) throws IOException {
         System.out.println("Reservation Search Button Clicked");
         /**---------------------------------------------**/
-        System.out.println("Searching User Input");
+        warningLabel.setText("");
         // Connection connectDB = DBConnection.getConnection();
         //  String nameH = hotelNameR.getText();
-        System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
+       // System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
         try {
-            if (hotelNameR.getText().isEmpty()) { //|| !(hotelList.equals(hotelNameR.getText()))) { //may be incorrect
+            if (hotelNameR.getText().isEmpty() || (hotelList.equals(hotelNameR.getText()))) { //may be incorrect
                 System.out.println("Please enter a valid hotel\n");
                 warningLabel.setText("Enter a valid hotel");
-            } else if (maxPriceR.getText().isEmpty() || (!isNumeric(maxPriceR.getText()))) {
+            }
+            else if (maxPriceR.getText().isEmpty() || (!isNumeric(maxPriceR.getText()))) {
                 System.out.println("Please enter a valid Max Price\n");
                 warningLabel.setText("Enter a valid Max Price");
-            } else if (minPriceR.getText().isEmpty() || (!isNumeric(minPriceR.getText()))) {
-                System.out.println("Please enter a valid price\n");
+            }
+            else if (minPriceR.getText().isEmpty() || (!isNumeric(minPriceR.getText()))) {
+                    System.out.println("Please enter a valid Min price\n");
+                    warningLabel.setText("Enter a valid Min Price");
+            }
+            else if (Integer.parseInt(minPriceR.getText()) > Integer.parseInt(maxPriceR.getText())) {
+                System.out.println("Please enter a valid Max price\n");
+                warningLabel.setText("Enter a valid Max Price");
+            }
+            /*else if (Integer.parseInt(minPriceR.getText()) > Integer.parseInt(maxPriceR.getText())) {
+                System.out.println("Please enter a valid Min price\n");
                 warningLabel.setText("Enter a valid Min Price");
-            } else {
+            }*/
+            else {
+                    //compare to the SQL DATABASE FOR CORRECT HOTEL AND PRICE RANGE
+                    // DISPLAY IT IN NEXT STAGE
+                System.out.println("Searching User Input");
+
 
                 Stage stage;
                 Scene scene;
                 Parent root;
-
-                //Missing saved data to populate in next display
-                //make function that gets user input then compares it to database.
 
                 root = FXMLLoader.load((getClass().getResource("/styles/reservationRoom.fxml")));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -413,11 +425,13 @@ public class adminHomeController implements Initializable {
             e.printStackTrace();
             System.out.println("Error ");
         }
+
     }
 
 
     /**
      * Helper function, Checks if the maxPrice.getText and minPrice.getText is a numeric value
+     * could be modified a bit
      */
     public static boolean isNumeric (String input) {
         try {
@@ -432,7 +446,7 @@ public class adminHomeController implements Initializable {
 
 
     /**
-     *
+     * Maybe here check for account type or should it ask before? I think it should check
      */
     @FXML
     private void reserveButton(ActionEvent event) throws IOException  {
