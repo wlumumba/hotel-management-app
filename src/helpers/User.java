@@ -1,5 +1,13 @@
 package helpers;
 
+import javafx.animation.PauseTransition;
+import javafx.util.Duration;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+
 public class User {
 
     //User attribute variables
@@ -48,5 +56,31 @@ public class User {
     @Override
     public String toString() {
         return "User " + userName + " " + firstName + " " + lastName + " " + email + " " + password + " " + accountType;
+    }
+
+    public static void createAdmin(User admin){
+        Connection connectDB = DBConnection.getConnection(); //Below is it hotel_db.Admin?
+        String insertQuery = "INSERT INTO hotel_db.User (username, firstname, lastname, email, password, accType) VALUES (?, ?, ?, ?, ?, 1)";
+
+        try {
+            //Create statement, fill empty fields
+            PreparedStatement statement = connectDB.prepareStatement(insertQuery);
+            statement.setString(1,admin.getUserName());
+            statement.setString(2,admin.getFirstName());
+            statement.setString(3,admin.getLastName());
+            statement.setString(4,admin.getEmail());
+            statement.setString(5,admin.getPassword());
+            statement.executeUpdate();
+
+            System.out.println("Success Inserted " + admin.toString());
+
+        }
+        catch (SQLIntegrityConstraintViolationException ex) {
+            System.out.println("Username taken! Try another one");
+        }
+        catch (SQLException ex) {
+            ex.printStackTrace();
+            System.out.println("Error: Failed to insert to DB");
+        }
     }
 }

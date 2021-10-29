@@ -17,11 +17,45 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminHomeController">
    <children>
-      <TabPane layoutX="14.0" prefHeight="434.0" prefWidth="858.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="14.0" prefHeight="400.0" prefWidth="754.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
+            <Tab text="Create Reservation">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="table_hotel1" layoutY="-3.0" prefHeight="284.0" prefWidth="581.0">
+                           <columns>
+                              <TableColumn fx:id="col_id1" prefWidth="167.0" text="RoomType" />
+                              <TableColumn fx:id="col_type1" minWidth="0.0" prefWidth="0.0" />
+                              <TableColumn fx:id="col_std1" minWidth="0.0" prefWidth="222.0" text="Room" />
+                              <TableColumn fx:id="col_name1" prefWidth="133.0" text="Price" />
+                           </columns>
+                        </TableView>
+                        <TextField fx:id="roomR" layoutX="115.0" layoutY="308.0" prefHeight="27.0" prefWidth="194.0" promptText="Name of Room" />
+                        <Label layoutX="9.0" layoutY="314.0" prefHeight="27.0" prefWidth="106.0" text="Enter Room:" />
+                        <Label layoutX="320.0" layoutY="314.0" prefHeight="27.0" prefWidth="98.0" text="Enter Email:" />
+                        <TextField fx:id="emailR" layoutX="418.0" layoutY="308.0" prefHeight="39.0" prefWidth="170.0" promptText="Enter Email" />
+                        <Button fx:id="reserveButton" layoutX="614.0" layoutY="295.0" mnemonicParsing="false" onAction="#reserveButton" text="Reserve" />
+                        <TextField fx:id="endDate" layoutX="597.0" layoutY="232.0" prefHeight="39.0" prefWidth="118.0" promptText="End Date" />
+                        <TextField fx:id="startDate" layoutX="599.0" layoutY="139.0" prefHeight="39.0" prefWidth="113.0" promptText="Start Date" />
+                        <Label layoutX="598.0" layoutY="105.0" prefHeight="27.0" prefWidth="115.0" text="Start Date:" />
+                        <Label layoutX="599.0" layoutY="195.0" prefHeight="27.0" prefWidth="115.0" text="End Date:" />
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Edit Reservation">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab text="Cancel Reservation">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
           <Tab fx:id="h" text="Add Hotel">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="356.0" prefWidth="793.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TextArea layoutX="541.0" layoutY="129.0" prefHeight="200.0" prefWidth="200.0" text="Here is the admin home page&#10;Functions&#10; * add hotel&#10; * add room&#10; * cancel reservation&#10; * edit reservation?&#10; * add another admin user&#10;&#10;loggout button top right, takes&#10;back to loggin scene&#10;" />
                         <TextField fx:id="hotelNameField" layoutX="53.0" layoutY="39.0" promptText="hotelName" />
@@ -84,39 +118,6 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Create Reservation">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView fx:id="table_hotel1" layoutX="230.0" layoutY="9.0" prefHeight="337.0" prefWidth="524.0">
-                           <columns>
-                              <TableColumn fx:id="col_id1" prefWidth="108.0" text="Hotel Type" />
-                              <TableColumn fx:id="col_type1" minWidth="0.0" prefWidth="0.0" />
-                              <TableColumn fx:id="col_std1" minWidth="0.0" prefWidth="116.0" text="Hotel" />
-                              <TableColumn fx:id="col_name1" prefWidth="298.0" text="Amenties" />
-                           </columns>
-                        </TableView>
-                        <TextField fx:id="hotelNameR" layoutX="8.0" layoutY="93.0" prefHeight="27.0" prefWidth="194.0" promptText="Name of Hotel" />
-                        <Label layoutX="10.0" layoutY="58.0" prefHeight="27.0" prefWidth="191.0" text="Enter Name of Hotel:" />
-                        <Label layoutX="16.0" layoutY="132.0" prefHeight="27.0" prefWidth="191.0" text="Enter Maximum Price:" />
-                        <TextField fx:id="maxPriceR" layoutX="14.0" layoutY="171.0" prefHeight="39.0" prefWidth="170.0" promptText="Maximum Price" />
-                        <Label layoutX="9.0" layoutY="210.0" prefHeight="27.0" prefWidth="191.0" text="Enter Minimum Price:" />
-                        <TextField fx:id="minPriceR" layoutX="14.0" layoutY="237.0" prefHeight="39.0" prefWidth="170.0" promptText="Minimum Price" />
-                        <Button fx:id="searchButton" layoutX="66.0" layoutY="295.0" mnemonicParsing="false" onAction="#searchButtonClicked" text="Search" />
-                        <Label fx:id="warningLabel" layoutX="4.0" layoutY="14.0" prefHeight="27.0" prefWidth="191.0" />
-                     </children></AnchorPane>
-               </content>
-            </Tab>
-            <Tab text="Edit Reservation">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-            <Tab text="Cancel Reservation">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
             <Tab text="Add Account">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
