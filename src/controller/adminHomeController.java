@@ -133,9 +133,6 @@ public class adminHomeController implements Initializable {
 
         System.out.println("Create hotel Button");
 
-        //checks for empty fields
-
-
         if (hotelNameField.getText().isEmpty()) {
             System.out.println("Please enter hotel Name");
             errorAdminOutput.setText("Please enter a hotel Name");
@@ -170,70 +167,23 @@ public class adminHomeController implements Initializable {
         }
         else {
 
-            //currentHotel = new Hotel(0, hotelNameField.getText(), hotelTypeField.getText(), amenitiesField.getText(), Integer.parseInt(maxRoomsField.getText()), Integer.parseInt(standardPriceField.getText()), Integer.parseInt(queenPriceField.getText()), Integer.parseInt(kingPriceField.getText()), Integer.parseInt(weekendRateField.getText()));
-
             //Launching DataBase Instance
-            Connection connectDB = DBConnection.getConnection(); //Below is it hotel_db.Admin?
-            //Make query to find number of rows in a table
-            String countQuery = "select count(*) from hotel_db.Hotel";
-            String insertQuery = "INSERT INTO hotel_db.Hotel (hotelID, hotelName, hotelType, amenities, maxRooms, standardPrice, queenPrice, kingPrice, weekendRate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            currentHotel = new Hotel(0, hotelNameField.getText(), hotelTypeField.getText(), amenitiesField.getText(), Integer.parseInt(maxRoomsField.getText()), Integer.parseInt(standardPriceField.getText()), Integer.parseInt(queenPriceField.getText()), Integer.parseInt(kingPriceField.getText()), Integer.parseInt(weekendRateField.getText()));
 
-            try {
-                //Create statement, fill empty fields
-                PreparedStatement statement = connectDB.prepareStatement(insertQuery);
-                ResultSet rs = statement.executeQuery(countQuery);
-                //Retrieving the result and adding 1 so this makes the new hotels ID 1 more than the number of rows
-                rs.next();
-                int rowCount = rs.getInt(1) + 1;
+            Hotel.addHotel(currentHotel);
 
-                currentHotel = new Hotel(rowCount, hotelNameField.getText(), hotelTypeField.getText(), amenitiesField.getText(), Integer.parseInt(maxRoomsField.getText()), Integer.parseInt(standardPriceField.getText()), Integer.parseInt(queenPriceField.getText()), Integer.parseInt(kingPriceField.getText()), Integer.parseInt(weekendRateField.getText()));
+            hotelNameField.clear();
+            hotelTypeField.clear();
+            amenitiesField.clear();
+            maxRoomsField.clear();
+            standardPriceField.clear();
+            queenPriceField.clear();
+            kingPriceField.clear();
+            weekendRateField.clear();
 
-                statement.setInt(1, currentHotel.getHotelID());
-                statement.setString(2, currentHotel.getHotelName());
-                statement.setString(3, currentHotel.getHotelType());
-                statement.setString(4, currentHotel.getAmenities());
-                statement.setInt(5, currentHotel.getMaxRooms());
-                statement.setInt(6, currentHotel.getStandardPrice());
-                statement.setInt(7, currentHotel.getQueenPrice());
-                statement.setInt(8, currentHotel.getKingPrice());
-                statement.setInt(9, currentHotel.getWeekendRate());
-                statement.executeUpdate();
-
-                System.out.println("Success Inserted " + currentHotel.toString());
-
-                labelAdminOuput.setText("Success!"); //maybe?
-
-                //Clear ALL text fields
-                hotelNameField.clear();
-                hotelTypeField.clear();
-                amenitiesField.clear();
-                maxRoomsField.clear();
-                standardPriceField.clear();
-                queenPriceField.clear();
-                kingPriceField.clear();
-                weekendRateField.clear();
-                errorAdminOutput.setText("");
-                //DISPLAYS TO THE USER SUCCESS THEN CLEARS DISPLAY TEXT
-                PauseTransition pause = new PauseTransition();
-                pause.setDuration(Duration.seconds(2));
-                pause.setOnFinished(event->labelAdminOuput.setText(" "));
-                pause.play();
-
-            }
-            catch (SQLIntegrityConstraintViolationException ex) {
-                System.out.println("hotelID taken! Try another one");
-            }
-            catch (SQLException ex) {
-                ex.printStackTrace();
-                System.out.println("Error: Failed to insert to DB");
-            }
         }
 
-
-
     }
-
-
 
     //Create Room Function
     @FXML
@@ -290,44 +240,16 @@ public class adminHomeController implements Initializable {
             currentUser = new User(createUserAdmin.getText(), createFirstNAdmin.getText(), createLastNAdmin.getText(), createEmailAdmin.getText(), createPassAdmin.getText(), 1);
 
             //Launching DataBase Instance
-            Connection connectDB = DBConnection.getConnection(); //Below is it hotel_db.Admin?
-            String insertQuery = "INSERT INTO hotel_db.User (username, firstname, lastname, email, password, accType) VALUES (?, ?, ?, ?, ?, 1)";
+            User.createAdmin(currentUser);
 
-            try {
-                //Create statement, fill empty fields
-                PreparedStatement statement = connectDB.prepareStatement(insertQuery);
-                statement.setString(1,currentUser.getUserName());
-                statement.setString(2,currentUser.getFirstName());
-                statement.setString(3,currentUser.getLastName());
-                statement.setString(4,currentUser.getEmail());
-                statement.setString(5,currentUser.getPassword());
-                statement.executeUpdate();
+            //Clear ALL text fields
+            createUserAdmin.clear();
+            createPassAdmin.clear();
+            createFirstNAdmin.clear();
+            createLastNAdmin.clear();
+            createEmailAdmin.clear();
+            errorAdminOutput.setText("");
 
-                System.out.println("Success Inserted " + currentUser.toString());
-
-                labelAdminOuput.setText("Success!"); //maybe?
-
-                //Clear ALL text fields
-                createUserAdmin.clear();
-                createPassAdmin.clear();
-                createFirstNAdmin.clear();
-                createLastNAdmin.clear();
-                createEmailAdmin.clear();
-                errorAdminOutput.setText("");
-                //****************DISPLAYS TO THE USER SUCCESS THEN CLEARS DISPLAY TEXT********//
-                PauseTransition pause = new PauseTransition();
-                pause.setDuration(Duration.seconds(2));
-                pause.setOnFinished(event->labelAdminOuput.setText(" "));
-                pause.play();
-
-            }
-            catch (SQLIntegrityConstraintViolationException ex) {
-                System.out.println("Username taken! Try another one");
-            }
-            catch (SQLException ex) {
-                ex.printStackTrace();
-                System.out.println("Error: Failed to insert to DB");
-            }
         }
     }
 

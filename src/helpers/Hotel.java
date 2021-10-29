@@ -1,8 +1,9 @@
 package helpers;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import javafx.animation.PauseTransition;
+import javafx.util.Duration;
+
+import java.sql.*;
 
 public class Hotel {
 
@@ -113,5 +114,45 @@ public class Hotel {
         }
 
 
+    }
+
+    public static void addHotel(Hotel h){
+
+        Connection connectDB = DBConnection.getConnection();
+        //Make query to find number of rows in a table
+        String countQuery = "select count(*) from hotel_db.Hotel";
+        String insertQuery = "INSERT INTO hotel_db.Hotel (hotelID, hotelName, hotelType, amenities, maxRooms, standardPrice, queenPrice, kingPrice, weekendRate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try {
+            //Create statement, fill empty fields
+            PreparedStatement statement = connectDB.prepareStatement(insertQuery);
+            ResultSet rs = statement.executeQuery(countQuery);
+            //Retrieving the result and adding 1 so this makes the new hotels ID 1 more than the number of rows
+            rs.next();
+            int rowCount = rs.getInt(1) + 1;
+
+
+            statement.setInt(1, rowCount);
+            statement.setString(2, h.getHotelName());
+            statement.setString(3, h.getHotelType());
+            statement.setString(4, h.getAmenities());
+            statement.setInt(5, h.getMaxRooms());
+            statement.setInt(6, h.getStandardPrice());
+            statement.setInt(7, h.getQueenPrice());
+            statement.setInt(8, h.getKingPrice());
+            statement.setInt(9, h.getWeekendRate());
+            statement.executeUpdate();
+
+            System.out.println("Success Inserted " + h.toString());
+
+
+        }
+        catch (SQLIntegrityConstraintViolationException ex) {
+            System.out.println("hotelID taken! Try another one");
+        }
+        catch (SQLException ex) {
+            ex.printStackTrace();
+            System.out.println("Error: Failed to insert to DB");
+        }
     }
 }
