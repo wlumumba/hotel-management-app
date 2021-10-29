@@ -8,7 +8,7 @@
    <children>
       <Label layoutX="264.0" layoutY="62.0" text="Guest Page">
          <font>
-            <Font name="Georgia" size="14.0" />
+            <Font name="Georgia" size="18.0" />
          </font></Label>
       <TextArea layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" text="Here we will only implement &#10;the search function, will need&#10;to be logged in to reserve&#10;&#10;Loggin button top right, takes&#10;you back to loggin page" />
       <Button fx:id="loginButton" layoutX="8.0" layoutY="2.0" mnemonicParsing="false" onAction="#guestLoginButtonClicked" text="Login">
