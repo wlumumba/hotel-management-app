@@ -347,15 +347,22 @@ public class adminHomeController implements Initializable {
      * Gets the users Input and then displays it in the next fxml.
      * iTS STILL MISSING TO KEEP THE DATA FROM USER INPUT FOR NEW ROOM
      */
+    @FXML
     private TextField hotelNameR;
+    @FXML
     private TextField maxPriceR;
+    @FXML
     private TextField minPriceR;
+
     private String stringHotelName;
     private String stringMaxPrice;
     private String stringMinPrice;
+    @FXML
     private Label warningLabel;
     /*******------------reservationRoom FXML-------------*****/
+    @FXML
     private TextField roomR;
+    @FXML
     private TextField email;
 
 
@@ -368,49 +375,46 @@ public class adminHomeController implements Initializable {
      */
 
     @FXML
-    private void searchButton (ActionEvent event) throws IOException {
+    private void searchButtonClicked (Event event) throws IOException {
         System.out.println("Reservation Search Button Clicked");
-       // reservationUserInput();
-
-        Stage stage;
-        Scene scene;
-        Parent root;
-
-         //Used to check if textbox input is correct
-        //Missing saved data to populate in next display
-        //make function that gets user input then compares it to database.
-
-        root = FXMLLoader.load((getClass().getResource("/styles/reservationRoom.fxml")));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene((root));
-
-        //reservationUserInput();
-
-        stage.setScene((scene));
-        stage.show();
-    }
-
-    /**
-     * This will be used for error checking user's input from textfield
-     * if user inputs a hotel incorrectly then it will ask the user again.
-     * This is within reserveButton
-     */
-   private void reservationUserInput() { //still not done
+        /**---------------------------------------------**/
         System.out.println("Searching User Input");
-        Connection connectDB = DBConnection.getConnection();
+        // Connection connectDB = DBConnection.getConnection();
+        //  String nameH = hotelNameR.getText();
+        System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
+        try {
+            if (hotelNameR.getText().isEmpty()) { //|| !(hotelList.equals(hotelNameR.getText()))) { //may be incorrect
+                System.out.println("Please enter a valid hotel\n");
+                warningLabel.setText("Enter a valid hotel");
+            } else if (maxPriceR.getText().isEmpty() || (!isNumeric(maxPriceR.getText()))) {
+                System.out.println("Please enter a valid Max Price\n");
+                warningLabel.setText("Enter a valid Max Price");
+            } else if (minPriceR.getText().isEmpty() || (!isNumeric(minPriceR.getText()))) {
+                System.out.println("Please enter a valid price\n");
+                warningLabel.setText("Enter a valid Min Price");
+            } else {
 
-        if (hotelNameR.getText().isEmpty()) { //|| !(hotelList.equals(hotelNameR.getText()))) { //may be incorrect
-            System.out.println("Please enter a valid hotel");
-            warningLabel.setText("Enter a valid hotel");
+                Stage stage;
+                Scene scene;
+                Parent root;
+
+                //Missing saved data to populate in next display
+                //make function that gets user input then compares it to database.
+
+                root = FXMLLoader.load((getClass().getResource("/styles/reservationRoom.fxml")));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene((root));
+
+                stage.setScene((scene));
+                stage.show();
+            }
         }
-        else if (maxPriceR.getText().isEmpty() || (!isNumeric(maxPriceR.getText()))) {
-            System.out.println("Please enter a valid Max Price");
-        }
-        else if (minPriceR.getText().isEmpty() || (!isNumeric(minPriceR.getText()))) {
-            System.out.println("Please enter a valid price");
-            warningLabel.setText("Enter a valid Min Price");
+        catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("Error ");
         }
     }
+
 
     /**
      * Helper function, Checks if the maxPrice.getText and minPrice.getText is a numeric value
@@ -428,14 +432,13 @@ public class adminHomeController implements Initializable {
 
 
     /**
-     * Creates a display for searchReservation.fxml that gets the users input (hotel name, min price and max price)
-     * And compares it to the database. If Hotel is found then it will save the data and display all rooms with price range
+     *
      */
-
     @FXML
     private void reserveButton(ActionEvent event) throws IOException  {
 
     }
+
     /******************************************************************************************************/
 
 }

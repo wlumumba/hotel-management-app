@@ -17,11 +17,11 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminHomeController">
    <children>
-      <TabPane layoutX="14.0" prefHeight="400.0" prefWidth="754.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="14.0" prefHeight="434.0" prefWidth="858.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab fx:id="h" text="Add Hotel">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="356.0" prefWidth="793.0">
                      <children>
                         <TextArea layoutX="541.0" layoutY="129.0" prefHeight="200.0" prefWidth="200.0" text="Here is the admin home page&#10;Functions&#10; * add hotel&#10; * add room&#10; * cancel reservation&#10; * edit reservation?&#10; * add another admin user&#10;&#10;loggout button top right, takes&#10;back to loggin scene&#10;" />
                         <TextField fx:id="hotelNameField" layoutX="53.0" layoutY="39.0" promptText="hotelName" />
@@ -102,7 +102,7 @@
                         <TextField fx:id="maxPriceR" layoutX="14.0" layoutY="171.0" prefHeight="39.0" prefWidth="170.0" promptText="Maximum Price" />
                         <Label layoutX="9.0" layoutY="210.0" prefHeight="27.0" prefWidth="191.0" text="Enter Minimum Price:" />
                         <TextField fx:id="minPriceR" layoutX="14.0" layoutY="237.0" prefHeight="39.0" prefWidth="170.0" promptText="Minimum Price" />
-                        <Button fx:id="searchButton" layoutX="66.0" layoutY="295.0" mnemonicParsing="false" onAction="#searchButton" text="Search" />
+                        <Button fx:id="searchButton" layoutX="66.0" layoutY="295.0" mnemonicParsing="false" onAction="#searchButtonClicked" text="Search" />
                         <Label fx:id="warningLabel" layoutX="4.0" layoutY="14.0" prefHeight="27.0" prefWidth="191.0" />
                      </children></AnchorPane>
                </content>
