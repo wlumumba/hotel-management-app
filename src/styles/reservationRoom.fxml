@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -18,16 +17,47 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminHomeController">
    <children>
-      <TabPane prefHeight="400.0" prefWidth="754.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="14.0" prefHeight="400.0" prefWidth="754.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab fx:id="h" text="Add Hotel">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea layoutX="541.0" layoutY="129.0" prefHeight="200.0" prefWidth="200.0" text="Here is the admin home page&#10;Functions&#10; * add hotel&#10; * add room&#10; * cancel reservation&#10; * edit reservation?&#10; * add another admin user&#10;&#10;loggout button top right, takes&#10;back to loggin scene&#10;" />
+                        <TextField fx:id="hotelNameField" layoutX="53.0" layoutY="39.0" promptText="hotelName" />
+                        <TextField fx:id="hotelTypeField" layoutX="53.0" layoutY="86.0" promptText="hotelType" />
+                        <TextField fx:id="amenitiesField" layoutX="30.0" layoutY="137.0" prefHeight="27.0" prefWidth="194.0" promptText="amenities (comma separated)" />
+                        <Button fx:id="addHotelButton" layoutX="289.0" layoutY="280.0" mnemonicParsing="false" onAction="#addHotelButtonClicked" text="Create" />
+                        <TextField fx:id="maxRoomsField" layoutX="45.0" layoutY="183.0" prefHeight="27.0" prefWidth="194.0" promptText="maxRooms" />
+                        <TextField fx:id="standardPriceField" layoutX="253.0" layoutY="38.0" prefHeight="27.0" prefWidth="194.0" promptText="standardPrice" />
+                        <TextField fx:id="queenPriceField" layoutX="253.0" layoutY="85.0" prefHeight="27.0" prefWidth="194.0" promptText="queenPrice" />
+                        <TextField fx:id="kingPriceField" layoutX="272.0" layoutY="137.0" prefHeight="27.0" prefWidth="194.0" promptText="kingPrice" />
+                        <TextField fx:id="weekendRateField" layoutX="280.0" layoutY="183.0" prefHeight="27.0" prefWidth="194.0" promptText="weekendRate" />
+                     </children>
+                  </AnchorPane>
             </content>
           </Tab>
             <Tab text="Edit Hotel">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="editHotelAmenities" layoutX="37.0" layoutY="65.0" />
+                        <TextField fx:id="editHotelType" layoutX="37.0" layoutY="29.0" />
+                        <TextField fx:id="editHotelWknPrice" layoutX="37.0" layoutY="209.0" />
+                        <TextField fx:id="editHotelKingPrice" layoutX="37.0" layoutY="173.0" />
+                        <TextField fx:id="editHotelStdPrice" layoutX="37.0" layoutY="101.0" />
+                        <TextField fx:id="editHotelQuePrice" layoutX="37.0" layoutY="138.0" />
+                        <TextField fx:id="hotelEditSearch" layoutX="534.0" layoutY="114.0" />
+                        <Button fx:id="editHotelButton" layoutX="590.0" layoutY="148.0" mnemonicParsing="false" onAction="#editHotelButtonClicked" text="Edit" />
+                        <Button fx:id="submitHotelEditButton" layoutX="78.0" layoutY="252.0" mnemonicParsing="false" onAction="#submitHotelEditButton" text="Submit" />
+                        <Label layoutX="563.0" layoutY="93.0" text="Enter hotel name" />
+                        <Label layoutX="205.0" layoutY="33.0" text="Hotel type" />
+                        <Label layoutX="205.0" layoutY="106.0" text="Standard Price" />
+                        <Label layoutX="205.0" layoutY="69.0" text="Amenities" />
+                        <Label layoutX="201.0" layoutY="213.0" text="Weekend Rate" />
+                        <Label layoutX="201.0" layoutY="177.0" text="King Price" />
+                        <Label layoutX="201.0" layoutY="142.0" text="Queen Price" />
+                     </children></AnchorPane>
                </content>
             </Tab>
           <Tab text="Add Room">
@@ -54,28 +84,23 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Edit Room">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
             <Tab text="Create Reservation">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="table_room" layoutX="224.0" layoutY="9.0" prefHeight="337.0" prefWidth="524.0">
+                        <TableView fx:id="table_hotel1" layoutX="230.0" layoutY="9.0" prefHeight="337.0" prefWidth="524.0">
                            <columns>
-                              <TableColumn fx:id="col_id1" prefWidth="108.0" text="Room Type" />
+                              <TableColumn fx:id="col_id1" prefWidth="108.0" text="Hotel Type" />
                               <TableColumn fx:id="col_type1" minWidth="0.0" prefWidth="0.0" />
-                              <TableColumn fx:id="col_std1" minWidth="0.0" prefWidth="116.0" text="Room" />
+                              <TableColumn fx:id="col_std1" minWidth="0.0" prefWidth="116.0" text="Hotel" />
                               <TableColumn fx:id="col_name1" prefWidth="298.0" text="Amenties" />
                            </columns>
                         </TableView>
-                        <TextField fx:id="maxPrice" layoutX="23.0" layoutY="139.0" prefHeight="39.0" prefWidth="170.0" promptText="Maximum Price" />
-                        <TextField fx:id="hotelName" layoutX="21.0" layoutY="52.0" prefHeight="27.0" prefWidth="194.0" promptText="Name of Hotel" />
-                        <Label layoutX="23.0" layoutY="25.0" prefHeight="27.0" prefWidth="191.0" text="Enter Room Number" />
-                        <Label layoutX="23.0" layoutY="100.0" prefHeight="27.0" prefWidth="191.0" text="Enter " />
-                        <Button layoutX="57.0" layoutY="287.0" mnemonicParsing="false" text="Submit" />
+                        <TextField fx:id="roomR" layoutX="9.0" layoutY="158.0" prefHeight="27.0" prefWidth="194.0" promptText="Name of Hotel" />
+                        <Label layoutX="9.0" layoutY="117.0" prefHeight="27.0" prefWidth="191.0" text="Enter Room:" />
+                        <Label layoutX="21.0" layoutY="210.0" prefHeight="27.0" prefWidth="191.0" text="Enter Email" />
+                        <TextField fx:id="emailR" layoutX="15.0" layoutY="248.0" prefHeight="39.0" prefWidth="170.0" promptText="Maximum Price" />
+                        <Button fx:id="reserveButton" layoutX="66.0" layoutY="295.0" mnemonicParsing="false" onAction="#reserveButton" text="Reserve" />
                      </children></AnchorPane>
                </content>
             </Tab>
