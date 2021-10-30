@@ -24,6 +24,11 @@ public class Hotel {
         this.kingPrice = kingPrice;
         this.weekendRate = weekendRate;
     }
+   /* public Hotel(String hotelName, String hotelType, String amenities) {
+        this.hotelName = hotelName;
+        this.hotelType = hotelType;
+        this.amenities = amenities;
+    }*/
 
     //Getters
     public int getHotelID() {

@@ -88,12 +88,12 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="table_hotel1" layoutX="230.0" layoutY="9.0" prefHeight="337.0" prefWidth="524.0">
+                        <TableView fx:id="table_hotelR" layoutX="222.0" layoutY="3.0" prefHeight="370.0" prefWidth="608.0">
                            <columns>
-                              <TableColumn fx:id="col_id1" prefWidth="108.0" text="Hotel Type" />
+                              <TableColumn fx:id="col_HotelR" prefWidth="108.0" text="Hotel" />
                               <TableColumn fx:id="col_type1" minWidth="0.0" prefWidth="0.0" />
-                              <TableColumn fx:id="col_std1" minWidth="0.0" prefWidth="116.0" text="Hotel" />
-                              <TableColumn fx:id="col_name1" prefWidth="298.0" text="Amenties" />
+                              <TableColumn fx:id="col_HotelTypeR" minWidth="0.0" prefWidth="116.0" text="Hotel Type" />
+                              <TableColumn fx:id="col_AmenitiesR" prefWidth="298.0" text="Amenties" />
                            </columns>
                         </TableView>
                         <TextField fx:id="hotelNameR" layoutX="8.0" layoutY="93.0" prefHeight="27.0" prefWidth="194.0" promptText="Name of Hotel" />

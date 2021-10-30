@@ -125,6 +125,7 @@ public class adminHomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fillHotels();
+        fillCreateReserveTable();
         //Functions.createReservation(new Reservation(1, 6, 1, "01/1/2000", "02/2/2000", "test", true));
     }
 
@@ -358,7 +359,7 @@ public class adminHomeController implements Initializable {
      */
 
     @FXML
-    private void searchButtonClicked (Event event) throws IOException { //Event or ActionEvent?
+    private void searchButtonClicked (ActionEvent event) throws IOException { //Event or ActionEvent?
         System.out.println("Reservation Search Button Clicked");
         warningLabel.setText(""); // USED TO RESET THE LABEL
         // Connection connectDB = DBConnection.getConnection();
@@ -403,6 +404,51 @@ public class adminHomeController implements Initializable {
         }
     }
 
+   /*******************************************************/
+    @FXML
+    private TableColumn<Hotel, String> col_HotelTypeR;
+    @FXML
+    private TableColumn<Hotel, String> col_HotelR;
+    @FXML
+    private TableColumn<Hotel, String> col_AmenitiesR;
+    @FXML
+    private TableView<Hotel> table_hotelR;
+    /**
+     * Fills out the CreateReservationTable
+     */
+    private void fillCreateReserveTable () {
+        col_HotelR.setCellValueFactory(new PropertyValueFactory<Hotel, String>("hotelName"));
+        col_HotelTypeR.setCellValueFactory(new PropertyValueFactory<Hotel, String>("hotelType"));
+        col_AmenitiesR.setCellValueFactory(new PropertyValueFactory<Hotel, String>("amenities"));
+
+        hotelList = FXCollections.observableArrayList();
+
+        Connection connectDB = DBConnection.getConnection();
+        String selectQuery = "SELECT * FROM hotel_db.Hotel";
+        try {
+            PreparedStatement ps = connectDB.prepareStatement(selectQuery);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) { //error might be here.
+              //  hotelList.
+               // hotelList.add(new Hotel(rs.getString("hotelType"), rs.getString("hotelName"), rs.getString("amenities")));
+                hotelList.add(new Hotel(rs.getInt("hotelID"), rs.getString("hotelName"), rs.getString("hotelType"), rs.getString("amenities"), rs.getInt("maxRooms"), rs.getInt("standardPrice"), rs.getInt("queenPrice"), rs.getInt("kingPrice"), rs.getInt("weekendRate")));
+            }
+            System.out.println((hotelList));
+            table_hotelR.setItems(hotelList);
+           // table_hotelR.setItems(hotelList);
+
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error in fillCreateReserveTable: \n" + e);
+        }
+    }
+
+
+
+
+
     /**
      * Helper function, Checks if the maxPrice.getText and minPrice.getText is a numeric value
      * could be modified a bit
@@ -427,6 +473,7 @@ public class adminHomeController implements Initializable {
     private TextField startDate; //not sure about these yet
     @FXML
     private TextField endDate; //not sure about these yet
+
 
     /**
      * Maybe here check for account type or should it ask before? I think it should check
@@ -455,6 +502,27 @@ public class adminHomeController implements Initializable {
             System.out.println("Error in ReserveButton");
         }*/
 
+    }
+
+    @FXML
+    private void returnButton(ActionEvent event) throws IOException {
+        System.out.println("Returning to Home Admin");
+        try {
+            Stage stage;
+            Scene scene;
+            Parent root;
+
+            root = FXMLLoader.load((getClass().getResource("/styles/adminHome.fxml")));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene((root));
+
+            stage.setScene((scene));
+            stage.show();
+        }
+         catch (IOException e) {
+                    e.printStackTrace();
+                    System.out.println("Error in searchButtonClicked ");
+                }
     }
 
     /******************************************************************************************************/
