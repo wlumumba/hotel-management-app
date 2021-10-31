@@ -75,16 +75,14 @@ public class loginController {
                 currentUser = new User(rs.getString("username"), rs.getString("firstname"), rs.getString("lastname"), rs.getString("email"), rs.getString("password"), rs.getInt("accType"));
 
                 // IF Customer: Switch to customer view
-                if(currentUser.getAccountType() == 0)
-                {
+                if(currentUser.getAccountType() == 0) {
                     //Loading in customerHome.fxml
                     newHome = FXMLLoader.load(getClass().getResource("/styles/customerHome.fxml"));
                     newScene = new Scene(newHome);
 
                 }
                 // IF Admin: Switch to admin view
-                else
-                {
+                else {
                     //Loading in adminHome.fxml
                     newHome = FXMLLoader.load(getClass().getResource("/styles/adminHome.fxml"));
                     newScene = new Scene(newHome);
