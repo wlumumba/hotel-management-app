@@ -25,9 +25,9 @@ import java.util.ResourceBundle;
 
 public class adminHomeController implements Initializable {
     //Instance Variables
-    User currentUser;
-    Hotel currentHotel;
-    ObservableList<Hotel> hotelList;
+    public User currentUser;
+    public Hotel currentHotel;
+    public ObservableList<Hotel> hotelList;
 
     //FXML Variables
     @FXML
@@ -89,26 +89,7 @@ public class adminHomeController implements Initializable {
 
 
     //columns
-    @FXML
-    private TableColumn<Hotel, Integer> col_qprice;
-    @FXML
-    private TableColumn<Hotel, Integer> col_id;
-    @FXML
-    private TableColumn<Hotel, String> col_type;
-    @FXML
-    private TableColumn<Hotel, Integer> col_kprice;
-    @FXML
-    private TableColumn<Hotel, Integer> col_rate;
-    @FXML
-    private TableColumn<Hotel, Integer> col_std;
-    @FXML
-    private TableColumn<Hotel, String> col_amen;
-    @FXML
-    private TableColumn<Hotel, Integer> col_max;
-    @FXML
-    private TableColumn<Hotel, String> col_name;
-    @FXML
-    private TableView<Hotel> table_hotel;
+
     @FXML
     private Button addRoomButton;
     @FXML
@@ -122,14 +103,34 @@ public class adminHomeController implements Initializable {
     @FXML
     private Label labelAdminOuput;
 
-    //Method called when screen is loaded
+    private boolean counter = true;
+
+    /********************** Initialize method called when screen is loaded ************************/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        fillHotels();
+        fillAddRoomTable();
+        fillCreateReserveTable();
         //Functions.createReservation(new Reservation(1, 6, 1, "01/1/2000", "02/2/2000", "test", true));
     }
 
-    //Create Hotel Function
+    public void fillAddRoomTable()
+    {
+        //Populate cells to respective values
+        col_id.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("hotelID"));
+        col_name.setCellValueFactory(new PropertyValueFactory<Hotel, String>("hotelName"));
+        col_type.setCellValueFactory(new PropertyValueFactory<Hotel, String>("hotelType"));
+        col_amen.setCellValueFactory(new PropertyValueFactory<Hotel, String>("amenities"));
+        col_max.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("maxRooms"));
+        col_std.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("standardPrice"));
+        col_qprice.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("queenPrice"));
+        col_kprice.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("kingPrice"));
+        col_rate.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("weekendRate"));
+
+        //Method call to populate the table
+        table_hotel.setItems(Functions.populateHotelTable());
+    }
+
+    /******************************   Create Hotel Function ***************************************/
     @FXML
     public void addHotelButtonClicked(ActionEvent e) throws IOException{
 
@@ -184,10 +185,63 @@ public class adminHomeController implements Initializable {
             weekendRateField.clear();
 
         }
+    }
+
+    /************************** EDIT Hotel TAB    **************************************************/
+    @FXML
+    void editHotelButtonClicked(ActionEvent event) {
+        String input = hotelEditSearch.getText();
+
+        Hotel editHotel = Hotel.getHotelFromName(input);
+        System.out.println(editHotel.toString());
+
+        editHotelAmenities.setText(editHotel.getAmenities());
+        editHotelType.setText(editHotel.getHotelType());
+        editHotelStdPrice.setText(String.valueOf(editHotel.getStandardPrice()));
+        editHotelQuePrice.setText(String.valueOf(editHotel.getQueenPrice()));
+        editHotelKingPrice.setText(String.valueOf(editHotel.getKingPrice()));
+        editHotelWknPrice.setText(String.valueOf(editHotel.getWeekendRate()));
 
     }
 
-    //Create Room Function
+    @FXML
+    void submitHotelEditButton(ActionEvent event) {
+
+        Hotel editHotel = new Hotel(0, hotelEditSearch.getText(), editHotelType.getText(), editHotelAmenities.getText(), 0, Integer.parseInt(editHotelStdPrice.getText()), Integer.parseInt(editHotelQuePrice.getText()), Integer.parseInt(editHotelKingPrice.getText()), Integer.parseInt(editHotelWknPrice.getText()));
+        Hotel.updateHotel(editHotel);
+
+        editHotelAmenities.clear();
+        editHotelType.clear();
+        editHotelStdPrice.clear();
+        editHotelQuePrice.clear();
+        editHotelKingPrice.clear();
+        editHotelWknPrice.clear();
+        hotelEditSearch.clear();
+
+    }
+
+    /*********************************  Create Room TAB  ******************************************/
+    @FXML
+    private TableColumn<Hotel, Integer> col_qprice;
+    @FXML
+    private TableColumn<Hotel, Integer> col_id;
+    @FXML
+    private TableColumn<Hotel, String> col_type;
+    @FXML
+    private TableColumn<Hotel, Integer> col_kprice;
+    @FXML
+    private TableColumn<Hotel, Integer> col_rate;
+    @FXML
+    private TableColumn<Hotel, Integer> col_std;
+    @FXML
+    private TableColumn<Hotel, String> col_amen;
+    @FXML
+    private TableColumn<Hotel, Integer> col_max;
+    @FXML
+    private TableColumn<Hotel, String> col_name;
+    @FXML
+    private TableView<Hotel> table_hotel;
+
     @FXML
     void addRoomButtonClicked(ActionEvent event){
         System.out.println("Create Room Button");
@@ -212,7 +266,7 @@ public class adminHomeController implements Initializable {
 
 
 
-    //Create Admin Account Function
+    //*****************************  Create Admin Account TAB *******************************************/
     @FXML
     public void createAdminButtonClicked(Event e) throws IOException {
         System.out.println("Create Admin Button");
@@ -255,95 +309,7 @@ public class adminHomeController implements Initializable {
         }
     }
 
-    /************************LOGOUT TAB******************************************/
-    @FXML
-    private Button adminLogoutButton;
-
-    @FXML
-    void adminLogoutButtonClicked(ActionEvent event) throws IOException {
-
-        System.out.println("going back to loggin");
-        Stage stage;
-        Scene scene;
-        Parent root;
-
-        root = FXMLLoader.load(getClass().getResource("/styles/login.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
-    }
-    /****************************************************************************/
-    //Fill addRoom Table
-    public void fillHotels()
-    {
-        //Populate cells to respective values
-        col_id.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("hotelID"));
-        col_name.setCellValueFactory(new PropertyValueFactory<Hotel, String>("hotelName"));
-        col_type.setCellValueFactory(new PropertyValueFactory<Hotel, String>("hotelType"));
-        col_amen.setCellValueFactory(new PropertyValueFactory<Hotel, String>("amenities"));
-        col_max.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("maxRooms"));
-        col_std.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("standardPrice"));
-        col_qprice.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("queenPrice"));
-        col_kprice.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("kingPrice"));
-        col_rate.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("weekendRate"));
-
-        //Launch DB instance
-        hotelList = FXCollections.observableArrayList();
-        Connection connectDB = DBConnection.getConnection();
-        String selectQuery = "SELECT * FROM hotel_db.Hotel";
-
-        try {
-            PreparedStatement ps = connectDB.prepareStatement(selectQuery);
-            ResultSet rs = ps.executeQuery();
-
-            while(rs.next()){
-                hotelList.add(new Hotel(rs.getInt("hotelID"), rs.getString("hotelName"), rs.getString("hotelType"), rs.getString("amenities"), rs.getInt("maxRooms"), rs.getInt("standardPrice"), rs.getInt("queenPrice"), rs.getInt("kingPrice"), rs.getInt("weekendRate")));
-            }
-
-            System.out.println(hotelList);
-            table_hotel.setItems(hotelList);
-
-        } catch (Exception e){
-            System.out.println(e);
-        }
-
-
-    }
-
-    @FXML
-    void editHotelButtonClicked(ActionEvent event) {
-        String input = hotelEditSearch.getText();
-
-        Hotel editHotel = Hotel.getHotelFromName(input);
-        System.out.println(editHotel.toString());
-
-        editHotelAmenities.setText(editHotel.getAmenities());
-        editHotelType.setText(editHotel.getHotelType());
-        editHotelStdPrice.setText(String.valueOf(editHotel.getStandardPrice()));
-        editHotelQuePrice.setText(String.valueOf(editHotel.getQueenPrice()));
-        editHotelKingPrice.setText(String.valueOf(editHotel.getKingPrice()));
-        editHotelWknPrice.setText(String.valueOf(editHotel.getWeekendRate()));
-
-    }
-
-    @FXML
-    void submitHotelEditButton(ActionEvent event) {
-
-        Hotel editHotel = new Hotel(0, hotelEditSearch.getText(), editHotelType.getText(), editHotelAmenities.getText(), 0, Integer.parseInt(editHotelStdPrice.getText()), Integer.parseInt(editHotelQuePrice.getText()), Integer.parseInt(editHotelKingPrice.getText()), Integer.parseInt(editHotelWknPrice.getText()));
-        Hotel.updateHotel(editHotel);
-
-        editHotelAmenities.clear();
-        editHotelType.clear();
-        editHotelStdPrice.clear();
-        editHotelQuePrice.clear();
-        editHotelKingPrice.clear();
-        editHotelWknPrice.clear();
-        hotelEditSearch.clear();
-
-    }
-    /********************************************CREATE RESERVATION*****************************************/
+    /********************************************CREATE RESERVATION TAB*****************************************/
     @FXML
     private TextField hotelNameR;
     @FXML
@@ -359,13 +325,13 @@ public class adminHomeController implements Initializable {
      */
 
     @FXML
-    private void searchButtonClicked (Event event) throws IOException { //Event or ActionEvent?
+    private void searchButtonClicked (ActionEvent event) throws IOException { //Event or ActionEvent?
         System.out.println("Reservation Search Button Clicked");
         warningLabel.setText(""); // USED TO RESET THE LABEL
         // Connection connectDB = DBConnection.getConnection();
-       // System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
+        System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
         try {
-            if (hotelNameR.getText().isEmpty() || (hotelList.equals(hotelNameR.getText()))) {
+            if (hotelNameR.getText().isEmpty()) { //|| (hotelList.equals(hotelNameR.getText()))) { //causing errors
                 System.out.println("Please enter a valid hotel\n");
                 warningLabel.setText("Enter a valid hotel");
             }
@@ -386,16 +352,33 @@ public class adminHomeController implements Initializable {
                     // DISPLAY IT IN NEXT STAGE
                 System.out.println("Searching User Input");
 
-                Stage stage;
+                Node node = (Node) event.getSource();
+                Stage stage = (Stage)node.getScene().getWindow();
+                stage.close();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/styles/singleReservationRoom.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root, 800,800);
+                scene.getStylesheets().add(getClass().getResource("/styles/singleReservationRoom.fxml").toExternalForm());
+                stage.setScene(scene);
+                singleReservationRoomController conR = loader.getController();
+
+                stage.show();
+
+
+
+
+
+              /*  Stage stage;
                 Scene scene;
                 Parent root;
 
-                root = FXMLLoader.load((getClass().getResource("/styles/reservationRoom.fxml")));
+                root = FXMLLoader.load((getClass().getResource("/styles/singleReservationRoom.fxml"))); //changed to new fxml
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene((root));
 
                 stage.setScene((scene));
-                stage.show();
+                stage.show();*/
             }
         }
         catch (IOException e) {
@@ -403,6 +386,47 @@ public class adminHomeController implements Initializable {
             System.out.println("Error in searchButtonClicked ");
         }
     }
+
+    @FXML
+    private TableColumn<Hotel, String> col_HotelTypeR;
+    @FXML
+    private TableColumn<Hotel, String> col_HotelR;
+    @FXML
+    private TableColumn<Hotel, String> col_AmenitiesR;
+    @FXML
+    private TableView<Hotel> table_hotelR;
+    /**
+     * Fills out the CreateReservationTable
+     */
+    private void fillCreateReserveTable () {
+        col_HotelR.setCellValueFactory(new PropertyValueFactory<Hotel, String>("hotelName"));
+        col_HotelTypeR.setCellValueFactory(new PropertyValueFactory<Hotel, String>("hotelType"));
+        col_AmenitiesR.setCellValueFactory(new PropertyValueFactory<Hotel, String>("amenities"));
+
+        table_hotelR.setItems(Functions.populateHotelTable());
+    }
+
+    /************************LOGOUT TAB******************************************/
+    @FXML
+    private Button adminLogoutButton;
+
+    @FXML
+    void adminLogoutButtonClicked(ActionEvent event) throws IOException {
+
+        System.out.println("going back to loggin");
+        Stage stage;
+        Scene scene;
+        Parent root;
+
+        root = FXMLLoader.load(getClass().getResource("/styles/login.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+
 
     /**
      * Helper function, Checks if the maxPrice.getText and minPrice.getText is a numeric value
@@ -420,6 +444,7 @@ public class adminHomeController implements Initializable {
     }
 
     /*******------------reservationRoom FXML-------------*****/
+   /* //  NEEDS ITS OWN CONTROLLER!!! ///
     @FXML
     private TextField roomR;
     @FXML
@@ -429,11 +454,12 @@ public class adminHomeController implements Initializable {
     @FXML
     private TextField endDate; //not sure about these yet
 
-    /**
+
+    *//**
      * Maybe here check for account type or should it ask before? I think it should check
      * This Function will let the user select the room and then reserve the room.
      * Must provide a valid email and room
-     */
+     *//*
     @FXML
     private void reserveButton(ActionEvent event) throws IOException  {
         System.out.println("Reserve Room Button");
@@ -451,12 +477,33 @@ public class adminHomeController implements Initializable {
             //DOES THIS HAVE TO BE IN REAL TIME?
 
      //   }
-       /* catch (IOException e) {
+       *//* catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error in ReserveButton");
-        }*/
+        }*//*
 
     }
+
+    @FXML
+    private void returnButton(ActionEvent event) throws IOException {
+        System.out.println("Returning to Home Admin");
+        try {
+            Stage stage;
+            Scene scene;
+            Parent root;
+
+            root = FXMLLoader.load((getClass().getResource("/styles/adminHome.fxml")));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene((root));
+
+            stage.setScene((scene));
+            stage.show();
+        }
+         catch (IOException e) {
+                    e.printStackTrace();
+                    System.out.println("Error in searchButtonClicked ");
+                }
+    }*/
 
     /******************************************************************************************************/
 

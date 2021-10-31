@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminHomeController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminHomeController">
    <children>
       <TabPane layoutX="14.0" prefHeight="400.0" prefWidth="754.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -40,6 +40,7 @@
                         <TextField fx:id="startDate" layoutX="599.0" layoutY="139.0" prefHeight="39.0" prefWidth="113.0" promptText="Start Date" />
                         <Label layoutX="598.0" layoutY="105.0" prefHeight="27.0" prefWidth="115.0" text="Start Date:" />
                         <Label layoutX="599.0" layoutY="195.0" prefHeight="27.0" prefWidth="115.0" text="End Date:" />
+                        <Button fx:id="returnButton" layoutX="657.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnButton" text="Return" />
                      </children></AnchorPane>
                </content>
             </Tab>

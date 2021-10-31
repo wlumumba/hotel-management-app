@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="singleReservationRoomController">
+   <children>
+      <TabPane layoutX="14.0" prefHeight="400.0" prefWidth="754.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+            <Tab text="Create Reservation">
+               <content>
+                  <AnchorPane fx:id="singleReservationRoom" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="table_hotelR2" layoutY="-3.0" prefHeight="284.0" prefWidth="581.0">
+                           <columns>
+                              <TableColumn fx:id="col_id1" prefWidth="167.0" text="RoomType" />
+                              <TableColumn fx:id="col_type1" minWidth="0.0" prefWidth="0.0" />
+                              <TableColumn fx:id="col_std1" minWidth="0.0" prefWidth="222.0" text="Room" />
+                              <TableColumn fx:id="col_name1" prefWidth="133.0" text="Price" />
+                           </columns>
+                        </TableView>
+                        <TextField fx:id="roomR" layoutX="115.0" layoutY="308.0" prefHeight="27.0" prefWidth="194.0" promptText="Name of Room" />
+                        <Label layoutX="9.0" layoutY="314.0" prefHeight="27.0" prefWidth="106.0" text="Enter Room:" />
+                        <Label layoutX="320.0" layoutY="314.0" prefHeight="27.0" prefWidth="98.0" text="Enter Email:" />
+                        <TextField fx:id="emailR" layoutX="418.0" layoutY="308.0" prefHeight="39.0" prefWidth="170.0" promptText="Enter Email" />
+                        <Button fx:id="reserveButton" layoutX="614.0" layoutY="295.0" mnemonicParsing="false" onAction="#reserveButton" text="Reserve" />
+                        <TextField fx:id="endDate" layoutX="597.0" layoutY="232.0" prefHeight="39.0" prefWidth="118.0" promptText="End Date" />
+                        <TextField fx:id="startDate" layoutX="599.0" layoutY="139.0" prefHeight="39.0" prefWidth="113.0" promptText="Start Date" />
+                        <Label layoutX="598.0" layoutY="105.0" prefHeight="27.0" prefWidth="115.0" text="Start Date:" />
+                        <Label layoutX="599.0" layoutY="195.0" prefHeight="27.0" prefWidth="115.0" text="End Date:" />
+                        <Button fx:id="returnButton" layoutX="657.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnButton" text="Return" />
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Edit Reservation">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab text="Cancel Reservation">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab text="log out">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="52.0" layoutY="34.0" mnemonicParsing="false" onAction="#adminLogoutButtonClicked" text="log out" />
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
