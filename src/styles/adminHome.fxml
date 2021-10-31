@@ -150,13 +150,34 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Text layoutX="21.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Admin" wrappingWidth="121.5771484375" />
-                        <Text layoutX="21.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" />
-                        <Text layoutX="22.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" />
-                        <Text layoutX="22.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name" />
-                        <Text layoutX="18.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name" />
-                        <Text layoutX="22.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="85.6142578125" />
-                        <Button fx:id="createAdminButton" layoutX="461.0" layoutY="278.0" mnemonicParsing="false" onAction="#createAdminButtonClicked" text="Create" />
+                        <Text layoutX="21.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Admin" wrappingWidth="121.5771484375">
+                           <font>
+                              <Font name="Georgia" size="18.0" />
+                           </font></Text>
+                        <Text layoutX="21.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></Text>
+                        <Text layoutX="22.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></Text>
+                        <Text layoutX="22.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></Text>
+                        <Text layoutX="18.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></Text>
+                        <Text layoutX="22.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="85.6142578125">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></Text>
+                        <Button fx:id="createAdminButton" layoutX="461.0" layoutY="278.0" mnemonicParsing="false" onAction="#createAdminButtonClicked" text="Create">
+                           <font>
+                              <Font name="Georgia" size="18.0" />
+                           </font></Button>
                         <TextField fx:id="createUserAdmin" layoutX="166.0" layoutY="64.0" prefHeight="25.0" prefWidth="224.0" />
                         <TextField fx:id="createPassAdmin" layoutX="166.0" layoutY="114.0" />
                         <TextField fx:id="createFirstNAdmin" layoutX="166.0" layoutY="160.0" prefHeight="39.0" prefWidth="224.0" />
