@@ -125,7 +125,8 @@ public class adminHomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fillHotels();
-        fillCreateReserveTable();
+        //if ()
+        fillCreateReserveTable(); //causing errors since after you click search you have a new table in the reservationRoom.fxml
         //Functions.createReservation(new Reservation(1, 6, 1, "01/1/2000", "02/2/2000", "test", true));
     }
 
@@ -416,7 +417,8 @@ public class adminHomeController implements Initializable {
     /**
      * Fills out the CreateReservationTable
      */
-    private void fillCreateReserveTable () {
+    private void fillCreateReserveTable () {  //THIS IS CAUSING ISSUE FOR INITIALIZABLE SINCE DIFFERENT FXML WITH DIFFERENT TABLE
+       //MAYBE IF STATEMENT FOR NEW FXML TWO BEFORE SWITCHING SCREENS OR JUST A NEW CONTROLLER??
         col_HotelR.setCellValueFactory(new PropertyValueFactory<Hotel, String>("hotelName"));
         col_HotelTypeR.setCellValueFactory(new PropertyValueFactory<Hotel, String>("hotelType"));
         col_AmenitiesR.setCellValueFactory(new PropertyValueFactory<Hotel, String>("amenities"));
@@ -521,7 +523,7 @@ public class adminHomeController implements Initializable {
         }
          catch (IOException e) {
                     e.printStackTrace();
-                    System.out.println("Error in searchButtonClicked ");
+                    System.out.println("Error in returnButton ");
                 }
     }
 
