@@ -25,9 +25,9 @@ import java.util.ResourceBundle;
 
 public class adminHomeController implements Initializable {
     //Instance Variables
-    User currentUser;
-    Hotel currentHotel;
-    ObservableList<Hotel> hotelList;
+    public User currentUser;
+    public Hotel currentHotel;
+    public ObservableList<Hotel> hotelList;
 
     //FXML Variables
     @FXML
@@ -101,6 +101,8 @@ public class adminHomeController implements Initializable {
     //labels
     @FXML
     private Label labelAdminOuput;
+
+    private boolean counter = true;
 
     /********************** Initialize method called when screen is loaded ************************/
     @Override
@@ -326,9 +328,9 @@ public class adminHomeController implements Initializable {
         System.out.println("Reservation Search Button Clicked");
         warningLabel.setText(""); // USED TO RESET THE LABEL
         // Connection connectDB = DBConnection.getConnection();
-       // System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
+        System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
         try {
-            if (hotelNameR.getText().isEmpty() || (hotelList.equals(hotelNameR.getText()))) {
+            if (hotelNameR.getText().isEmpty()) { //|| (hotelList.equals(hotelNameR.getText()))) { //causing errors
                 System.out.println("Please enter a valid hotel\n");
                 warningLabel.setText("Enter a valid hotel");
             }
@@ -349,16 +351,33 @@ public class adminHomeController implements Initializable {
                     // DISPLAY IT IN NEXT STAGE
                 System.out.println("Searching User Input");
 
-                Stage stage;
+                Node node = (Node) event.getSource();
+                Stage stage = (Stage)node.getScene().getWindow();
+                stage.close();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/styles/singleReservationRoom.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root, 800,800);
+                scene.getStylesheets().add(getClass().getResource("/styles/singleReservationRoom.fxml").toExternalForm());
+                stage.setScene(scene);
+                singleReservationRoomController conR = loader.getController();
+
+                stage.show();
+
+
+
+
+
+              /*  Stage stage;
                 Scene scene;
                 Parent root;
 
-                root = FXMLLoader.load((getClass().getResource("/styles/reservationRoom.fxml")));
+                root = FXMLLoader.load((getClass().getResource("/styles/singleReservationRoom.fxml"))); //changed to new fxml
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene((root));
 
                 stage.setScene((scene));
-                stage.show();
+                stage.show();*/
             }
         }
         catch (IOException e) {
@@ -424,7 +443,7 @@ public class adminHomeController implements Initializable {
     }
 
     /*******------------reservationRoom FXML-------------*****/
-    //  NEEDS ITS OWN CONTROLLER!!! ///
+   /* //  NEEDS ITS OWN CONTROLLER!!! ///
     @FXML
     private TextField roomR;
     @FXML
@@ -435,11 +454,11 @@ public class adminHomeController implements Initializable {
     private TextField endDate; //not sure about these yet
 
 
-    /**
+    *//**
      * Maybe here check for account type or should it ask before? I think it should check
      * This Function will let the user select the room and then reserve the room.
      * Must provide a valid email and room
-     */
+     *//*
     @FXML
     private void reserveButton(ActionEvent event) throws IOException  {
         System.out.println("Reserve Room Button");
@@ -457,10 +476,10 @@ public class adminHomeController implements Initializable {
             //DOES THIS HAVE TO BE IN REAL TIME?
 
      //   }
-       /* catch (IOException e) {
+       *//* catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error in ReserveButton");
-        }*/
+        }*//*
 
     }
 
@@ -483,7 +502,7 @@ public class adminHomeController implements Initializable {
                     e.printStackTrace();
                     System.out.println("Error in searchButtonClicked ");
                 }
-    }
+    }*/
 
     /******************************************************************************************************/
 
