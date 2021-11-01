@@ -331,11 +331,11 @@ public class adminHomeController implements Initializable {
         // Connection connectDB = DBConnection.getConnection();
         System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
         try {
-           for (int i = 1; i < hotelList.size(); i++) {
-               System.out.println("HOTEL LIST: " + hotelList.get(i).getHotelName());
+           for (int i = 0; i < hotelList.size(); i++) {
+            //   System.out.println("HOTEL LIST: " + hotelList.get(i).getHotelName() + "\n");
 
 
-               if ((hotelNameR.getText().isEmpty()) || (hotelList.get(i).getHotelName().equals(hotelNameR.getText()))) {
+               if ((hotelNameR.getText().isEmpty()) || (hotelList.get(i).getHotelName().equals(hotelNameR.getText()))) { //it still verify correct hotel yet
                    System.out.println("Please enter a valid hotel\n");
                    warningLabel.setText("Enter a valid hotel");
                }
