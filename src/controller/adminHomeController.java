@@ -330,11 +330,16 @@ public class adminHomeController implements Initializable {
         // Connection connectDB = DBConnection.getConnection();
         System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
         try {
-            if (hotelNameR.getText().isEmpty()) { //|| (hotelList.equals(hotelNameR.getText()))) { //causing errors
-                System.out.println("Please enter a valid hotel\n");
-                warningLabel.setText("Enter a valid hotel");
-            }
-            else if (maxPriceR.getText().isEmpty() || (!isNumeric(maxPriceR.getText()))) {
+           for (int i = 1; i < hotelList.size(); i++) {
+               System.out.println("HOTEL LIST: " + hotelList.get(i).getHotelName());
+
+
+               if ((hotelNameR.getText().isEmpty()) || (hotelList.get(i).getHotelName().equals(hotelNameR.getText()))) {
+                   System.out.println("Please enter a valid hotel\n");
+                   warningLabel.setText("Enter a valid hotel");
+               }
+           }
+            if (maxPriceR.getText().isEmpty() || (!isNumeric(maxPriceR.getText()))) {
                 System.out.println("Please enter a valid Max Price\n");
                 warningLabel.setText("Enter a valid Max Price");
             }
@@ -401,7 +406,7 @@ public class adminHomeController implements Initializable {
         col_HotelR.setCellValueFactory(new PropertyValueFactory<Hotel, String>("hotelName"));
         col_HotelTypeR.setCellValueFactory(new PropertyValueFactory<Hotel, String>("hotelType"));
         col_AmenitiesR.setCellValueFactory(new PropertyValueFactory<Hotel, String>("amenities"));
-
+        hotelList = Functions.populateHotelTable();
         table_hotelR.setItems(Functions.populateHotelTable());
     }
 

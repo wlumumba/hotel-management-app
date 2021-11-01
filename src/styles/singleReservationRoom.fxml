@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="singleReservationRoomController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.singleReservationRoomController">
    <children>
       <TabPane layoutX="14.0" prefHeight="400.0" prefWidth="754.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -52,14 +52,6 @@
             <Tab text="Cancel Reservation">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-            <Tab text="log out">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Button layoutX="52.0" layoutY="34.0" mnemonicParsing="false" onAction="#adminLogoutButtonClicked" text="log out" />
-                     </children></AnchorPane>
                </content>
             </Tab>
         </tabs>
