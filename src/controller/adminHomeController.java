@@ -73,12 +73,35 @@ public class adminHomeController implements Initializable {
     @FXML
     private TextField hotelEditSearch;
 
+    @FXML
+    private TextField editUsername;
+
+    @FXML
+    private TextField editUserFName;
+
+    @FXML
+    private TextField editUserLName;
+
+    @FXML
+    private TextField editUserPW;
+
+    @FXML
+    private TextField editUserAccountType;
+
+    @FXML
+    private TextField userEditSearch;
+
+
 
     //Buttons
     @FXML
     private Button addHotelButton;
     @FXML
     private Label errorAdminOutput;
+    @FXML
+    private Button editUserSearchButton;
+    @FXML
+    private Button editUserSubmitButton;
     //// ADD ROOM ELEMENTS ///
     @FXML
     private Button createAdminButton;
@@ -511,5 +534,38 @@ public class adminHomeController implements Initializable {
     }*/
 
     /******************************************************************************************************/
+
+    @FXML
+    void submitUserEditButtonClicked(ActionEvent event) {
+        User updateUser = new User(editUsername.getText(), editUserFName.getText(), editUserLName.getText(), userEditSearch.getText(), editUserPW.getText(), Integer.parseInt(editUserAccountType.getText()));
+
+        User.updateUser(updateUser);
+
+        userEditSearch.clear();
+        editUsername.clear();
+        editUserFName.clear();
+        editUserLName.clear();
+        editUserPW.clear();
+        editUserAccountType.clear();
+
+
+    }
+
+    @FXML
+    void editUserSearchButtonClicked(ActionEvent event) {
+
+        String input = userEditSearch.getText();
+
+        User editUser = User.getUserFromEmail(input);
+        System.out.println(editUser.toString());
+
+        editUsername.setText(editUser.getUserName());
+        editUserFName.setText(editUser.getFirstName());
+        editUserLName.setText(editUser.getLastName());
+        editUserPW.setText(editUser.getPassword());
+        editUserAccountType.setText(String.valueOf(editUser.getAccountType()));
+
+    }
+
 
 } //PUBLIC CLASS END

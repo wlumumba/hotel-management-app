@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminHomeController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminHomeController">
    <children>
       <TabPane layoutX="14.0" prefHeight="434.0" prefWidth="858.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -199,6 +207,28 @@
                            </font></Button>
                      </children></AnchorPane>
                </content>
+            </Tab>
+            <Tab text="Edit User">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="editUsername" layoutX="67.0" layoutY="106.0" />
+                        <TextField fx:id="editUserFName" layoutX="67.0" layoutY="148.0" />
+                        <TextField fx:id="editUserLName" layoutX="67.0" layoutY="184.0" />
+                        <TextField fx:id="editUserPW" layoutX="67.0" layoutY="220.0" />
+                        <TextField fx:id="editUserAccountType" layoutX="67.0" layoutY="256.0" />
+                        <Label layoutX="235.0" layoutY="110.0" text="Username" />
+                        <Label layoutX="474.0" layoutY="102.0" text="Enter Email" />
+                        <Label layoutX="231.0" layoutY="260.0" text="Account Type (0 = customer 1 = admin)" />
+                        <Label layoutX="231.0" layoutY="224.0" text="Password" />
+                        <Label layoutX="231.0" layoutY="188.0" text="Last Name" />
+                        <Label layoutX="231.0" layoutY="152.0" text="First Name" />
+                        <TextField fx:id="userEditSearch" layoutX="429.0" layoutY="127.0" />
+                        <Button fx:id="editUserSearchButton" layoutX="485.0" layoutY="161.0" mnemonicParsing="false" onAction="#editUserSearchButtonClicked" text="Edit" />
+                        <Button fx:id="editUserSubmitButton" layoutX="116.0" layoutY="308.0" mnemonicParsing="false" onAction="#submitUserEditButtonClicked" text="Submit" />
+                     </children>
+                  </AnchorPane>
+              </content>
             </Tab>
         </tabs>
       </TabPane>

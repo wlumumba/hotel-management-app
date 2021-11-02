@@ -3,10 +3,7 @@ package helpers;
 import javafx.animation.PauseTransition;
 import javafx.util.Duration;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.*;
 
 public class User {
 
@@ -82,5 +79,58 @@ public class User {
             ex.printStackTrace();
             System.out.println("Error: Failed to insert to DB");
         }
+    }
+
+    public static User getUserFromEmail(String email){
+
+        Connection connectDB = DBConnection.getConnection(); //Below is it hotel_db.Admin?
+        //Make query to find number of rows in a table
+        String query = "select * from hotel_db.User where email=\""+ email + "\"";
+
+        try {
+            PreparedStatement ps = connectDB.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6));
+                return user;
+            }
+
+
+        } catch (Exception e){
+            System.out.println(e);
+        }
+
+        return new User("user name", "first name", "last name", "email", "password", 3);
+    }
+
+    public static void updateUser(User user){
+
+        Connection connectDB = DBConnection.getConnection();
+        //Make query to find number of rows in a table
+        String username = user.getUserName();
+        String fname = user.getFirstName();
+        String lname = user.getLastName();
+        String password = user.getPassword();
+        String email = user.getEmail();
+        int accType = user.accountType;
+
+
+
+        String query = "UPDATE hotel_db.User SET username = \"" + username +"\", firstname = \"" + fname + "\", lastname = \"" + lname +"\", password = \""+ password +"\", accType = " + accType + " WHERE email = \"" + user.getEmail() + "\"";
+        System.out.println(query);
+
+        try {
+            PreparedStatement ps = connectDB.prepareStatement(query);
+            ps.executeUpdate();
+
+        } catch (Exception e){
+            System.out.println(e);
+        }
+
+
+
+
     }
 }

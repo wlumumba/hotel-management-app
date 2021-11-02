@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -16,18 +17,24 @@ import java.io.IOException;
 public class customerHomeController {
 
     @FXML
+    private TextField editUsername;
+    @FXML
+    private TextField editFirstName;
+    @FXML
+    private TextField editLastName;
+    @FXML
+    private TextField editPassword;
+    @FXML
     private Button customerLogoutButton;
-
     @FXML
-    private Button printUserDataButton;
-
+    private TextField userEmailEdit;
     @FXML
-    private Label userNameLabel;
-
+    private Button editAccountButton;
     @FXML
-    private Label passwordLabel;
+    private Button submitAccEditButton;
 
 
+/*
     @FXML
     void printUserDataButtonClicked(ActionEvent event) {
         Node node = (Node) event.getSource();
@@ -43,6 +50,8 @@ public class customerHomeController {
 
 
     }
+
+ */
 
 
     @FXML
@@ -60,10 +69,41 @@ public class customerHomeController {
 
     }
 
+    @FXML
+    void editAccountButtonClicked(ActionEvent event) {
+
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        User u = (User) stage.getUserData();
 
 
+        if (u.getEmail().equals(userEmailEdit.getText())){
+            editUsername.setText(u.getUserName());
+            editFirstName.setText(u.getFirstName());
+            editLastName.setText(u.getLastName());
+            editPassword.setText(u.getPassword());
+        }
+
+        else{
+            System.out.println("Inccorect email please try again");
+        }
+
+    }
+
+    @FXML
+    void submitAccEditButtonClicked(ActionEvent event) {
+
+        User user = new User(editUsername.getText(), editFirstName.getText(), editLastName.getText(), userEmailEdit.getText(), editPassword.getText(), 0);
+        User.updateUser(user);
+
+        editPassword.clear();
+        editLastName.clear();
+        editFirstName.clear();
+        editUsername.clear();
+        userEmailEdit.clear();
 
 
+    }
 
 }
 
