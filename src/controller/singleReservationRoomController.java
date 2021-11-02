@@ -24,21 +24,17 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-
-/**Leave this File along for now*********/
-
 public class singleReservationRoomController implements Initializable {
-            //Method called when screen is loaded
-            @Override
-            public void initialize(URL url, ResourceBundle resourceBundle) {
-               // fillHotels();
-              //  fillCreateReserveTable();
-                //Functions.createReservation(new Reservation(1, 6, 1, "01/1/2000", "02/2/2000", "test", true));
-            }
+
+    //Method called when screen is loaded
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        fillChooseRoomTable();
+    }
 
 
 
-    //  NEEDS ITS OWN CONTROLLER!!! ///
+    /************************************* CHOOSE A ROOM TAB *****************************************/
 
     @FXML
     private TextField roomR;
@@ -48,6 +44,24 @@ public class singleReservationRoomController implements Initializable {
     private TextField startDate; //not sure about these yet
     @FXML
     private TextField endDate; //not sure about these yet
+
+    @FXML
+    private TableColumn<Room, Integer> col_roomidR;
+    @FXML
+    private TableColumn<Room, String> col_bedtypeR;
+    @FXML
+    private TableColumn<Room, Integer> col_roompriceR;
+    @FXML
+    private TableView<Room> table_rooms;
+
+    public void fillChooseRoomTable(){
+        col_roomidR.setCellValueFactory(new PropertyValueFactory<Room, Integer>("roomID"));
+        col_bedtypeR.setCellValueFactory(new PropertyValueFactory<Room, String>("bedType"));
+        col_roompriceR.setCellValueFactory(new PropertyValueFactory<Room, Integer>("roomPrice"));
+
+        //Must figure out how to pass in values from other controller!
+        table_rooms.setItems(Functions.populateAvailableRooms(-1, -1, -1));
+    }
 
 
     /**
@@ -79,6 +93,7 @@ public class singleReservationRoomController implements Initializable {
 
     }
 
+    /******************************************* BACK BUTTON **********************************************/
     @FXML
     private void returnButton(ActionEvent event) throws IOException {
             System.out.println("Returning to Home Admin");

@@ -19,28 +19,27 @@
    <children>
       <TabPane layoutX="14.0" prefHeight="400.0" prefWidth="754.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-            <Tab text="Create Reservation">
+            <Tab text="Choose Room">
                <content>
                   <AnchorPane fx:id="singleReservationRoom" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="table_hotelR2" layoutY="-3.0" prefHeight="284.0" prefWidth="581.0">
+                        <TableView fx:id="table_rooms" layoutY="-3.0" prefHeight="284.0" prefWidth="581.0">
                            <columns>
-                              <TableColumn fx:id="col_id1" prefWidth="167.0" text="RoomType" />
-                              <TableColumn fx:id="col_type1" minWidth="0.0" prefWidth="0.0" />
-                              <TableColumn fx:id="col_std1" minWidth="0.0" prefWidth="222.0" text="Room" />
-                              <TableColumn fx:id="col_name1" prefWidth="133.0" text="Price" />
+                              <TableColumn fx:id="col_roomidR" prefWidth="167.0" text="Room Number" />
+                              <TableColumn fx:id="col_bedtypeR" minWidth="0.0" prefWidth="222.0" text="Bed Type" />
+                              <TableColumn fx:id="col_roompriceR" prefWidth="133.0" text="Price" />
                            </columns>
                         </TableView>
-                        <TextField fx:id="roomR" layoutX="115.0" layoutY="308.0" prefHeight="27.0" prefWidth="194.0" promptText="Name of Room" />
-                        <Label layoutX="9.0" layoutY="314.0" prefHeight="27.0" prefWidth="106.0" text="Enter Room:" />
+                        <TextField fx:id="roomR" layoutX="138.0" layoutY="314.0" prefHeight="27.0" prefWidth="153.0" promptText="Name of Room" />
+                        <Label layoutX="9.0" layoutY="314.0" prefHeight="27.0" prefWidth="137.0" text="Enter Room Number:" />
                         <Label layoutX="320.0" layoutY="314.0" prefHeight="27.0" prefWidth="98.0" text="Enter Email:" />
-                        <TextField fx:id="emailR" layoutX="418.0" layoutY="308.0" prefHeight="39.0" prefWidth="170.0" promptText="Enter Email" />
-                        <Button fx:id="reserveButton" layoutX="614.0" layoutY="295.0" mnemonicParsing="false" onAction="#reserveButton" text="Reserve" />
+                        <TextField fx:id="emailR" layoutX="395.0" layoutY="308.0" prefHeight="39.0" prefWidth="170.0" promptText="Enter Email" />
+                        <Button fx:id="reserveButton" layoutX="624.0" layoutY="314.0" mnemonicParsing="false" onAction="#reserveButton" text="Reserve" />
                         <TextField fx:id="endDate" layoutX="597.0" layoutY="232.0" prefHeight="39.0" prefWidth="118.0" promptText="End Date" />
                         <TextField fx:id="startDate" layoutX="599.0" layoutY="139.0" prefHeight="39.0" prefWidth="113.0" promptText="Start Date" />
                         <Label layoutX="598.0" layoutY="105.0" prefHeight="27.0" prefWidth="115.0" text="Start Date:" />
                         <Label layoutX="599.0" layoutY="195.0" prefHeight="27.0" prefWidth="115.0" text="End Date:" />
-                        <Button fx:id="returnButton" layoutX="657.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnButton" text="Return" />
+                        <Button fx:id="returnButton" layoutX="628.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnButton" text="Back" />
                      </children></AnchorPane>
                </content>
             </Tab>

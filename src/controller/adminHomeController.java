@@ -136,23 +136,6 @@ public class adminHomeController implements Initializable {
         //Functions.createReservation(new Reservation(1, 6, 1, "01/1/2000", "02/2/2000", "test", true));
     }
 
-    public void fillAddRoomTable()
-    {
-        //Populate cells to respective values
-        col_id.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("hotelID"));
-        col_name.setCellValueFactory(new PropertyValueFactory<Hotel, String>("hotelName"));
-        col_type.setCellValueFactory(new PropertyValueFactory<Hotel, String>("hotelType"));
-        col_amen.setCellValueFactory(new PropertyValueFactory<Hotel, String>("amenities"));
-        col_max.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("maxRooms"));
-        col_std.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("standardPrice"));
-        col_qprice.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("queenPrice"));
-        col_kprice.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("kingPrice"));
-        col_rate.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("weekendRate"));
-
-        //Method call to populate the table
-        table_hotel.setItems(Functions.populateHotelTable());
-    }
-
     /******************************   Create Hotel Function ***************************************/
     @FXML
     public void addHotelButtonClicked(ActionEvent e) throws IOException{
@@ -265,19 +248,54 @@ public class adminHomeController implements Initializable {
     @FXML
     private TableView<Hotel> table_hotel;
 
+    // Fills the table given a List
+    public void fillAddRoomTable()
+    {
+        //Populate cells to respective values
+        col_id.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("hotelID"));
+        col_name.setCellValueFactory(new PropertyValueFactory<Hotel, String>("hotelName"));
+        col_type.setCellValueFactory(new PropertyValueFactory<Hotel, String>("hotelType"));
+        col_amen.setCellValueFactory(new PropertyValueFactory<Hotel, String>("amenities"));
+        col_max.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("maxRooms"));
+        col_std.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("standardPrice"));
+        col_qprice.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("queenPrice"));
+        col_kprice.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("kingPrice"));
+        col_rate.setCellValueFactory(new PropertyValueFactory<Hotel, Integer>("weekendRate"));
+
+        //Method call to populate the table
+        table_hotel.setItems(Functions.populateHotelTable());
+    }
+
     @FXML
     void addRoomButtonClicked(ActionEvent event){
         System.out.println("Create Room Button");
         Connection connectDB = DBConnection.getConnection();
 
-        String insertQuery = "INSERT INTO hotel_db.Room (bedType, Hotel_hotelID) VALUES (?, ?)";
+        String hotelQuery = "SELECT * FROM hotel_db.Hotel where hotelID = ";
+        String insertQuery = "INSERT INTO hotel_db.Room (bedType, roomPrice, Hotel_hotelID) VALUES (?, ?, ?)";
+        int roomPrice = 0;
 
         // INSERT INTO `hotel_db`.`Room` (`roomID`, `bedType`, `price`, `Hotel_hotelID`) VALUES ('', 'Queen', '124', '1');
-        // Run a query to get hotel entry with given hotelID, strip the price (error check room type)
         try{
             PreparedStatement ps = connectDB.prepareStatement(insertQuery);
+
+            //Also grab the proper hotel entry to assign each room a price
+            ResultSet rs = ps.executeQuery(hotelQuery + Integer.parseInt(addroom_hotelid.getText()));
+            rs.next();
+
+            if (addroom_bed.getText().equalsIgnoreCase("standard"))
+                roomPrice = rs.getInt(6);
+            else if (addroom_bed.getText().equalsIgnoreCase("queen"))
+                roomPrice = rs.getInt(7);
+            else if (addroom_bed.getText().equalsIgnoreCase("king"))
+                roomPrice = rs.getInt(8);
+
+            System.out.println(roomPrice);
+
             ps.setString(1, addroom_bed.getText());
-            ps.setInt(2, Integer.parseInt(addroom_hotelid.getText()));
+            ps.setInt(2, roomPrice);
+            ps.setInt(3, Integer.parseInt(addroom_hotelid.getText()));
+
             
             ps.executeUpdate();
         }
@@ -397,6 +415,8 @@ public class adminHomeController implements Initializable {
 
 
 
+
+
               /*  Stage stage;
                 Scene scene;
                 Parent root;
@@ -434,7 +454,7 @@ public class adminHomeController implements Initializable {
         table_hotelR.setItems(Functions.populateHotelTable());
     }
 
-    /************************LOGOUT TAB******************************************/
+    /****************************************** LOGOUT TAB ******************************************/
     @FXML
     private Button adminLogoutButton;
 

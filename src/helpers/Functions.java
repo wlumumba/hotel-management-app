@@ -24,13 +24,39 @@ public class Functions {
             while(rs.next()){
                 hotelList.add(new Hotel(rs.getInt("hotelID"), rs.getString("hotelName"), rs.getString("hotelType"), rs.getString("amenities"), rs.getInt("maxRooms"), rs.getInt("standardPrice"), rs.getInt("queenPrice"), rs.getInt("kingPrice"), rs.getInt("weekendRate")));
             }
-            System.out.println(hotelList);
 
         } catch (Exception e){
             System.out.println(e);
         }
 
         return hotelList;
+    }
+
+    /**** Fill choose room Table ****/
+    public static ObservableList<Room> populateAvailableRooms(int hotelID, int min, int max){
+        ObservableList<Room> roomsList = FXCollections.observableArrayList();
+
+        Connection connectDB = DBConnection.getConnection();
+        String selectQuery = "SELECT * FROM hotel_db.Room";//where Hotel_hotelID = ? and roomPrice > ? and roomPrice < ?";
+
+        try {
+            PreparedStatement ps = connectDB.prepareStatement(selectQuery);
+//            ps.setInt(1, hotelID);
+//            ps.setInt(2, min);
+//            ps.setInt(3, max);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                roomsList.add(new Room(rs.getInt("roomID"), rs.getString("bedType"), rs.getInt("roomPrice"), rs.getInt("Hotel_hotelID")));
+            }
+            System.out.println(roomsList);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return roomsList;
+
     }
 
 
