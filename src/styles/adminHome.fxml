@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminHomeController">
    <children>
-      <TabPane layoutX="14.0" prefHeight="434.0" prefWidth="858.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="14.0" prefHeight="434.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab fx:id="h" text="Add Hotel">
             <content>
@@ -107,7 +107,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="table_hotel" layoutX="2.0" layoutY="3.0" prefHeight="244.0" prefWidth="748.0">
+                        <TableView fx:id="table_hotel" layoutX="8.0" layoutY="3.0" prefHeight="244.0" prefWidth="771.0">
                           <columns>
                             <TableColumn fx:id="col_id" prefWidth="83.0" text="ID" />
                             <TableColumn fx:id="col_name" prefWidth="83.0" text="Name" />
@@ -120,17 +120,17 @@
                               <TableColumn fx:id="col_rate" prefWidth="83.0" text="weekendRate" />
                           </columns>
                         </TableView>
-                        <TextField fx:id="addroom_hotelid" layoutX="200.0" layoutY="265.0" promptText="Enter hotel ID">
+                        <TextField fx:id="addroom_hotelid" layoutX="223.0" layoutY="265.0" prefHeight="23.0" prefWidth="151.0" promptText="Enter hotel ID">
                            <font>
                               <Font name="Georgia" size="12.0" />
                            </font></TextField>
-                        <TextField fx:id="addroom_bed" layoutX="384.0" layoutY="265.0" promptText="Enter bed type">
+                        <TextField fx:id="addroom_bed" layoutX="403.0" layoutY="265.0" prefHeight="23.0" prefWidth="170.0" promptText="Enter bed type">
                            <font>
                               <Font name="Georgia" size="12.0" />
                            </font></TextField>
-                        <Button fx:id="addRoomButton" layoutX="299.0" layoutY="313.0" mnemonicParsing="false" onAction="#addRoomButtonClicked" prefHeight="33.0" prefWidth="135.0" text="Create Room">
+                        <Button fx:id="addRoomButton" layoutX="328.0" layoutY="313.0" mnemonicParsing="false" onAction="#addRoomButtonClicked" prefHeight="33.0" prefWidth="139.0" text="Create Room">
                            <font>
-                              <Font name="Georgia" size="18.0" />
+                              <Font name="Georgia" size="14.0" />
                            </font></Button>
                      </children>
                   </AnchorPane>
@@ -140,7 +140,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="table_hotelR" layoutX="222.0" layoutY="3.0" prefHeight="370.0" prefWidth="608.0">
+                        <TableView fx:id="table_hotelR" layoutX="222.0" layoutY="3.0" prefHeight="370.0" prefWidth="566.0">
                            <columns>
                               <TableColumn fx:id="col_HotelR" prefWidth="108.0" text="Hotel" />
                               <TableColumn fx:id="col_type1" minWidth="0.0" prefWidth="0.0" />
