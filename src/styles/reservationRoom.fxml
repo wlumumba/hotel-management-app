@@ -66,18 +66,42 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TextArea layoutX="541.0" layoutY="129.0" prefHeight="200.0" prefWidth="200.0" text="Here is the admin home page&#10;Functions&#10; * add hotel&#10; * add room&#10; * cancel reservation&#10; * edit reservation?&#10; * add another admin user&#10;&#10;loggout button top right, takes&#10;back to loggin scene&#10;" />
-                        <TextField fx:id="hotelNameField" layoutX="53.0" layoutY="39.0" promptText="hotelName" />
-                        <TextField fx:id="hotelTypeField" layoutX="53.0" layoutY="86.0" promptText="hotelType" />
-                        <TextField fx:id="amenitiesField" layoutX="52.0" layoutY="137.0" prefHeight="27.0" prefWidth="172.0" promptText="amenities (comma separated)" />
+                        <TextField fx:id="hotelNameField" layoutX="53.0" layoutY="39.0" promptText="hotelName">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></TextField>
+                        <TextField fx:id="hotelTypeField" layoutX="53.0" layoutY="86.0" promptText="hotelType">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></TextField>
+                        <TextField fx:id="amenitiesField" layoutX="52.0" layoutY="137.0" prefHeight="27.0" prefWidth="207.0" promptText="Amenities (comma separated)">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></TextField>
                         <Button fx:id="addHotelButton" layoutX="289.0" layoutY="280.0" mnemonicParsing="false" onAction="#addHotelButtonClicked" text="Create">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></Button>
-                        <TextField fx:id="maxRoomsField" layoutX="52.0" layoutY="183.0" prefHeight="27.0" prefWidth="187.0" promptText="maxRooms" />
-                        <TextField fx:id="standardPriceField" layoutX="279.0" layoutY="38.0" prefHeight="27.0" prefWidth="168.0" promptText="standardPrice" />
-                        <TextField fx:id="queenPriceField" layoutX="278.0" layoutY="85.0" prefHeight="27.0" prefWidth="169.0" promptText="queenPrice" />
-                        <TextField fx:id="kingPriceField" layoutX="278.0" layoutY="137.0" prefHeight="27.0" prefWidth="188.0" promptText="kingPrice" />
-                        <TextField fx:id="weekendRateField" layoutX="278.0" layoutY="183.0" prefHeight="27.0" prefWidth="196.0" promptText="weekendRate" />
+                        <TextField fx:id="maxRoomsField" layoutX="52.0" layoutY="183.0" prefHeight="27.0" prefWidth="187.0" promptText="maxRooms">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></TextField>
+                        <TextField fx:id="standardPriceField" layoutX="279.0" layoutY="38.0" prefHeight="27.0" prefWidth="168.0" promptText="standardPrice">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></TextField>
+                        <TextField fx:id="queenPriceField" layoutX="278.0" layoutY="85.0" prefHeight="27.0" prefWidth="169.0" promptText="queenPrice">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></TextField>
+                        <TextField fx:id="kingPriceField" layoutX="278.0" layoutY="137.0" prefHeight="27.0" prefWidth="188.0" promptText="kingPrice">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></TextField>
+                        <TextField fx:id="weekendRateField" layoutX="278.0" layoutY="183.0" prefHeight="27.0" prefWidth="196.0" promptText="weekendRate">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></TextField>
                      </children>
                   </AnchorPane>
             </content>
@@ -101,7 +125,7 @@
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></Button>
-                        <Label layoutX="563.0" layoutY="93.0" text="Enter hotel name">
+                        <Label layoutX="563.0" layoutY="93.0" text="Enter hotel name:">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></Label>
@@ -163,39 +187,34 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Text layoutX="21.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Admin" wrappingWidth="121.5771484375">
+                        <Text fill="#2f60d0" layoutX="21.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Admin" wrappingWidth="121.5771484375">
                            <font>
                               <Font name="Georgia" size="18.0" />
                            </font></Text>
-                        <Text layoutX="21.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username">
-                           <font>
-                              <Font name="Georgia" size="14.0" />
-                           </font></Text>
-                        <Text layoutX="22.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password">
-                           <font>
-                              <Font name="Georgia" size="14.0" />
-                           </font></Text>
-                        <Text layoutX="22.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
-                           <font>
-                              <Font name="Georgia" size="14.0" />
-                           </font></Text>
-                        <Text layoutX="18.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
-                           <font>
-                              <Font name="Georgia" size="14.0" />
-                           </font></Text>
-                        <Text layoutX="22.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="85.6142578125">
-                           <font>
-                              <Font name="Georgia" size="14.0" />
-                           </font></Text>
-                        <Button fx:id="createAdminButton" layoutX="461.0" layoutY="278.0" mnemonicParsing="false" onAction="#createAdminButtonClicked" text="Create">
+                        <Button fx:id="createAdminButton" layoutX="236.0" layoutY="369.0" mnemonicParsing="false" onAction="#createAdminButtonClicked" style="-fx-background-color: #2f60d0;" text="Create" textFill="WHITE">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></Button>
-                        <TextField fx:id="createUserAdmin" layoutX="166.0" layoutY="64.0" prefHeight="25.0" prefWidth="224.0" />
-                        <TextField fx:id="createPassAdmin" layoutX="166.0" layoutY="114.0" />
-                        <TextField fx:id="createFirstNAdmin" layoutX="166.0" layoutY="160.0" prefHeight="39.0" prefWidth="224.0" />
-                        <TextField fx:id="createLastNAdmin" layoutX="166.0" layoutY="209.0" prefHeight="39.0" prefWidth="224.0" />
-                        <TextField fx:id="createEmailAdmin" layoutX="166.0" layoutY="255.0" prefHeight="23.0" prefWidth="224.0" />
+                        <TextField fx:id="createUserAdmin" layoutX="166.0" layoutY="64.0" prefHeight="28.0" prefWidth="202.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></TextField>
+                        <TextField fx:id="createPassAdmin" layoutX="166.0" layoutY="114.0" prefHeight="28.0" prefWidth="200.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></TextField>
+                        <TextField fx:id="createFirstNAdmin" layoutX="166.0" layoutY="167.0" prefHeight="32.0" prefWidth="200.0" promptText="First Name" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></TextField>
+                        <TextField fx:id="createLastNAdmin" layoutX="166.0" layoutY="230.0" prefHeight="30.0" prefWidth="200.0" promptText="Last Name" style="-fx-background-color: transpaernt; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></TextField>
+                        <TextField fx:id="createEmailAdmin" layoutX="166.0" layoutY="292.0" prefHeight="28.0" prefWidth="200.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></TextField>
                         <Text fx:id="foutputForButton" layoutX="560.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                         <Label fx:id="labelAdminOuput" layoutX="544.0" layoutY="274.0" prefHeight="40.0" prefWidth="196.0" />
                         <Label fx:id="errorAdminOutput" layoutX="462.0" layoutY="127.0" prefHeight="40.0" prefWidth="196.0" />
@@ -206,7 +225,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="52.0" layoutY="34.0" mnemonicParsing="false" onAction="#adminLogoutButtonClicked" text="log out">
+                        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#adminLogoutButtonClicked" style="-fx-background-color: #2f60d0;" text="Logout" textFill="WHITE">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></Button>

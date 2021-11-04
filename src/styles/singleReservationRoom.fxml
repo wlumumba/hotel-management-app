@@ -20,39 +20,39 @@
                               <TableColumn fx:id="col_name1" prefWidth="133.0" text="Price" />
                            </columns>
                         </TableView>
-                        <TextField fx:id="roomR" layoutX="97.0" layoutY="310.0" prefHeight="27.0" prefWidth="194.0" promptText="Name of Room">
+                        <TextField fx:id="roomR" layoutX="97.0" layoutY="310.0" prefHeight="27.0" prefWidth="194.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
                            <font>
-                              <Font name="Georgia" size="12.0" />
+                              <Font name="Georgia" size="14.0" />
                            </font></TextField>
-                        <Label layoutX="9.0" layoutY="314.0" prefHeight="27.0" prefWidth="106.0" text="Enter Room:">
+                        <Label layoutX="9.0" layoutY="314.0" prefHeight="27.0" prefWidth="106.0" text="Enter Room:" textFill="#2f60d0">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></Label>
-                        <Label layoutX="320.0" layoutY="314.0" prefHeight="27.0" prefWidth="98.0" text="Enter Email:">
+                        <Label layoutX="320.0" layoutY="314.0" prefHeight="27.0" prefWidth="98.0" text="Enter Email:" textFill="#2f60d0">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></Label>
-                        <TextField fx:id="emailR" layoutX="409.0" layoutY="308.0" prefHeight="31.0" prefWidth="172.0" promptText="Enter Email">
-                           <font>
-                              <Font name="Georgia" size="12.0" />
-                           </font></TextField>
-                        <Button fx:id="reserveButton" layoutX="623.0" layoutY="295.0" mnemonicParsing="false" onAction="#reserveButton" text="Reserve">
+                        <TextField fx:id="emailR" layoutX="409.0" layoutY="308.0" prefHeight="31.0" prefWidth="172.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
                            <font>
                               <Font name="Georgia" size="14.0" />
+                           </font></TextField>
+                        <Button fx:id="reserveButton" layoutX="623.0" layoutY="295.0" mnemonicParsing="false" onAction="#reserveButton" style="-fx-background-color: #2f60d0;" text="Reserve" textFill="WHITE">
+                           <font>
+                              <Font name="Georgia" size="16.0" />
                            </font></Button>
-                        <TextField fx:id="endDate" layoutX="597.0" layoutY="232.0" prefHeight="39.0" prefWidth="118.0" promptText="End Date" />
-                        <TextField fx:id="startDate" layoutX="599.0" layoutY="139.0" prefHeight="39.0" prefWidth="113.0" promptText="Start Date" />
-                        <Label layoutX="598.0" layoutY="105.0" prefHeight="27.0" prefWidth="115.0" text="Start Date:">
+                        <TextField fx:id="endDate" layoutX="610.0" layoutY="240.0" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;" />
+                        <TextField fx:id="startDate" layoutX="609.0" layoutY="148.0" prefHeight="30.0" prefWidth="128.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;" />
+                        <Label layoutX="609.0" layoutY="105.0" prefHeight="27.0" prefWidth="117.0" text="Start Date:" textFill="#2f60d0">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></Label>
-                        <Label layoutX="599.0" layoutY="195.0" prefHeight="27.0" prefWidth="115.0" text="End Date:">
+                        <Label layoutX="608.0" layoutY="195.0" prefHeight="27.0" prefWidth="106.0" text="End Date:" textFill="#2f60d0">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></Label>
-                        <Button fx:id="returnButton" layoutX="657.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnButton" text="Return">
+                        <Button fx:id="returnButton" layoutX="657.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnButton" style="-fx-background-color: #2f60d0;" text="Return" textFill="WHITE">
                            <font>
-                              <Font name="Georgia" size="14.0" />
+                              <Font name="Georgia" size="16.0" />
                            </font></Button>
                      </children></AnchorPane>
                </content>
