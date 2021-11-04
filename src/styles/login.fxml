@@ -5,7 +5,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="434.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.loginController">
+<BorderPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.loginController">
    <children>
       <TextField fx:id="userNameLog" layoutX="127.0" layoutY="120.0" prefHeight="39.0" prefWidth="191.0" />
       <TextField fx:id="passwordLog" layoutX="126.0" layoutY="170.0" prefHeight="39.0" prefWidth="191.0" />
@@ -64,4 +64,4 @@
             <Font name="Georgia" size="18.0" />
          </font></Button>
    </children>
-</AnchorPane>
+</BorderPane>
