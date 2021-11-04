@@ -2,66 +2,27 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.loginController">
-   <children>
-      <TextField fx:id="userNameLog" layoutX="127.0" layoutY="120.0" prefHeight="39.0" prefWidth="191.0" />
-      <TextField fx:id="passwordLog" layoutX="126.0" layoutY="170.0" prefHeight="39.0" prefWidth="191.0" />
-      <Text layoutX="30.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
-         <font>
-            <Font name="Georgia" size="14.0" />
-         </font></Text>
-      <Text layoutX="30.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
-         <font>
-            <Font name="Georgia" size="14.0" />
-         </font></Text>
-      <Button fx:id="customerButton" defaultButton="true" layoutX="100.0" layoutY="276.0" mnemonicParsing="false" onAction="#customerButtonClicked" prefHeight="39.0" prefWidth="178.0" text="Continue">
-         <font>
-            <Font name="Georgia" size="18.0" />
-         </font></Button>
-      <Button fx:id="createButton" layoutX="588.0" layoutY="331.0" mnemonicParsing="false" onAction="#createButtonClicked" text="Create">
-         <font>
-            <Font name="Georgia" size="18.0" />
-         </font></Button>
-      <TextField fx:id="userNameCreate" layoutX="525.0" layoutY="71.0" prefHeight="39.0" prefWidth="204.0" />
-      <TextField fx:id="passwordCreate" layoutX="524.0" layoutY="120.0" prefHeight="39.0" prefWidth="204.0" />
-      <Text layoutX="432.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="66.6572265625">
-         <font>
-            <Font name="Georgia" size="14.0" />
-         </font></Text>
-      <Text layoutX="432.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
-         <font>
-            <Font name="Georgia" size="14.0" />
-         </font></Text>
-      <Line endY="363.0" layoutX="375.0" layoutY="71.0" startY="-71.0" />
-      <Text layoutX="165.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log In">
-         <font>
-            <Font name="Georgia" size="18.0" />
-         </font></Text>
-      <Text layoutX="550.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Account" textAlignment="CENTER" wrappingWidth="160.98480224609375">
-         <font>
-            <Font name="Georgia" size="18.0" />
-         </font></Text>
-      <TextField fx:id="firstNameCreate" layoutX="524.0" layoutY="169.0" prefHeight="39.0" prefWidth="204.0" />
-      <TextField fx:id="lastNameCreate" layoutX="522.0" layoutY="220.0" prefHeight="39.0" prefWidth="204.0" />
-      <Text layoutX="432.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
-         <font>
-            <Font name="Georgia" size="14.0" />
-         </font></Text>
-      <Text layoutX="432.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
-         <font>
-            <Font name="Georgia" size="14.0" />
-         </font></Text>
-      <Text layoutX="432.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
-         <font>
-            <Font name="Georgia" size="14.0" />
-         </font></Text>
-      <TextField fx:id="emailCreate" layoutX="524.0" layoutY="268.0" prefHeight="39.0" prefWidth="204.0" />
-      <Button fx:id="guestButton" layoutX="100.0" layoutY="325.0" mnemonicParsing="false" onAction="#guestButtonClicked" prefHeight="39.0" prefWidth="178.0" text="Guest">
-         <font>
-            <Font name="Georgia" size="18.0" />
-         </font></Button>
-   </children>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #2f60d0;" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <AnchorPane prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField layoutX="126.0" layoutY="205.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+               <font>
+                  <Font name="Georgia" size="14.0" />
+               </font>
+            </TextField>
+            <PasswordField layoutX="126.0" layoutY="262.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+               <font>
+                  <Font name="Georgia" size="14.0" />
+               </font>
+            </PasswordField>
+         </children>
+      </AnchorPane>
+   </right>
 </BorderPane>
