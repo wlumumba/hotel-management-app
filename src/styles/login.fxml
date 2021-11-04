@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
    <left>
-      <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #2f60d0;" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #2f60d0;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="191.0" fitWidth="170.0" layoutX="115.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Documents/Adobe%20Files/B&amp;B_Logo.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
    </left>
    <right>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER">
@@ -22,6 +30,31 @@
                   <Font name="Georgia" size="14.0" />
                </font>
             </PasswordField>
+            <FontAwesomeIcon fill="#2f60d0" glyphName="USER" layoutX="90.0" layoutY="227.0" size="20" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+            <FontAwesomeIcon fill="#2f60d0" glyphName="KEY" layoutX="88.0" layoutY="283.0" size="20" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Button layoutX="161.0" layoutY="340.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="77.0" style="-fx-background-color: #2f60d0;" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="Georgia" size="16.0" />
+               </font>
+            </Button>
+            <Hyperlink layoutX="148.0" layoutY="455.0" text="Create Account">
+               <font>
+                  <Font name="Georgia" size="14.0" />
+               </font>
+            </Hyperlink>
+            <FontAwesomeIcon fill="#2f60d0" glyphName="USERS" layoutX="181.0" layoutY="122.0" size="35" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fill="#2f60d0" layoutX="148.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login">
+               <font>
+                  <Font name="Georgia" size="22.0" />
+               </font>
+            </Text>
+            <Text fill="#2f60d0" layoutX="159.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not a member?">
+               <font>
+                  <Font name="Georgia" size="12.0" />
+               </font>
+            </Text>
+            <Button layoutX="355.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
+            <FontAwesomeIcon fill="#2f60d0" glyphName="CLOSE" layoutX="371.0" layoutY="29.0" size="18" strokeType="OUTSIDE" strokeWidth="0.0" />
          </children>
       </AnchorPane>
    </right>
