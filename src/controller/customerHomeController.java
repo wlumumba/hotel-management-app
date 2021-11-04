@@ -56,7 +56,7 @@ public class customerHomeController {
 
     @FXML
     void customerLogoutButtonClicked(ActionEvent event) throws IOException {
-        System.out.println("going back to loggin");
+        System.out.println("going back to login");
         Stage stage;
         Scene scene;
         Parent root;
@@ -85,7 +85,7 @@ public class customerHomeController {
         }
 
         else{
-            System.out.println("Inccorect email please try again");
+            System.out.println("Incorrect email please try again");
         }
 
     }
