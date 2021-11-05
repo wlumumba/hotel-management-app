@@ -31,7 +31,7 @@ public class singleReservationRoomController implements Initializable {
     //Method called when screen is loaded
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //fillChooseRoomTable() is called from adminHomeController!
+        //fillChooseRoomTable() gets called from adminHomeController!
     }
 
 
@@ -54,7 +54,7 @@ public class singleReservationRoomController implements Initializable {
     @FXML
     private TableColumn<Room, Integer> col_roompriceR;
     @FXML
-    private TableView<Room> table_rooms;
+    private TableView<Room> table_hotelR2;
 
     public void fillChooseRoomTable(String[] values){
         col_roomidR.setCellValueFactory(new PropertyValueFactory<Room, Integer>("roomID"));
@@ -64,7 +64,7 @@ public class singleReservationRoomController implements Initializable {
         System.out.println(Arrays.toString(values));
 
         //Values are passed in from adminHomeController
-        table_rooms.setItems(Functions.populateAvailableRooms(values[0], values[1], values[2]));
+        table_hotelR2.setItems(Functions.populateAvailableRooms(values[0], values[1], values[2]));
     }
 
 

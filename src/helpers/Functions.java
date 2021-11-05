@@ -46,8 +46,8 @@ public class Functions {
 
         try {
             PreparedStatement ps = connectDB.prepareStatement(selectQuery);
-            ps.setString(1, endDate);
-            ps.setString(2, startDate);
+            ps.setString(1, startDate);
+            ps.setString(2, endDate);
             ps.setInt(3, Integer.parseInt(hotelID));
 
             ResultSet rs = ps.executeQuery();

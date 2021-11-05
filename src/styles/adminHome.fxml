@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminHomeController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminHomeController">
    <children>
       <TabPane layoutX="14.0" prefHeight="500.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -148,21 +149,11 @@
                               <TableColumn fx:id="col_AmenitiesR" prefWidth="298.0" text="Amenties" />
                            </columns>
                         </TableView>
-                        <TextField fx:id="hotelNameR" layoutX="15.0" layoutY="93.0" prefHeight="27.0" prefWidth="187.0" promptText="Name of Hotel" />
-                        <Label layoutX="16.0" layoutY="58.0" prefHeight="27.0" prefWidth="185.0" text="Enter Name of Hotel:">
+                        <TextField fx:id="hotelNameR" layoutX="15.0" layoutY="68.0" prefHeight="27.0" prefWidth="187.0" promptText="Name of Hotel" />
+                        <Label layoutX="16.0" layoutY="31.0" prefHeight="27.0" prefWidth="185.0" text="Enter Name of Hotel:">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></Label>
-                        <Label layoutX="16.0" layoutY="132.0" prefHeight="27.0" prefWidth="191.0" text="Enter Maximum Price:">
-                           <font>
-                              <Font name="Georgia" size="14.0" />
-                           </font></Label>
-                        <TextField fx:id="maxPriceR" layoutX="14.0" layoutY="171.0" prefHeight="28.0" prefWidth="170.0" promptText="Maximum Price" />
-                        <Label layoutX="14.0" layoutY="210.0" prefHeight="27.0" prefWidth="186.0" text="Enter Minimum Price:">
-                           <font>
-                              <Font name="Georgia" size="14.0" />
-                           </font></Label>
-                        <TextField fx:id="minPriceR" layoutX="14.0" layoutY="245.0" prefHeight="31.0" prefWidth="170.0" promptText="Minimum Price" />
                         <Button fx:id="searchButton" layoutX="66.0" layoutY="295.0" mnemonicParsing="false" onAction="#searchButtonClicked" text="Search">
                            <font>
                               <Font name="Georgia" size="14.0" />
@@ -171,7 +162,6 @@
                         <TextField fx:id="startDate" layoutX="17.0" layoutY="141.0" prefHeight="39.0" prefWidth="181.0" promptText="Start Date" />
                         <Label layoutX="16.0" layoutY="201.0" prefHeight="27.0" prefWidth="115.0" text="End Date:" />
                         <TextField fx:id="endDate" layoutX="15.0" layoutY="228.0" prefHeight="39.0" prefWidth="182.0" promptText="End Date" />
-                        <Label layoutX="16.0" layoutY="14.0" prefHeight="27.0" prefWidth="115.0" text="Enter hotel name:" />
                      </children></AnchorPane>
                </content>
             </Tab>
