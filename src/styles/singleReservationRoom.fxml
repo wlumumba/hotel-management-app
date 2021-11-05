@@ -1,54 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.singleReservationRoomController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.singleReservationRoomController">
    <children>
-      <TabPane layoutX="14.0" prefHeight="400.0" prefWidth="754.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="14.0" prefHeight="500.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-            <Tab text="Choose Room">
+            <Tab text="Create Reservation">
                <content>
                   <AnchorPane fx:id="singleReservationRoom" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="table_rooms" layoutX="1.0" prefHeight="284.0" prefWidth="581.0">
+                        <TableView fx:id="table_hotelR2" layoutY="-3.0" prefHeight="284.0" prefWidth="581.0">
                            <columns>
-                              <TableColumn fx:id="col_roomidR" minWidth="193.0" prefWidth="193.0" text="Room Number" />
-                              <TableColumn fx:id="col_bedtypeR" minWidth="193.0" prefWidth="193.0" text="Bed Type" />
-                              <TableColumn fx:id="col_roompriceR" minWidth="193.0" prefWidth="133.0" text="Price" />
+                              <TableColumn fx:id="col_id1" prefWidth="167.0" text="RoomType" />
+                              <TableColumn fx:id="col_type1" minWidth="0.0" prefWidth="0.0" />
+                              <TableColumn fx:id="col_std1" minWidth="0.0" prefWidth="222.0" text="Room" />
+                              <TableColumn fx:id="col_name1" prefWidth="133.0" text="Price" />
                            </columns>
                         </TableView>
-                        <TextField fx:id="roomR" layoutX="138.0" layoutY="314.0" prefHeight="27.0" prefWidth="153.0" promptText="Name of Room" />
-                        <Label layoutX="9.0" layoutY="314.0" prefHeight="27.0" prefWidth="137.0" text="Enter Room Number:" />
-                        <Label layoutX="320.0" layoutY="314.0" prefHeight="27.0" prefWidth="98.0" text="Enter Email:" />
-                        <TextField fx:id="emailR" layoutX="395.0" layoutY="308.0" prefHeight="39.0" prefWidth="170.0" promptText="Enter Email" />
-                        <Button fx:id="reserveButton" layoutX="598.0" layoutY="282.0" mnemonicParsing="false" onAction="#reserveButton" prefHeight="69.0" prefWidth="134.0" text="Reserve" />
-                        <Button fx:id="returnButton" layoutX="694.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnButton" text="Back" />
-                        <Label layoutX="592.0" layoutY="54.0" prefHeight="27.0" prefWidth="191.0" text="Maximum Price:">
+                        <TextField fx:id="roomR" layoutX="97.0" layoutY="310.0" prefHeight="27.0" prefWidth="194.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
                            <font>
                               <Font name="Georgia" size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="maxPrice" layoutX="593.0" layoutY="87.0" prefHeight="28.0" prefWidth="143.0" promptText="Maximum Price" />
-                        <Label layoutX="594.0" layoutY="129.0" prefHeight="27.0" prefWidth="186.0" text="Minimum Price:">
+                           </font></TextField>
+                        <Label layoutX="9.0" layoutY="314.0" prefHeight="27.0" prefWidth="106.0" text="Enter Room:" textFill="#2f60d0">
                            <font>
                               <Font name="Georgia" size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="minPrice" layoutX="589.0" layoutY="156.0" prefHeight="31.0" prefWidth="151.0" promptText="Minimum Price" />
-                        <Button fx:id="searchByPrice" layoutX="591.0" layoutY="209.0" mnemonicParsing="false" onAction="#reserveButton" prefHeight="9.0" prefWidth="147.0" text="Filter by Price" />
+                           </font></Label>
+                        <Label layoutX="320.0" layoutY="314.0" prefHeight="27.0" prefWidth="98.0" text="Enter Email:" textFill="#2f60d0">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></Label>
+                        <TextField fx:id="emailR" layoutX="409.0" layoutY="308.0" prefHeight="31.0" prefWidth="172.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></TextField>
+                        <Button fx:id="reserveButton" layoutX="623.0" layoutY="295.0" mnemonicParsing="false" onAction="#reserveButton" style="-fx-background-color: #2f60d0;" text="Reserve" textFill="WHITE">
+                           <font>
+                              <Font name="Georgia" size="16.0" />
+                           </font></Button>
+                        <TextField fx:id="endDate" layoutX="610.0" layoutY="240.0" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;" />
+                        <TextField fx:id="startDate" layoutX="609.0" layoutY="148.0" prefHeight="30.0" prefWidth="128.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;" />
+                        <Label layoutX="609.0" layoutY="105.0" prefHeight="27.0" prefWidth="117.0" text="Start Date:" textFill="#2f60d0">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="608.0" layoutY="195.0" prefHeight="27.0" prefWidth="106.0" text="End Date:" textFill="#2f60d0">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font></Label>
+                        <Button fx:id="returnButton" layoutX="657.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnButton" style="-fx-background-color: #2f60d0;" text="Return" textFill="WHITE">
+                           <font>
+                              <Font name="Georgia" size="16.0" />
+                           </font></Button>
                      </children></AnchorPane>
                </content>
             </Tab>

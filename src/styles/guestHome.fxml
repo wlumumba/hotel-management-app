@@ -4,16 +4,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.guestHomeController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.guestHomeController">
    <children>
-      <Label layoutX="264.0" layoutY="62.0" text="Guest Page">
+      <Label layoutX="356.0" layoutY="69.0" text="Guest Page" textFill="#2f60d0">
          <font>
             <Font name="Georgia" size="18.0" />
          </font></Label>
-      <TextArea layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" text="Here we will only implement &#10;the search function, will need&#10;to be logged in to reserve&#10;&#10;Loggin button top right, takes&#10;you back to loggin page" />
-      <Button fx:id="loginButton" layoutX="8.0" layoutY="2.0" mnemonicParsing="false" onAction="#guestLoginButtonClicked" text="Login">
+      <TextArea layoutX="300.0" layoutY="101.0" prefHeight="200.0" prefWidth="200.0" text="Here we will only implement &#10;the search function, will need&#10;to be logged in to reserve&#10;&#10;Loggin button top right, takes&#10;you back to loggin page" />
+      <Button fx:id="loginButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#guestLoginButtonClicked" style="-fx-background-color: #2f60d0;" text="Login" textFill="WHITE">
          <font>
-            <Font name="Georgia" size="18.0" />
+            <Font name="Georgia" size="16.0" />
          </font></Button>
    </children>
 </AnchorPane>
