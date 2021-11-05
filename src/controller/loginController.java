@@ -71,7 +71,6 @@ public class loginController {
             // RS should only contain 1 row, or NO ROW matched
             if(rs.next())
             {
-                // Fill User object
                 currentUser = new User(rs.getString("username"), rs.getString("firstname"), rs.getString("lastname"), rs.getString("email"), rs.getString("password"), rs.getInt("accType"));
 
                 // IF Customer: Switch to customer view

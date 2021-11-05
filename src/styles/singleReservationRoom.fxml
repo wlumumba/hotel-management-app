@@ -23,23 +23,32 @@
                <content>
                   <AnchorPane fx:id="singleReservationRoom" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="table_rooms" layoutY="-3.0" prefHeight="284.0" prefWidth="581.0">
+                        <TableView fx:id="table_rooms" layoutX="1.0" prefHeight="284.0" prefWidth="581.0">
                            <columns>
-                              <TableColumn fx:id="col_roomidR" prefWidth="167.0" text="Room Number" />
-                              <TableColumn fx:id="col_bedtypeR" minWidth="0.0" prefWidth="222.0" text="Bed Type" />
-                              <TableColumn fx:id="col_roompriceR" prefWidth="133.0" text="Price" />
+                              <TableColumn fx:id="col_roomidR" minWidth="193.0" prefWidth="193.0" text="Room Number" />
+                              <TableColumn fx:id="col_bedtypeR" minWidth="193.0" prefWidth="193.0" text="Bed Type" />
+                              <TableColumn fx:id="col_roompriceR" minWidth="193.0" prefWidth="133.0" text="Price" />
                            </columns>
                         </TableView>
                         <TextField fx:id="roomR" layoutX="138.0" layoutY="314.0" prefHeight="27.0" prefWidth="153.0" promptText="Name of Room" />
                         <Label layoutX="9.0" layoutY="314.0" prefHeight="27.0" prefWidth="137.0" text="Enter Room Number:" />
                         <Label layoutX="320.0" layoutY="314.0" prefHeight="27.0" prefWidth="98.0" text="Enter Email:" />
                         <TextField fx:id="emailR" layoutX="395.0" layoutY="308.0" prefHeight="39.0" prefWidth="170.0" promptText="Enter Email" />
-                        <Button fx:id="reserveButton" layoutX="624.0" layoutY="314.0" mnemonicParsing="false" onAction="#reserveButton" text="Reserve" />
-                        <TextField fx:id="endDate" layoutX="597.0" layoutY="232.0" prefHeight="39.0" prefWidth="118.0" promptText="End Date" />
-                        <TextField fx:id="startDate" layoutX="599.0" layoutY="139.0" prefHeight="39.0" prefWidth="113.0" promptText="Start Date" />
-                        <Label layoutX="598.0" layoutY="105.0" prefHeight="27.0" prefWidth="115.0" text="Start Date:" />
-                        <Label layoutX="599.0" layoutY="195.0" prefHeight="27.0" prefWidth="115.0" text="End Date:" />
-                        <Button fx:id="returnButton" layoutX="628.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnButton" text="Back" />
+                        <Button fx:id="reserveButton" layoutX="598.0" layoutY="282.0" mnemonicParsing="false" onAction="#reserveButton" prefHeight="69.0" prefWidth="134.0" text="Reserve" />
+                        <Button fx:id="returnButton" layoutX="694.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnButton" text="Back" />
+                        <Label layoutX="592.0" layoutY="54.0" prefHeight="27.0" prefWidth="191.0" text="Maximum Price:">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="maxPrice" layoutX="593.0" layoutY="87.0" prefHeight="28.0" prefWidth="143.0" promptText="Maximum Price" />
+                        <Label layoutX="594.0" layoutY="129.0" prefHeight="27.0" prefWidth="186.0" text="Minimum Price:">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="minPrice" layoutX="589.0" layoutY="156.0" prefHeight="31.0" prefWidth="151.0" promptText="Minimum Price" />
+                        <Button fx:id="searchByPrice" layoutX="591.0" layoutY="209.0" mnemonicParsing="false" onAction="#reserveButton" prefHeight="9.0" prefWidth="147.0" text="Filter by Price" />
                      </children></AnchorPane>
                </content>
             </Tab>

@@ -33,17 +33,23 @@ public class Functions {
     }
 
     /**** Fill choose room Table ****/
-    public static ObservableList<Room> populateAvailableRooms(int hotelID, int min, int max){
+    public static ObservableList<Room> populateAvailableRooms(String hotelID, String startDate, String endDate){
         ObservableList<Room> roomsList = FXCollections.observableArrayList();
 
         Connection connectDB = DBConnection.getConnection();
-        String selectQuery = "SELECT * FROM hotel_db.Room";//where Hotel_hotelID = ? and roomPrice > ? and roomPrice < ?";
+
+        //Remove all rooms that are booked during those dates for that hotel
+        String selectQuery = "select * from hotel_db.Room where roomID not in " +
+        "(select Room_roomID from hotel_db.Reservation where ? <= endDate and ? >= startDate) "+
+        "and Hotel_hotelID = ? " +
+        "order by bedType";
 
         try {
             PreparedStatement ps = connectDB.prepareStatement(selectQuery);
-//            ps.setInt(1, hotelID);
-//            ps.setInt(2, min);
-//            ps.setInt(3, max);
+            ps.setString(1, endDate);
+            ps.setString(2, startDate);
+            ps.setInt(3, Integer.parseInt(hotelID));
+
             ResultSet rs = ps.executeQuery();
 
             while(rs.next()){
@@ -65,7 +71,7 @@ public class Functions {
     {
         Connection connectDB = DBConnection.getConnection();
         //INSERT INTO `hotel_db`.`Reservation` (`reservationID`, `startDate`, `endDate`, `status`, `Room_roomID`, `Room_Hotel_hotelID`, `User_email`) VALUES ('1', '2', '3', '4', '5', '6', '7');
-        String insertQuery = "INSERT INTO hotel_db.Reservation (reservationID, startDate, endDate, status, Room_roomID, Room_Hotel_hotelID, User_email) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String insertQuery = "INSERT INTO hotel_db.Reservation (reservationID, startDate, endDate, status, Room_roomID, User_email) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         // Add a if statement to check if their are duplicates such as similar date or room ID possibly?
         try{
@@ -76,8 +82,7 @@ public class Functions {
             st.setString(3, r1.getEndDate());
             st.setBoolean(4, true);
             st.setInt(5, r1.getRoomID());
-            st.setInt(6, r1.getHotelID());
-            st.setString(7, r1.getUserEmail());
+            st.setString(6, r1.getUserEmail());
 
             //UPDATE hotel_db.Hotel SET hotelID = '', hotelName = '', hotelType = '', amenities = '', maxRooms = '', standardPrice = '', queenPrice = '', kingPrice = '' WHERE (hotelID = '');
 

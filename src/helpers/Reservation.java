@@ -3,15 +3,14 @@ package helpers;
 public class Reservation {
 
     //Instance variables
-    private int reservationID, roomID, hotelID;
+    private int reservationID, roomID;
     String startDate, endDate, userEmail;
     boolean status;
 
     //Default constructor
-    public Reservation(int reservationID, int roomID, int hotelID, String startDate, String endDate, String userEmail, boolean status) {
+    public Reservation(int reservationID, int roomID, String startDate, String endDate, String userEmail, boolean status) {
         this.reservationID = reservationID;
         this.roomID = roomID;
-        this.hotelID = hotelID;
         this.startDate = startDate;
         this.endDate = endDate;
         this.userEmail = userEmail;
@@ -25,10 +24,6 @@ public class Reservation {
 
     public int getRoomID() {
         return roomID;
-    }
-
-    public int getHotelID() {
-        return hotelID;
     }
 
     public String getStartDate() {
@@ -52,7 +47,6 @@ public class Reservation {
         return "Reservation {" +
                 "reservationID=" + reservationID +
                 ", roomID=" + roomID +
-                ", hotelID=" + hotelID +
                 ", startDate='" + startDate + '\'' +
                 ", endDate='" + endDate + '\'' +
                 ", userEmail='" + userEmail + '\'' +

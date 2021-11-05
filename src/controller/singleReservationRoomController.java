@@ -21,7 +21,9 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class singleReservationRoomController implements Initializable {
@@ -29,7 +31,7 @@ public class singleReservationRoomController implements Initializable {
     //Method called when screen is loaded
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        fillChooseRoomTable();
+        //fillChooseRoomTable() is called from adminHomeController!
     }
 
 
@@ -41,9 +43,9 @@ public class singleReservationRoomController implements Initializable {
     @FXML
     private TextField emailR;
     @FXML
-    private TextField startDate; //not sure about these yet
+    private TextField maxPrice; //not sure about these yet
     @FXML
-    private TextField endDate; //not sure about these yet
+    private TextField minPrice; //not sure about these yet
 
     @FXML
     private TableColumn<Room, Integer> col_roomidR;
@@ -54,17 +56,19 @@ public class singleReservationRoomController implements Initializable {
     @FXML
     private TableView<Room> table_rooms;
 
-    public void fillChooseRoomTable(){
+    public void fillChooseRoomTable(String[] values){
         col_roomidR.setCellValueFactory(new PropertyValueFactory<Room, Integer>("roomID"));
         col_bedtypeR.setCellValueFactory(new PropertyValueFactory<Room, String>("bedType"));
         col_roompriceR.setCellValueFactory(new PropertyValueFactory<Room, Integer>("roomPrice"));
 
-        //Must figure out how to pass in values from other controller!
-        table_rooms.setItems(Functions.populateAvailableRooms(-1, -1, -1));
+        System.out.println(Arrays.toString(values));
+
+        //Values are passed in from adminHomeController
+        table_rooms.setItems(Functions.populateAvailableRooms(values[0], values[1], values[2]));
     }
 
 
-    /**
+        /**
      * Maybe here check for account type or should it ask before? I think it should check
      * This Function will let the user select the room and then reserve the room.
      * Must provide a valid email and room

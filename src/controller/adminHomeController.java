@@ -20,6 +20,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -354,9 +355,9 @@ public class adminHomeController implements Initializable {
     @FXML
     private TextField hotelNameR;
     @FXML
-    private TextField maxPriceR;
+    private TextField startDate;
     @FXML
-    private TextField minPriceR;
+    private TextField endDate;
     @FXML
     private Label warningLabel;
 
@@ -368,71 +369,64 @@ public class adminHomeController implements Initializable {
     @FXML
     private void searchButtonClicked (ActionEvent event) throws IOException { //Event or ActionEvent?
         System.out.println("Reservation Search Button Clicked");
-        warningLabel.setText(""); // USED TO RESET THE LABEL
-        // Connection connectDB = DBConnection.getConnection();
+        int hotelID = -1;
+        //warningLabel.setText(""); // USED TO RESET THE LABEL
+
+
         System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
+
         try {
+            //Error check user entered HotelName
            for (int i = 0; i < hotelList.size(); i++) {
             //   System.out.println("HOTEL LIST: " + hotelList.get(i).getHotelName() + "\n");
 
-
                if ((hotelNameR.getText().isEmpty()) || (hotelList.get(i).getHotelName().equals(hotelNameR.getText()))) { //it still verify correct hotel yet
                    System.out.println("Please enter a valid hotel\n");
-                   warningLabel.setText("Enter a valid hotel");
                }
            }
-            if (maxPriceR.getText().isEmpty() || (!isNumeric(maxPriceR.getText()))) {
-                System.out.println("Please enter a valid Max Price\n");
-                warningLabel.setText("Enter a valid Max Price");
+
+           //Error check user startDate and endDate
+            final java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy/MM/dd");
+            if (startDate.getText() != null || endDate.getText() != null) {
+                sdf.parse(startDate.getText());
+                sdf.parse(endDate.getText());
             }
-            else if (minPriceR.getText().isEmpty() || (!isNumeric(minPriceR.getText()))) {
-                    System.out.println("Please enter a valid Min price\n");
-                    warningLabel.setText("Enter a valid Min Price");
+            else{
+                throw new ParseException("Empty", -1);
             }
-            else if (Integer.parseInt(minPriceR.getText()) > Integer.parseInt(maxPriceR.getText())) {
-                System.out.println("Please enter a valid Max price\n");
-                warningLabel.setText("Enter a valid Max Price");
-            }
-            else {
-                    //compare to the SQL DATABASE FOR CORRECT HOTEL AND PRICE RANGE
+
+                //compare to the SQL DATABASE FOR CORRECT HOTEL AND PRICE RANGE
                     // DISPLAY IT IN NEXT STAGE
                 System.out.println("Searching User Input");
 
-                Node node = (Node) event.getSource();
-                Stage stage = (Stage)node.getScene().getWindow();
-                stage.close();
+                //Get hotelID of user entered hotelName
+                for(Hotel h : hotelList){
+                    if(h.getHotelName().equalsIgnoreCase(hotelNameR.getText()))
+                        hotelID = h.getHotelID();
+                }
 
+                //Pass hotelID, startDate, endDate to fill table of next scene
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/styles/singleReservationRoom.fxml"));
                 Parent root = loader.load();
-                Scene scene = new Scene(root, 800,800);
-                scene.getStylesheets().add(getClass().getResource("/styles/singleReservationRoom.fxml").toExternalForm());
-                stage.setScene(scene);
-                singleReservationRoomController conR = loader.getController();
 
-                stage.show();
+                singleReservationRoomController scene2 = loader.getController();
+                scene2.fillChooseRoomTable(new String[]{String.valueOf(hotelID), startDate.getText(), endDate.getText()});
 
+                Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene newScene = new Scene(root);
+                currentStage.setScene(newScene);
 
+                currentStage.show();
 
-
-
-
-
-              /*  Stage stage;
-                Scene scene;
-                Parent root;
-
-                root = FXMLLoader.load((getClass().getResource("/styles/singleReservationRoom.fxml"))); //changed to new fxml
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                scene = new Scene((root));
-
-                stage.setScene((scene));
-                stage.show();*/
-            }
         }
         catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error in searchButtonClicked ");
         }
+        catch(ParseException e){
+            System.out.println("Date in wrong format! Should be YYYY/MM/DD");
+        }
+
     }
 
     @FXML
@@ -450,8 +444,9 @@ public class adminHomeController implements Initializable {
         col_HotelR.setCellValueFactory(new PropertyValueFactory<Hotel, String>("hotelName"));
         col_HotelTypeR.setCellValueFactory(new PropertyValueFactory<Hotel, String>("hotelType"));
         col_AmenitiesR.setCellValueFactory(new PropertyValueFactory<Hotel, String>("amenities"));
+
         hotelList = Functions.populateHotelTable();
-        table_hotelR.setItems(Functions.populateHotelTable());
+        table_hotelR.setItems(hotelList);
     }
 
     /****************************************** LOGOUT TAB ******************************************/
@@ -461,7 +456,7 @@ public class adminHomeController implements Initializable {
     @FXML
     void adminLogoutButtonClicked(ActionEvent event) throws IOException {
 
-        System.out.println("going back to loggin");
+        System.out.println("Going back to login");
         Stage stage;
         Scene scene;
         Parent root;
