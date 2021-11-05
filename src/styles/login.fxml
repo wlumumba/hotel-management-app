@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import de.jensd.fx.glyphs.fontawesome.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.loginController">
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #2f60d0;" BorderPane.alignment="CENTER">
          <children>
@@ -20,19 +21,19 @@
    <right>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField layoutX="126.0" layoutY="205.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+            <TextField fx:id="userNameLog" layoutX="126.0" layoutY="205.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
                <font>
                   <Font name="Georgia" size="14.0" />
                </font>
             </TextField>
-            <PasswordField layoutX="126.0" layoutY="262.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+            <PasswordField fx:id="passwordLog" layoutX="126.0" layoutY="262.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
                <font>
                   <Font name="Georgia" size="14.0" />
                </font>
             </PasswordField>
             <FontAwesomeIcon fill="#2f60d0" glyphName="USER" layoutX="90.0" layoutY="227.0" size="20" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
             <FontAwesomeIcon fill="#2f60d0" glyphName="KEY" layoutX="88.0" layoutY="283.0" size="20" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Button layoutX="161.0" layoutY="340.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="77.0" style="-fx-background-color: #2f60d0;" text="Login" textFill="WHITE">
+            <Button layoutX="161.0" layoutY="340.0" mnemonicParsing="false" onAction="#customerButtonClicked" prefHeight="35.0" prefWidth="77.0" style="-fx-background-color: #2f60d0;" text="Login" textFill="WHITE">
                <font>
                   <Font name="Georgia" size="16.0" />
                </font>
