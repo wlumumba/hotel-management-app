@@ -21,6 +21,9 @@ public class Reservation {
     public int getReservationID() {
         return reservationID;
     }
+    public int setReservationID(int reservationID) {
+        return reservationID;
+    }
 
     public int getRoomID() {
         return roomID;

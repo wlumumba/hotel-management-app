@@ -593,11 +593,11 @@ public class adminHomeController implements Initializable {
 
     private Reservation reserve; //not sure
     @FXML
-    void submitERButtonClicked(ActionEvent event) {
+    void submitERButtonClicked(ActionEvent event) throws IOException {
         System.out.println("Edit Reservation Submit Button Clicked");
         int roomID = -1;
         int hotelID = -1;
-        Connection connectDB = DBConnection.getConnection();
+        Connection connectDB = DBConnection.getConnection(); // do you need this?
 
         String reservationQuery = "SELECT * FROM hotel_db.Reservation";
 
@@ -633,7 +633,10 @@ public class adminHomeController implements Initializable {
 
             //Get hotelID of the user after verifying the reservationID then roomID to get the right hotelID
             /**********THINK IF THE RESERVATIONS EQUAL THEN YOU HAVE THE ROOM, BUT YOU NEED TO KNOW WHICH HOTEL ITS A PART OF TO LOOK THROUGH*******/
-            for(Reservation r : reservationList){
+            /******error here as well*****/
+
+            for(Reservation r : reservationList){ //error is here since hotelID stays as -1
+                System.out.println("R HERE: " + reservationList.get(r.getReservationID()));
                 if (r.getReservationID() == Integer.parseInt(currentResID.getText())) {
                     roomID = r.getRoomID();
                     for (Room re : roomList) {
@@ -670,8 +673,34 @@ public class adminHomeController implements Initializable {
     private TextField deleteResId;
 
     @FXML
-    void deleteERButtonClicked(ActionEvent event) {
+    void deleteERButtonClicked(ActionEvent event) throws IOException {
+        System.out.println("Edit Reservation delete Button Clicked");
 
+        Connection connectDB = DBConnection.getConnection();
+
+        String reservationQuery = "SELECT * FROM hotel_db.Reservation";
+
+        // reserve.getReservationID();
+        //warningLabel.setText(""); // USED TO RESET THE LABEL
+
+        System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
+
+        //Error check to see if Reservation ID exists//Should there be a safeguard? like if RESERVATION ID is equal to EMAIL under admin?
+        //could it be I populated reservationList wrong or roomList wrong?
+        for (int i = 0; i < reservationList.size(); i++) { //error begins here //checks if its not correct to begin with. not sure if its needed or at least if its not empty?
+            System.out.println("ResList: " + reservationList.get(i) + " ");
+            if (currentResID.getText().isEmpty() || reservationList.get(i).getReservationID() != Integer.parseInt(currentResID.getText())) { //needs to check with list from reservation
+                System.out.println("Please enter a valid reservation ID\n");
+            }
+        }
+        for (Reservation r : reservationList) { //error is here since hotelID stays as -1
+            System.out.println("R HERE: " + reservationList.get(r.getReservationID()));
+            /*if (r.getReservationID() == Integer.parseInt(currentResID.getText())) {
+                //r.setReservationID(0);
+                //set values to NULL? 0 or how to delete
+            }*/
+
+        }
     }
 
     /***********************************************************************/
