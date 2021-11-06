@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminHomeController">
+<AnchorPane prefHeight="483.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminHomeController">
    <children>
-      <TabPane layoutX="14.0" prefHeight="500.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="500.0" prefWidth="920.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab fx:id="h" text="Add Hotel">
             <content>
@@ -154,7 +155,7 @@
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></Label>
-                        <Button fx:id="searchButton" layoutX="66.0" layoutY="295.0" mnemonicParsing="false" onAction="#searchButtonClicked" text="Search">
+                        <Button fx:id="searchButton" layoutX="66.0" layoutY="295.0" mnemonicParsing="false" onAction="#searchButtonClicked" prefHeight="31.0" prefWidth="72.0" text="Search">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></Button>
@@ -167,7 +168,46 @@
             </Tab>
             <Tab text="Edit Reservation">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="currentResId" layoutX="307.0" layoutY="86.0" prefHeight="27.0" prefWidth="187.0" promptText="RESERVATION ID" />
+                        <TextField fx:id="newStartDate" layoutX="308.0" layoutY="143.0" prefHeight="39.0" prefWidth="185.0" promptText="Start Date" />
+                        <TextField fx:id="newEndDate" layoutX="309.0" layoutY="208.0" prefHeight="39.0" prefWidth="183.0" promptText="End Date" />
+                        <Label layoutX="39.0" layoutY="88.0" prefHeight="34.0" prefWidth="252.0" text="ENTER CURRENT RESERVATION ID:">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="39.0" layoutY="149.0" prefHeight="27.0" prefWidth="217.0" text="Enter New Start Date:" />
+                        <Label layoutX="39.0" layoutY="214.0" prefHeight="27.0" prefWidth="184.0" text="Enter New End Date:" />
+                        <Button fx:id="modifyButton" layoutX="582.0" layoutY="212.0" mnemonicParsing="false" onAction="#modifyButtonClicked" prefHeight="31.0" prefWidth="99.0" text="SUBMIT">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="deleteResId" layoutX="310.0" layoutY="365.0" prefHeight="39.0" prefWidth="182.0" promptText="RESERVATION ID" />
+                        <Label layoutX="264.0" layoutY="284.0" prefHeight="27.0" prefWidth="273.0" text="DELETE CURRENT RESERVATION">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="39.0" layoutY="371.0" prefHeight="27.0" prefWidth="201.0" text="ENTER RESERVATION ID:">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="deleteButton" layoutX="582.0" layoutY="369.0" mnemonicParsing="false" onAction="#deleteButtonClicked" prefHeight="31.0" prefWidth="99.0" text="DELETE">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font>
+                        </Button>
+                        <Separator layoutX="13.0" layoutY="249.0" prefHeight="28.0" prefWidth="775.0" />
+                        <Label layoutX="265.0" layoutY="14.0" prefHeight="27.0" prefWidth="273.0" text="CHANGE CURRENT RESERVATION">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
                </content>
             </Tab>
             <Tab text="Add Account">
@@ -210,17 +250,6 @@
                         <Text fx:id="foutputForButton" layoutX="560.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                         <Label fx:id="labelAdminOuput" layoutX="544.0" layoutY="274.0" prefHeight="40.0" prefWidth="196.0" />
                         <Label fx:id="errorAdminOutput" layoutX="462.0" layoutY="127.0" prefHeight="40.0" prefWidth="196.0" />
-                     </children></AnchorPane>
-               </content>
-            </Tab>
-            <Tab text="Logout">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Button layoutX="52.0" layoutY="34.0" mnemonicParsing="false" onAction="#adminLogoutButtonClicked" text="Logout">
-                           <font>
-                              <Font name="Georgia" size="18.0" />
-                           </font></Button>
                      </children></AnchorPane>
                </content>
             </Tab>
@@ -269,6 +298,17 @@
                      </children>
                   </AnchorPane>
               </content>
+            </Tab>
+            <Tab text="Logout">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="52.0" layoutY="34.0" mnemonicParsing="false" onAction="#adminLogoutButtonClicked" text="Logout">
+                           <font>
+                              <Font name="Georgia" size="18.0" />
+                           </font></Button>
+                     </children></AnchorPane>
+               </content>
             </Tab>
         </tabs>
       </TabPane>
