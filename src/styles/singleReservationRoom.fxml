@@ -9,7 +9,7 @@
    <children>
       <TabPane layoutX="14.0" prefHeight="500.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-            <Tab text="Create Reservation">
+            <Tab text="Reservation">
                <content>
                   <AnchorPane fx:id="singleReservationRoom" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -58,16 +58,6 @@
                            </font>
                         </Label>
                      </children></AnchorPane>
-               </content>
-            </Tab>
-            <Tab text="Edit Reservation">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-            <Tab text="Cancel Reservation">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                </content>
             </Tab>
         </tabs>
