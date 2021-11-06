@@ -608,7 +608,7 @@ public class adminHomeController implements Initializable {
 
         try {
             //Error check to see if Reservation ID exists//Should there be a safeguard? like if RESERVATION ID is equal to EMAIL under admin?
-
+            //could it be I populated reservationList wrong or roomList wrong?
             for (int i = 0; i < reservationList.size(); i++) {
                 if (currentResID.getText().isEmpty() || reservationList.get(i).getReservationID() != Integer.parseInt(currentResID.getText())) { //needs to check with list from reservation
                     System.out.println("Please enter a valid reservation ID\n");
