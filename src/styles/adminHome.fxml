@@ -170,7 +170,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="currentResId" layoutX="307.0" layoutY="86.0" prefHeight="27.0" prefWidth="187.0" promptText="RESERVATION ID" />
+                        <TextField fx:id="currentResID" layoutX="307.0" layoutY="86.0" prefHeight="27.0" prefWidth="187.0" promptText="RESERVATION ID" />
                         <TextField fx:id="newStartDate" layoutX="308.0" layoutY="143.0" prefHeight="39.0" prefWidth="185.0" promptText="Start Date" />
                         <TextField fx:id="newEndDate" layoutX="309.0" layoutY="208.0" prefHeight="39.0" prefWidth="183.0" promptText="End Date" />
                         <Label layoutX="39.0" layoutY="88.0" prefHeight="34.0" prefWidth="252.0" text="ENTER CURRENT RESERVATION ID:">
@@ -180,7 +180,7 @@
                         </Label>
                         <Label layoutX="39.0" layoutY="149.0" prefHeight="27.0" prefWidth="217.0" text="Enter New Start Date:" />
                         <Label layoutX="39.0" layoutY="214.0" prefHeight="27.0" prefWidth="184.0" text="Enter New End Date:" />
-                        <Button fx:id="modifyButton" layoutX="582.0" layoutY="212.0" mnemonicParsing="false" onAction="#modifyButtonClicked" prefHeight="31.0" prefWidth="99.0" text="SUBMIT">
+                        <Button fx:id="submitERButton" layoutX="582.0" layoutY="212.0" mnemonicParsing="false" onAction="#submitERButtonClicked" prefHeight="31.0" prefWidth="99.0" text="SUBMIT">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font>
@@ -196,7 +196,7 @@
                               <Font name="Georgia" size="14.0" />
                            </font>
                         </Label>
-                        <Button fx:id="deleteButton" layoutX="582.0" layoutY="369.0" mnemonicParsing="false" onAction="#deleteButtonClicked" prefHeight="31.0" prefWidth="99.0" text="DELETE">
+                        <Button fx:id="deleteERButton" layoutX="582.0" layoutY="369.0" mnemonicParsing="false" onAction="#deleteERButtonClicked" prefHeight="31.0" prefWidth="99.0" text="DELETE">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font>

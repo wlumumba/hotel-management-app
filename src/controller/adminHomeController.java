@@ -583,8 +583,26 @@ public class adminHomeController implements Initializable {
     }
 
     /***************************EDIT RESERVATION TAB************************/
+    @FXML
+    private TextField currentResID;
+    @FXML
+    private TextField newStartDate;
+    @FXML
+    private TextField newEndDate;
+
+    @FXML
+    void submitERButtonClicked(ActionEvent event) {
 
 
+    }
+    /*********************/
+    @FXML
+    private TextField deleteResId;
+
+    @FXML
+    void deleteERButtonClicked(ActionEvent event) {
+
+    }
 
     /***********************************************************************/
 } //PUBLIC CLASS END
