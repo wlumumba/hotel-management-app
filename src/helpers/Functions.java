@@ -93,4 +93,51 @@ public class Functions {
         }
     }
 
+
+
+/***Meant to add the reservations to a list**/
+    public static ObservableList<Reservation> reservationList(){
+        ObservableList<Reservation> reservationList = FXCollections.observableArrayList();
+
+        Connection connectDB = DBConnection.getConnection();
+        String selectQuery = "SELECT * FROM hotel_db.Reservation";
+
+        try {
+            PreparedStatement ps = connectDB.prepareStatement(selectQuery);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                Reservation reservation = new Reservation(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4),rs.getString(5),rs.getBoolean(6));
+            }
+
+        } catch (Exception e){
+            System.out.println(e);
+        }
+
+        return reservationList();
+    }
+
+
+    /*  /***Meant to add the rooms to a list
+     * However is this needed or could we just use a column to reservation for hotelID and bypass this for reservation edit?**//*
+    public static ObservableList<Reservation> createReservationList(){
+        ObservableList<Room> roomList = FXCollections.observableArrayList();
+
+        Connection connectDB = DBConnection.getConnection();
+        String selectQuery = "SELECT * FROM hotel_db.Room";
+
+        try {
+            PreparedStatement ps = connectDB.prepareStatement(selectQuery);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                Room room = new Room(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4));
+            }
+
+        } catch (Exception e){
+            System.out.println(e);
+        }
+
+        return roomList();
+    }*/
 }

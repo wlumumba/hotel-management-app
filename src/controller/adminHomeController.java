@@ -29,6 +29,9 @@ public class adminHomeController implements Initializable {
     public User currentUser;
     public Hotel currentHotel;
     public ObservableList<Hotel> hotelList;
+    public ObservableList<Reservation> reservationList;
+    public ObservableList<Room> roomList;
+
 
     //FXML Variables
     @FXML
@@ -126,8 +129,6 @@ public class adminHomeController implements Initializable {
     //labels
     @FXML
     private Label labelAdminOuput;
-
-    private boolean counter = true;
 
     /********************** Initialize method called when screen is loaded ************************/
     @Override
@@ -502,31 +503,31 @@ public class adminHomeController implements Initializable {
      * Maybe here check for account type or should it ask before? I think it should check
      * This Function will let the user select the room and then reserve the room.
      * Must provide a valid email and room
-     *//*
-    @FXML
+     */
+   /* @FXML
     private void reserveButton(ActionEvent event) throws IOException  {
-        System.out.println("Reserve Room Button");
+        System.out.println("Reserve Room Button");*/
       //  try {
-            if (emailR.getText().isEmpty()) {  //|| (hotelList.equals(hotelNameR.getText()))) { //may be incorrect
+           /* if (emailR.getText().isEmpty()) {  //|| (hotelList.equals(hotelNameR.getText()))) { //may be incorrect
                 System.out.println("Please enter a valid email\n");
                 warningLabel.setText("Enter a valid email");
             } else if (roomR.getText().isEmpty() || (!isNumeric(maxPriceR.getText()))) {
                 System.out.println("Please enter a valid Room\n");
                 warningLabel.setText("Enter a valid Room");
-            }
+            }*/
             //MAYBE ASK USER TO SELECT FROM CALENDAR OR THE USER MUST PUT START DATE IN MONTH/DAY
             //THEN END DATE MONTH/DAY AND THEN HAVE A DATABASE/RESERVATION FOR THE USER FOR THAT ROOM?
             //THIS WILL HAVE TO CHECK IF ROOM IS AVAILABLE IF TRUE ELSE DON'T DISPLAY AND WAIT UNTIL ROOM IS AVAILABLE?
             //DOES THIS HAVE TO BE IN REAL TIME?
 
-     //   }
-       *//* catch (IOException e) {
+       // }
+       /*//* catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error in ReserveButton");
         }*//*
 
     }
-
+*/
     @FXML
     private void returnButton(ActionEvent event) throws IOException {
         System.out.println("Returning to Home Admin");
@@ -546,7 +547,7 @@ public class adminHomeController implements Initializable {
                     e.printStackTrace();
                     System.out.println("Error in searchButtonClicked ");
                 }
-    }*/
+    }
 
     /******************************************************************************************************/
 
@@ -590,9 +591,77 @@ public class adminHomeController implements Initializable {
     @FXML
     private TextField newEndDate;
 
+    private Reservation reserve; //not sure
     @FXML
     void submitERButtonClicked(ActionEvent event) {
+        System.out.println("Edit Reservation Submit Button Clicked");
+        int roomID = -1;
+        int hotelID = -1;
+        Connection connectDB = DBConnection.getConnection();
 
+        String reservationQuery = "SELECT * FROM hotel_db.Reservation";
+
+       // reserve.getReservationID();
+        //warningLabel.setText(""); // USED TO RESET THE LABEL
+
+        System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
+
+        try {
+            //Error check to see if Reservation ID exists//Should there be a safeguard? like if RESERVATION ID is equal to EMAIL under admin?
+
+            for (int i = 0; i < reservationList.size(); i++) {
+                if (currentResID.getText().isEmpty() || reservationList.get(i).getReservationID() != Integer.parseInt(currentResID.getText())) { //needs to check with list from reservation
+                    System.out.println("Please enter a valid reservation ID\n");
+                }
+            }
+
+            //Error checked user startDate and endDate
+            final java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy/MM/dd");
+            if (!startDate.getText().isEmpty() || !endDate.getText().isEmpty()) {
+                sdf.parse(startDate.getText());
+                sdf.parse(endDate.getText());
+            }
+            else{
+                //If user specifies no date range
+                startDate.setText("0000/00/00");
+                endDate.setText("9999/00/00");
+            }
+
+            //compare to the SQL DATABASE FOR CORRECT HOTEL AND PRICE RANGE
+            System.out.println("Searching User Input");
+
+            //Get hotelID of the user after verifying the reservationID then roomID to get the right hotelID
+            /**********THINK IF THE RESERVATIONS EQUAL THEN YOU HAVE THE ROOM, BUT YOU NEED TO KNOW WHICH HOTEL ITS A PART OF TO LOOK THROUGH*******/
+            for(Reservation r : reservationList){
+                if (r.getReservationID() == Integer.parseInt(currentResID.getText())) {
+                    roomID = r.getRoomID();
+                    for (Room re : roomList) {
+                        if (re.getRoomID() == roomID) {
+                            hotelID = re.getHotelID();
+                        }
+                    }
+                }
+            }
+
+            //Pass hotelID, startDate, endDate to fill table of next scene
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/styles/singleReservationRoom.fxml"));
+            Parent root = loader.load();
+            singleReservationRoomController scene2 = loader.getController();
+            scene2.fillChooseRoomTable(new String[]{String.valueOf(hotelID), startDate.getText(), endDate.getText()});
+
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene newScene = new Scene(root);
+            currentStage.setScene(newScene);
+            currentStage.show();
+
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error in submitButtonClicked ");
+        }
+        catch(ParseException e){
+            System.out.println("Date in wrong format! Should be YYYY/MM/DD");
+        }
 
     }
     /*********************/
