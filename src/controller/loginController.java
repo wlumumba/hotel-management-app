@@ -2,6 +2,7 @@ package controller;
 
 import helpers.DBConnection;
 import helpers.User;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -177,6 +178,21 @@ public class loginController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    void createAccountLinkClicked(ActionEvent event) throws IOException {
+
+        Stage stage;
+        Scene scene;
+        Parent root;
+
+        root = FXMLLoader.load(getClass().getResource("/styles/createAccount.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
     }
 
 }
