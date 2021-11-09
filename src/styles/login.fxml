@@ -61,7 +61,6 @@
                </font>
             </Text>
             <Button layoutX="355.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
-            <FontAwesomeIcon fill="#2f60d0" glyphName="CLOSE" layoutX="371.0" layoutY="29.0" size="18" strokeType="OUTSIDE" strokeWidth="0.0" />
             <Label fx:id="errorText" alignment="CENTER" layoutX="82.0" layoutY="176.0" prefHeight="17.0" prefWidth="239.0" textFill="RED" />
          </children>
       </AnchorPane>

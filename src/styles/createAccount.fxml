@@ -50,7 +50,6 @@
                     </font>
                 </Text>
                 <Button layoutX="355.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
-                <FontAwesomeIcon fill="#2f60d0" glyphName="CLOSE" layoutX="371.0" layoutY="29.0" size="18" strokeType="OUTSIDE" strokeWidth="0.0" />
             <TextField fx:id="firstNameCreate" layoutX="125.0" layoutY="260.0" prefHeight="25.0" prefWidth="184.0" promptText="First Name" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
                <font>
                   <Font name="Georgia" size="14.0" />
@@ -67,7 +66,7 @@
                </font>
             </TextField>
             <FontAwesomeIcon fill="#2f60d0" glyphName="ENVELOPE" layoutX="88.0" layoutY="395.0" size="20" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Button fx:id="returnButton" layoutX="295.0" layoutY="22.0" mnemonicParsing="false" onAction="#returnButtonClicked" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #2f60d0;" text="Return" textFill="WHITE">
+            <Button fx:id="returnButton" layoutX="295.0" layoutY="9.0" mnemonicParsing="false" onAction="#returnButtonClicked" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #2f60d0;" text="Return" textFill="WHITE">
                <font>
                   <Font name="Georgia" size="16.0" />
                </font>
