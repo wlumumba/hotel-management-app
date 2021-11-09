@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -31,6 +32,12 @@ public class createAccountController {
     private Button createButton;
 
     @FXML
+    private Label errorText;
+
+    @FXML
+    private Label successText;
+
+    @FXML
     private TextField firstNameCreate;
 
     @FXML
@@ -44,6 +51,8 @@ public class createAccountController {
 
     @FXML
     void createButtonClicked(ActionEvent e) throws IOException {
+        errorText.setText(" ");
+        successText.setText(" ");
 
         System.out.println("create login button");
         Alert a = new Alert(Alert.AlertType.NONE);
@@ -52,39 +61,23 @@ public class createAccountController {
         //Check for empty fields
         if(userNameCreate.getText().isEmpty()) {
             System.out.println("Please enter Username");
-
-            a.setAlertType(Alert.AlertType.ERROR);
-            a.setContentText("Please enter Username");
-            a.setTitle("Missing Input");
-            a.show();
+            errorText.setText("Please enter Username");
         }
         else if (passwordCreate.getText().isEmpty()) {
             System.out.println("Please enter Password");
-            a.setAlertType(Alert.AlertType.ERROR);
-            a.setContentText("Please enter Password");
-            a.setTitle("Missing Input");
-            a.show();
+            errorText.setText("Please enter Password");
         }
         else if (firstNameCreate.getText().isEmpty()) {
             System.out.println("Please enter First Name");
-            a.setAlertType(Alert.AlertType.ERROR);
-            a.setContentText("Please enter First Name");
-            a.setTitle("Missing Input");
-            a.show();
+            errorText.setText("Please enter First Name");
         }
         else if (lastNameCreate.getText().isEmpty()) {
             System.out.println("Please enter Last Name");
-            a.setAlertType(Alert.AlertType.ERROR);
-            a.setContentText("Please enter Last Name");
-            a.setTitle("Missing Input");
-            a.show();
+            errorText.setText("Please enter Last Name");
         }
         else if (emailCreate.getText().isEmpty()) {
             System.out.println("Please enter Email");
-            a.setAlertType(Alert.AlertType.ERROR);
-            a.setContentText("Please enter Email");
-            a.setTitle("Missing Input");
-            a.show();
+            errorText.setText("Please enter Email");
         }
         else {
 
@@ -105,6 +98,8 @@ public class createAccountController {
                 statement.executeUpdate();
 
                 System.out.println("Success Inserted " + currentUser.toString());
+                successText.setText("Account Created!");
+
 
 
 
@@ -118,6 +113,7 @@ public class createAccountController {
 
             catch (SQLIntegrityConstraintViolationException ex) {
                 System.out.println("Username taken! Try another one");
+                errorText.setText("Username Taken");
 
 
 
@@ -125,6 +121,7 @@ public class createAccountController {
             catch (SQLException ex) {
                 ex.printStackTrace();
                 System.out.println("Error: Failed to insert to DB");
+                errorText.setText("Erro 4542234");
 
             }
 

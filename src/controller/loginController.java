@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -42,11 +43,15 @@ public class loginController {
     private TextField lastNameCreate;
     @FXML
     private TextField emailCreate;
+    @FXML
+    private Label errorText;
 
 
     @FXML
     public void customerButtonClicked(Event e) throws IOException {
         System.out.println("customer/admin login");
+        errorText.setText(" ");
+
         Parent newHome;
         Scene newScene;
 
@@ -95,9 +100,10 @@ public class loginController {
                 currentStage.show();
 
             }
-            else
+            else {
+                errorText.setText("Incorrect username or password");
                 throw new EOFException("No row matched: incorrect login");
-
+            }
         }
         // Catch block for incorrect login
         catch (EOFException ex){
@@ -105,80 +111,11 @@ public class loginController {
         }
         catch (SQLException ex) {
             ex.printStackTrace();
+            errorText.setText("Error: 56240876");
             System.out.println("Error: Failed to query database for that input");
         }
     }
 
-    @FXML
-    public void createButtonClicked(Event e) throws IOException {
-        System.out.println("create login button");
-
-        //Check for empty fields
-        if(userNameCreate.getText().isEmpty()) {
-            System.out.println("Please enter Username");
-        }
-        else if (passwordCreate.getText().isEmpty()) {
-            System.out.println("Please enter Password");
-        }
-        else if (firstNameCreate.getText().isEmpty()) {
-            System.out.println("Please enter First Name");
-        }
-        else if (lastNameCreate.getText().isEmpty()) {
-            System.out.println("Please enter Last Name");
-        }
-        else if (emailCreate.getText().isEmpty()) {
-            System.out.println("Please enter Email");
-        }
-        else {
-
-            currentUser = new User(userNameCreate.getText(), firstNameCreate.getText(), lastNameCreate.getText(), emailCreate.getText(), passwordCreate.getText(), 0);
-
-            //Launch DB instance
-            Connection connectDB = DBConnection.getConnection();
-            String insertQuery = "INSERT INTO hotel_db.User (username, firstname, lastname, email, password, accType) VALUES (?, ?, ?, ?, ?, 0)";
-
-            try {
-                //Create statement, fill empty fields
-                PreparedStatement statement = connectDB.prepareStatement(insertQuery);
-                statement.setString(1, currentUser.getUserName());
-                statement.setString(2, currentUser.getFirstName());
-                statement.setString(3, currentUser.getLastName());
-                statement.setString(4, currentUser.getEmail());
-                statement.setString(5, currentUser.getPassword());
-                statement.executeUpdate();
-
-                System.out.println("Success Inserted " + currentUser.toString());
-
-                //Clear ALL text fields
-                userNameCreate.clear();
-                passwordCreate.clear();
-                firstNameCreate.clear();
-                lastNameCreate.clear();
-                emailCreate.clear();
-            }
-            catch (SQLIntegrityConstraintViolationException ex) {
-                System.out.println("Username taken! Try another one");
-            }
-            catch (SQLException ex) {
-                ex.printStackTrace();
-                System.out.println("Error: Failed to insert to DB");
-            }
-        }
-    }
-
-    @FXML
-    public void guestButtonClicked(Event e) throws IOException {
-
-        Stage stage;
-        Scene scene;
-        Parent root;
-
-        root = FXMLLoader.load(getClass().getResource("/styles/guestHome.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 
     @FXML
     void createAccountLinkClicked(ActionEvent event) throws IOException {
