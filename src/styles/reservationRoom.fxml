@@ -38,7 +38,7 @@
                            </font></TextField>
                         <Button fx:id="reserveButton" layoutX="638.0" layoutY="295.0" mnemonicParsing="false" onAction="#reserveButton" style="-fx-background-color: #2f60d0;" text="Reserve" textFill="WHITE">
                            <font>
-                              <Font name="Georgia" size="14.0" />
+                              <Font name="Georgia" size="16.0" />
                            </font></Button>
                         <TextField fx:id="endDate" layoutX="613.0" layoutY="222.0" prefHeight="31.0" prefWidth="118.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
                            <font>
@@ -58,7 +58,7 @@
                            </font></Label>
                         <Button fx:id="returnButton" layoutX="722.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnButton" style="-fx-background-color: #2f60d0;" text="Return" textFill="WHITE">
                            <font>
-                              <Font name="Georgia" size="14.0" />
+                              <Font name="Georgia" size="16.0" />
                            </font></Button>
                      </children></AnchorPane>
                </content>
@@ -78,39 +78,39 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TextArea layoutX="569.0" layoutY="244.0" prefHeight="200.0" prefWidth="200.0" text="Here is the admin home page&#10;Functions&#10; * add hotel&#10; * add room&#10; * cancel reservation&#10; * edit reservation?&#10; * add another admin user&#10;&#10;loggout button top right, takes&#10;back to loggin scene&#10;" />
-                        <TextField fx:id="hotelNameField" layoutX="53.0" layoutY="39.0" promptText="hotelName">
+                        <TextField fx:id="hotelNameField" layoutX="53.0" layoutY="39.0" promptText="hotelName" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="hotelTypeField" layoutX="53.0" layoutY="86.0" promptText="hotelType">
+                        <TextField fx:id="hotelTypeField" layoutX="53.0" layoutY="86.0" promptText="hotelType" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="amenitiesField" layoutX="52.0" layoutY="137.0" prefHeight="27.0" prefWidth="207.0" promptText="Amenities (comma separated)">
+                        <TextField fx:id="amenitiesField" layoutX="52.0" layoutY="137.0" prefHeight="27.0" prefWidth="207.0" promptText="Amenities (comma separated)" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></TextField>
-                        <Button fx:id="addHotelButton" layoutX="289.0" layoutY="280.0" mnemonicParsing="false" onAction="#addHotelButtonClicked" text="Create">
+                        <Button fx:id="addHotelButton" layoutX="289.0" layoutY="280.0" mnemonicParsing="false" onAction="#addHotelButtonClicked" style="-fx-background-color: #2f60d0;" text="Create" textFill="WHITE">
                            <font>
-                              <Font name="Georgia" size="14.0" />
+                              <Font name="Georgia" size="16.0" />
                            </font></Button>
-                        <TextField fx:id="maxRoomsField" layoutX="52.0" layoutY="183.0" prefHeight="27.0" prefWidth="187.0" promptText="maxRooms">
+                        <TextField fx:id="maxRoomsField" layoutX="52.0" layoutY="183.0" prefHeight="27.0" prefWidth="187.0" promptText="maxRooms" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="standardPriceField" layoutX="279.0" layoutY="38.0" prefHeight="27.0" prefWidth="168.0" promptText="standardPrice">
+                        <TextField fx:id="standardPriceField" layoutX="279.0" layoutY="38.0" prefHeight="27.0" prefWidth="168.0" promptText="standardPrice" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="queenPriceField" layoutX="278.0" layoutY="85.0" prefHeight="27.0" prefWidth="169.0" promptText="queenPrice">
+                        <TextField fx:id="queenPriceField" layoutX="278.0" layoutY="85.0" prefHeight="27.0" prefWidth="169.0" promptText="queenPrice" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="kingPriceField" layoutX="278.0" layoutY="137.0" prefHeight="27.0" prefWidth="188.0" promptText="kingPrice">
+                        <TextField fx:id="kingPriceField" layoutX="278.0" layoutY="137.0" prefHeight="27.0" prefWidth="188.0" promptText="kingPrice" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="weekendRateField" layoutX="278.0" layoutY="183.0" prefHeight="27.0" prefWidth="196.0" promptText="weekendRate">
+                        <TextField fx:id="weekendRateField" layoutX="278.0" layoutY="183.0" prefHeight="27.0" prefWidth="196.0" promptText="weekendRate" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></TextField>
@@ -134,11 +134,11 @@
                         <TextField fx:id="hotelEditSearch" layoutX="545.0" layoutY="164.0" prefHeight="27.0" prefWidth="174.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;" />
                         <Button fx:id="editHotelButton" layoutX="609.0" layoutY="204.0" mnemonicParsing="false" onAction="#editHotelButtonClicked" style="-fx-background-color: #2f60d0;" text="Edit" textFill="WHITE">
                            <font>
-                              <Font name="Georgia" size="14.0" />
+                              <Font name="Georgia" size="16.0" />
                            </font></Button>
                         <Button fx:id="submitHotelEditButton" layoutX="263.0" layoutY="347.0" mnemonicParsing="false" onAction="#submitHotelEditButton" style="-fx-background-color: #2f60d0;" text="Submit" textFill="WHITE">
                            <font>
-                              <Font name="Georgia" size="14.0" />
+                              <Font name="Georgia" size="16.0" />
                            </font></Button>
                         <Label layoutX="417.0" layoutY="170.0" text="Enter hotel name:">
                            <font>
@@ -198,7 +198,7 @@
                            </font></TextField>
                         <Button fx:id="addRoomButton" layoutX="350.0" layoutY="314.0" mnemonicParsing="false" onAction="#addRoomButtonClicked" style="-fx-background-color: #2f60d0;" text="Create Room" textFill="WHITE">
                            <font>
-                              <Font name="Georgia" size="14.0" />
+                              <Font name="Georgia" size="16.0" />
                            </font></Button>
                      </children>
                   </AnchorPane>
@@ -214,7 +214,7 @@
                            </font></Text>
                         <Button fx:id="createAdminButton" layoutX="236.0" layoutY="369.0" mnemonicParsing="false" onAction="#createAdminButtonClicked" style="-fx-background-color: #2f60d0;" text="Create" textFill="WHITE">
                            <font>
-                              <Font name="Georgia" size="14.0" />
+                              <Font name="Georgia" size="16.0" />
                            </font></Button>
                         <TextField fx:id="createUserAdmin" layoutX="166.0" layoutY="64.0" prefHeight="28.0" prefWidth="202.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
                            <font>
@@ -248,7 +248,7 @@
                      <children>
                         <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#adminLogoutButtonClicked" style="-fx-background-color: #2f60d0;" text="Logout" textFill="WHITE">
                            <font>
-                              <Font name="Georgia" size="14.0" />
+                              <Font name="Georgia" size="16.0" />
                            </font></Button>
                      </children></AnchorPane>
                </content>

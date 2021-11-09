@@ -40,9 +40,9 @@
                            <font>
                               <Font name="Georgia" size="18.0" />
                            </font></Label>
-                        <Button fx:id="submitAccEditButton" layoutX="194.0" layoutY="303.0" mnemonicParsing="false" onAction="#submitAccEditButtonClicked" prefHeight="26.0" prefWidth="124.0" style="-fx-background-color: #2f60d0;" text="Submit Changes" textFill="WHITE">
+                        <Button fx:id="submitAccEditButton" layoutX="188.0" layoutY="303.0" mnemonicParsing="false" onAction="#submitAccEditButtonClicked" prefHeight="31.0" prefWidth="138.0" style="-fx-background-color: #2f60d0;" text="Submit Changes" textFill="WHITE">
                            <font>
-                              <Font name="Georgia" size="14.0" />
+                              <Font name="Georgia" size="16.0" />
                            </font></Button>
                         <Label layoutX="95.0" layoutY="105.0" text="Username">
                            <font>
@@ -68,9 +68,9 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="335.0" prefWidth="654.0">
                      <children>
-                        <Button fx:id="customerLogoutButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#customerLogoutButtonClicked" prefHeight="27.0" prefWidth="77.0" style="-fx-background-color: #2f60d0;" text="Logout" textFill="WHITE">
+                        <Button fx:id="customerLogoutButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#customerLogoutButtonClicked" prefHeight="31.0" prefWidth="75.0" style="-fx-background-color: #2f60d0;" text="Logout" textFill="WHITE">
                            <font>
-                              <Font name="Georgia" size="14.0" />
+                              <Font name="Georgia" size="16.0" />
                            </font>
                         </Button>
                      </children>
