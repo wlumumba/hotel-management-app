@@ -40,7 +40,7 @@ public class Functions {
 
         //Remove all rooms that are booked during those dates for that hotel
         String selectQuery = "select * from hotel_db.Room where roomID not in " +
-        "(select Room_roomID from hotel_db.Reservation where ? <= endDate and ? >= startDate) "+
+        "(select Room_roomID from hotel_db.Reservation where ? <= endDate and ? >= startDate) "+ //and is active
         "and Hotel_hotelID = ? " +
         "order by bedType";
 
@@ -71,18 +71,18 @@ public class Functions {
     {
         Connection connectDB = DBConnection.getConnection();
         //INSERT INTO `hotel_db`.`Reservation` (`reservationID`, `startDate`, `endDate`, `status`, `Room_roomID`, `Room_Hotel_hotelID`, `User_email`) VALUES ('1', '2', '3', '4', '5', '6', '7');
-        String insertQuery = "INSERT INTO hotel_db.Reservation (reservationID, startDate, endDate, status, Room_roomID, User_email) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String insertQuery = "INSERT INTO hotel_db.Reservation (startDate, endDate, status, Room_roomID, User_email) VALUES (?, ?, ?, ?, ?, ?)";
 
         // Add a if statement to check if their are duplicates such as similar date or room ID possibly?
         try{
             System.out.println(r1);
             PreparedStatement st = connectDB.prepareStatement(insertQuery);
-            st.setInt(1, r1.getReservationID());
-            st.setString(2, r1.getStartDate());
-            st.setString(3, r1.getEndDate());
-            st.setBoolean(4, true);
-            st.setInt(5, r1.getRoomID());
-            st.setString(6, r1.getUserEmail());
+            //st.setInt(1, r1.getReservationID());
+            st.setString(1, r1.getStartDate());
+            st.setString(2, r1.getEndDate());
+            st.setBoolean(3, true);
+            st.setInt(4, r1.getRoomID());
+            st.setString(5, r1.getUserEmail());
 
             //UPDATE hotel_db.Hotel SET hotelID = '', hotelName = '', hotelType = '', amenities = '', maxRooms = '', standardPrice = '', queenPrice = '', kingPrice = '' WHERE (hotelID = '');
 
