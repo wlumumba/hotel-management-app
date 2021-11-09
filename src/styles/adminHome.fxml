@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="483.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminHomeController">
+<AnchorPane prefHeight="483.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminHomeController">
    <children>
       <TabPane prefHeight="500.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -238,7 +239,7 @@
                            <font>
                               <Font name="Georgia" size="13.0" />
                            </font></TextField>
-                        <Label layoutX="264.0" layoutY="284.0" prefHeight="27.0" prefWidth="273.0" text="DELETE CURRENT RESERVATION">
+                        <Label layoutX="264.0" layoutY="284.0" prefHeight="27.0" prefWidth="273.0" text="CANCEL CURRENT RESERVATION">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font>

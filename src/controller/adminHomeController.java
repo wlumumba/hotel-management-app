@@ -683,8 +683,21 @@ public class adminHomeController implements Initializable {
         // reserve.getReservationID();
         //warningLabel.setText(""); // USED TO RESET THE LABEL
 
-        System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
+        //System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
 
+        String query = "DELETE FROM hotel_db.Reservation WHERE reservationId = " + deleteResId.getText(); // THIS IS ONLY FOR CUSTOMER SIDE + "email = " + deletEmail.getTxt();
+
+        try {
+            PreparedStatement ps = connectDB.prepareStatement(query);
+            ps.executeUpdate();
+
+        } catch (Exception e){
+            System.out.println(e);
+        }
+
+
+        System.out.println(query);
+/*
         //Error check to see if Reservation ID exists//Should there be a safeguard? like if RESERVATION ID is equal to EMAIL under admin?
         //could it be I populated reservationList wrong or roomList wrong?
         for (int i = 0; i < reservationList.size(); i++) { //error begins here //checks if its not correct to begin with. not sure if its needed or at least if its not empty?
@@ -695,12 +708,14 @@ public class adminHomeController implements Initializable {
         }
         for (Reservation r : reservationList) { //error is here since hotelID stays as -1
             System.out.println("R HERE: " + reservationList.get(r.getReservationID()));
-            /*if (r.getReservationID() == Integer.parseInt(currentResID.getText())) {
-                //r.setReservationID(0);
+            if (r.getReservationID() == Integer.parseInt(currentResID.getText())) {
+                //r.setReservationID(
                 //set values to NULL? 0 or how to delete
-            }*/
+            }
 
         }
+
+ */
     }
 
     /***********************************************************************/
