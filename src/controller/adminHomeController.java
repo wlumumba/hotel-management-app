@@ -556,20 +556,19 @@ public class adminHomeController implements Initializable {
     @FXML
     void submitERButtonClicked(ActionEvent event) throws IOException {
         System.out.println("Edit Reservation Submit Button Clicked");
-       // int roomID = -1;
+        int roomID = -1;
         int hotelID = -1;
 
-        Connection connectDB = DBConnection.getConnection();
+       // Connection connectDB = DBConnection.getConnection();
         /*********FINAL THINGS TO DO**************/
         //think on this since after this its nearly done.
         //you get the rooms then hotelID then display it in next fxml
         //then after clicking on reserve you delete old reservation
 
-        String query = "SELECT hotel_db.Reservation.Room_roomID, hotel_db.Room.roomID FROM hotel_db.Reservation INNER JOIN hotel_db.RESERVATION ON hotel_db.Reservation.Room_roomID=hotel_db.Room.roomID "  + currentResID.getText();
+        /********THE PLAN IS TO GET THE MATCHING ROOMID BETWEEN RESERVATION AND ROOM AND THEN GET THE RIGHT HOTELID*************/
+        //String query = "SELECT hotel_db.Reservation.Room_roomID, hotel_db.Room.roomID FROM hotel_db.Reservation, hotel_db.Room WHERE hotel_db.Reservation.Room_roomID=hotel_db.Room.roomID"  + currentResID.getText();
         //String query = "SELECT FROM hotel_db.Reservation, hotel_db.Room WHERE reservationId = " + currentResID.getText();
         //should you delete or just look for same room but a different day?
-
-        //"DELETE FROM hotel_db.Reservation WHERE reservationId = " + deleteResId.getText();
 
        // reserve.getReservationID();
         //warningLabel.setText(""); // USED TO RESET THE LABEL
@@ -577,44 +576,48 @@ public class adminHomeController implements Initializable {
         try {
             //Error check to see if Reservation ID exists//Should there be a safeguard? like if RESERVATION ID is equal to EMAIL under admin?
             //could it be I populated reservationList wrong or roomList wrong?
-            for (int i = 0; i < reservationList.size(); i++) { //error begins here
-                System.out.println("ResList: "+ reservationList.get(i) + " ");
-                if (currentResID.getText().isEmpty() || reservationList.get(i).getReservationID() != Integer.parseInt(currentResID.getText())) { //needs to check with list from reservation
+            reservationList = Functions.reservationList();
+            System.out.println("RES OUTSIDE: " + reservationList.size());
+            for(Reservation re : reservationList){
+               System.out.println("ResList: "+ reservationList.size());
+                if (currentResID.getText().isEmpty()) { //|| re.getReservationID() != Integer.parseInt(currentResID.getText())) { //needs to check with list from reservation
                     System.out.println("Please enter a valid reservation ID\n");
                 }
-                /*else if (reservationList.get(i).getReservationID() == Integer.parseInt(currentResID.getText()) )
-                {
-                    if (reservationList.get(i).getRoomID() )
-                    reservationList.get(i).getRoomID();
-                }*/
             }
-            //for loop
-
-            //roomIDER.getRoomID()
-
+            System.out.println("OUTSIDE SECOND FOR LOOP: ");
             //Error checked user startDate and endDate
             final java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy/MM/dd");
-            if (!startDate.getText().isEmpty() || !endDate.getText().isEmpty()) {
-                sdf.parse(startDate.getText());
-                sdf.parse(endDate.getText());
+            if (!newStartDate.getText().isEmpty() || !newEndDate.getText().isEmpty()) {
+                sdf.parse(newStartDate.getText());
+                sdf.parse(newEndDate.getText());
             }
             else{
                 //If user specifies no date range
-                startDate.setText("0000/00/00");
-                endDate.setText("9999/00/00");
+                newStartDate.setText("0000/00/00");
+                newEndDate.setText("9999/00/00");
             }
 
             //compare to the SQL DATABASE FOR CORRECT HOTEL AND PRICE RANGE
             System.out.println("Searching User Input");
             //RESERVATION does not have a hotelID so you need to get it from roomID?
-            //for()
+            for(Reservation re : reservationList){
+                if(re.getReservationID() == Integer.parseInt(currentResID.getText())){
+                    roomID = re.getRoomID();
+                    for (Room r : roomList) {
+                        if (r.getRoomID() == roomID)
+                        {
+                            hotelID = r.getHotelID();
+                        }
+                    }
+                }
+            }
 
 
             /**************MAKE NEW RESERVATION HERE**************/
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/styles/singleReservationRoom.fxml"));
             Parent root = loader.load();
             singleReservationRoomController scene2 = loader.getController();
-            scene2.fillChooseRoomTable(new String[]{String.valueOf(hotelID), startDate.getText(), endDate.getText()});
+            scene2.fillChooseRoomTable(new String[]{String.valueOf(hotelID), newStartDate.getText(), newEndDate.getText()});
 
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene newScene = new Scene(root);

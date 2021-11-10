@@ -135,7 +135,7 @@ public class Functions {
             ResultSet rs = ps.executeQuery();
 
             while(rs.next()){
-                Reservation reservation = new Reservation(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4),rs.getString(5),rs.getBoolean(6));
+                reservationList.add(new Reservation(rs.getInt(1),rs.getInt(5), rs.getString(2),rs.getString(3), rs.getString(6),rs.getBoolean(4)));
             }
 
         } catch (Exception e){
