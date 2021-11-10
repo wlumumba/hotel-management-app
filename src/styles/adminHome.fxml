@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="483.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminHomeController">
+<AnchorPane prefHeight="483.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminHomeController">
    <children>
-      <TabPane prefHeight="500.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab fx:id="h" text="Add Hotel">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="356.0" prefWidth="793.0">
                      <children>
-                        <TextArea layoutX="541.0" layoutY="129.0" prefHeight="200.0" prefWidth="200.0" text="Here is the admin home page&#10;Functions&#10; * add hotel&#10; * add room&#10; * cancel reservation&#10; * edit reservation?&#10; * add another admin user&#10;&#10;loggout button top right, takes&#10;back to loggin scene&#10;" />
                         <TextField fx:id="hotelNameField" layoutX="53.0" layoutY="39.0" promptText="hotelName" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
                            <font>
                               <Font name="Georgia" size="12.0" />

@@ -10,7 +10,6 @@
          <font>
             <Font name="Georgia" size="18.0" />
          </font></Label>
-      <TextArea layoutX="300.0" layoutY="101.0" prefHeight="200.0" prefWidth="200.0" text="Here we will only implement &#10;the search function, will need&#10;to be logged in to reserve&#10;&#10;Loggin button top right, takes&#10;you back to loggin page" />
       <Button fx:id="loginButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#guestLoginButtonClicked" style="-fx-background-color: #2f60d0;" text="Login" textFill="WHITE">
          <font>
             <Font name="Georgia" size="16.0" />

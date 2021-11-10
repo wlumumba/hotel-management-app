@@ -10,7 +10,7 @@
     <left>
         <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #2f60d0;" BorderPane.alignment="CENTER">
             <children>
-                <ImageView fitHeight="196.0" fitWidth="195.0" layoutX="90.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="220.0" fitWidth="223.0" layoutX="89.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../../../Documents/Adobe Files/BB_Logo.png" />
                     </image>
