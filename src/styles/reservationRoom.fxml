@@ -41,11 +41,11 @@
                            <font>
                               <Font name="Georgia" size="16.0" />
                            </font></Button>
-                        <TextField fx:id="endDate" layoutX="613.0" layoutY="222.0" prefHeight="31.0" prefWidth="118.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="endDate" layoutX="613.0" layoutY="222.0" prefHeight="31.0" prefWidth="118.0" promptText="yyyy/mm/dd" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="startDate" layoutX="615.0" layoutY="133.0" prefHeight="33.0" prefWidth="113.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="startDate" layoutX="615.0" layoutY="133.0" prefHeight="33.0" prefWidth="113.0" promptText="yyyy/mm/dd" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></TextField>
