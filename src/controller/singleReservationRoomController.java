@@ -42,10 +42,6 @@ public class singleReservationRoomController implements Initializable {
     private TextField roomR;
     @FXML
     private TextField emailR;
-    @FXML
-    private TextField maxPrice; //not sure about these yet
-    @FXML
-    private TextField minPrice; //not sure about these yet
 
     @FXML
     private TableColumn<Room, Integer> col_roomidR;
@@ -55,6 +51,7 @@ public class singleReservationRoomController implements Initializable {
     private TableColumn<Room, Integer> col_roompriceR;
     @FXML
     private TableView<Room> table_hotelR2;
+
 
     public void fillChooseRoomTable(String[] values){
         col_roomidR.setCellValueFactory(new PropertyValueFactory<Room, Integer>("roomID"));

@@ -487,47 +487,7 @@ public class adminHomeController implements Initializable {
         return false;
     }
 
-    /*******------------reservationRoom FXML-------------*****/
-   /* //  NEEDS ITS OWN CONTROLLER!!! ///
-    @FXML
-    private TextField roomR;
-    @FXML
-    private TextField emailR;
-    @FXML
-    private TextField startDate; //not sure about these yet
-    @FXML
-    private TextField endDate; //not sure about these yet
 
-
-    *//**
-     * Maybe here check for account type or should it ask before? I think it should check
-     * This Function will let the user select the room and then reserve the room.
-     * Must provide a valid email and room
-     */
-   /* @FXML
-    private void reserveButton(ActionEvent event) throws IOException  {
-        System.out.println("Reserve Room Button");*/
-      //  try {
-           /* if (emailR.getText().isEmpty()) {  //|| (hotelList.equals(hotelNameR.getText()))) { //may be incorrect
-                System.out.println("Please enter a valid email\n");
-                warningLabel.setText("Enter a valid email");
-            } else if (roomR.getText().isEmpty() || (!isNumeric(maxPriceR.getText()))) {
-                System.out.println("Please enter a valid Room\n");
-                warningLabel.setText("Enter a valid Room");
-            }*/
-            //MAYBE ASK USER TO SELECT FROM CALENDAR OR THE USER MUST PUT START DATE IN MONTH/DAY
-            //THEN END DATE MONTH/DAY AND THEN HAVE A DATABASE/RESERVATION FOR THE USER FOR THAT ROOM?
-            //THIS WILL HAVE TO CHECK IF ROOM IS AVAILABLE IF TRUE ELSE DON'T DISPLAY AND WAIT UNTIL ROOM IS AVAILABLE?
-            //DOES THIS HAVE TO BE IN REAL TIME?
-
-       // }
-       /*//* catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Error in ReserveButton");
-        }*//*
-
-    }
-*/
     @FXML
     private void returnButton(ActionEvent event) throws IOException {
         System.out.println("Returning to Home Admin");
