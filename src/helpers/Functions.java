@@ -71,7 +71,7 @@ public class Functions {
     {
         Connection connectDB = DBConnection.getConnection();
         //INSERT INTO `hotel_db`.`Reservation` (`reservationID`, `startDate`, `endDate`, `status`, `Room_roomID`, `Room_Hotel_hotelID`, `User_email`) VALUES ('1', '2', '3', '4', '5', '6', '7');
-        String insertQuery = "INSERT INTO hotel_db.Reservation (startDate, endDate, status, Room_roomID, User_email) VALUES (?, ?, ?, ?, ?, ?)";
+        String insertQuery = "INSERT INTO hotel_db.Reservation (startDate, endDate, status, Room_roomID, User_email) VALUES (?, ?, ?, ?, ?)";
 
         // Add a if statement to check if their are duplicates such as similar date or room ID possibly?
         try{

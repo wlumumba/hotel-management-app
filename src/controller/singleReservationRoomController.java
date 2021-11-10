@@ -56,17 +56,23 @@ public class singleReservationRoomController implements Initializable {
     @FXML
     private TableView<Room> table_hotelR2;
 
+    private String[] resVals; //HotelID, startDate, endDate
+
     public void fillChooseRoomTable(String[] values){
+        resVals = values;
+
         col_roomidR.setCellValueFactory(new PropertyValueFactory<Room, Integer>("roomID"));
         col_bedtypeR.setCellValueFactory(new PropertyValueFactory<Room, String>("bedType"));
         col_roompriceR.setCellValueFactory(new PropertyValueFactory<Room, Integer>("roomPrice"));
 
-        System.out.println(Arrays.toString(values));
+       // System.out.println(Arrays.toString(vals));
 
         //Values are passed in from adminHomeController
         table_hotelR2.setItems(Functions.populateAvailableRooms(values[0], values[1], values[2]));
     }
 
+
+    private Reservation reserve; //not sure
 
         /**
      * Maybe here check for account type or should it ask before? I think it should check
@@ -84,8 +90,14 @@ public class singleReservationRoomController implements Initializable {
             System.out.println("Please enter a valid Room\n");
             //warningLabel.setText("Enter a valid Room");
         }
-        //MAYBE ASK USER TO SELECT FROM CALENDAR OR THE USER MUST PUT START DATE IN MONTH/DAY
-        //THEN END DATE MONTH/DAY AND THEN HAVE A DATABASE/RESERVATION FOR THE USER FOR THAT ROOM?
+        //validate for customer email
+        Reservation reservation = new Reservation(-1,Integer.parseInt(roomR.getText()), resVals[1], resVals[2],emailR.getText(), true);
+        Functions.createReservation(reservation);
+
+        //String query = "DELETE FROM hotel_db.Reservation WHERE reservationId = " + deleteResId.getText();
+
+
+
         //THIS WILL HAVE TO CHECK IF ROOM IS AVAILABLE IF TRUE ELSE DON'T DISPLAY AND WAIT UNTIL ROOM IS AVAILABLE?
         //DOES THIS HAVE TO BE IN REAL TIME?
 
