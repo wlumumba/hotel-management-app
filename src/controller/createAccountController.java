@@ -121,7 +121,7 @@ public class createAccountController {
             catch (SQLException ex) {
                 ex.printStackTrace();
                 System.out.println("Error: Failed to insert to DB");
-                errorText.setText("Erro 4542234");
+                errorText.setText("Error 4542234");
 
             }
 

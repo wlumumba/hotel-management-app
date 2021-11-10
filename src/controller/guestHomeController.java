@@ -18,7 +18,7 @@ public class guestHomeController {
 
     @FXML
     void guestLoginButtonClicked(ActionEvent event) throws IOException {
-        System.out.println("going back to loggin");
+        System.out.println("going back to login");
         Stage stage;
         Scene scene;
         Parent root;

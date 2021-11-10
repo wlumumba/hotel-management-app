@@ -83,7 +83,7 @@ public class singleReservationRoomController implements Initializable {
     private void reserveButton(ActionEvent event) throws IOException  {
         System.out.println("Reserve Room Button");
         //  try {
-        if (emailR.getText().isEmpty()) {  //|| if email is inavlid?
+        if (emailR.getText().isEmpty()) {  //|| if email is invalid?
             System.out.println("Please enter a valid email\n");
            // warningLabel.setText("Enter a valid email");
         } else if (roomR.getText().isEmpty()) { //|| ?
