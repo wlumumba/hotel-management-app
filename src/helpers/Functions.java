@@ -3,10 +3,7 @@ package helpers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Functions {
 
@@ -89,10 +86,41 @@ public class Functions {
             st.executeUpdate();
         }
         catch (SQLException ex) {
+            createAccount(r1.getUserEmail());
+            createReservation(r1);
+            System.out.println("Account not found, creating account then re-calling creating reservation");
             ex.printStackTrace();
         }
     }
 
+    public static void createAccount(String email){
+
+
+        Connection connectDB = DBConnection.getConnection(); //Below is it hotel_db.Admin?
+        String insertQuery = "INSERT INTO hotel_db.User (username, firstname, lastname, email, password, accType) VALUES (?, ?, ?, ?, ?, 0)";
+
+        try {
+            //Create statement, fill empty fields
+            PreparedStatement statement = connectDB.prepareStatement(insertQuery);
+            statement.setString(1,email);
+            statement.setString(2,"DUMMY");
+            statement.setString(3,"DUMMY");
+            statement.setString(4,email);
+            statement.setString(5,"password");
+            statement.executeUpdate();
+
+            //System.out.println("Success Inserted " + admin.toString());
+
+        }
+        catch (SQLIntegrityConstraintViolationException ex) {
+            System.out.println("Username taken! Try another one");
+        }
+        catch (SQLException ex) {
+            ex.printStackTrace();
+            System.out.println("Error: Failed to insert to DB");
+        }
+
+    }
 
 
 /***Meant to add the reservations to a list**/

@@ -42,11 +42,7 @@ public class customerHomeController {
         // Step 2
         User u = (User) stage.getUserData();
         // Step 3
-        String userName = u.getUserName();
-        String password = u.getPassword();
-
-        userNameLabel.setText(userName);
-        passwordLabel.setText(password);
+        int accType = u.getAccountType();
 
 
     }
