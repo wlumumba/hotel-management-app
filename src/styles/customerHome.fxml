@@ -1,26 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="323.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.customerHomeController">
+<AnchorPane prefHeight="323.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.customerHomeController">
    <children>
       <TabPane prefHeight="500.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Create Reservation">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="15.0" layoutY="57.0" prefHeight="27.0" prefWidth="185.0" text="Enter Name of Hotel:">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="hotelNameR" layoutX="14.0" layoutY="96.0" prefHeight="27.0" prefWidth="187.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="15.0" layoutY="147.0" prefHeight="27.0" prefWidth="115.0" text="Start Date:">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="startDate" layoutX="14.0" layoutY="174.0" prefHeight="39.0" prefWidth="181.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="15.0" layoutY="228.0" prefHeight="27.0" prefWidth="115.0" text="End Date:">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="endDate" layoutX="14.0" layoutY="255.0" prefHeight="39.0" prefWidth="182.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font>
+                        </TextField>
+                        <TableView fx:id="table_hotelR" layoutX="220.0" prefHeight="370.0" prefWidth="566.0">
+                           <columns>
+                              <TableColumn fx:id="col_HotelR" prefWidth="108.0" text="Hotel" />
+                              <TableColumn fx:id="col_type1" minWidth="0.0" prefWidth="0.0" />
+                              <TableColumn fx:id="col_HotelTypeR" minWidth="0.0" prefWidth="116.0" text="Hotel Type" />
+                              <TableColumn fx:id="col_AmenitiesR" prefWidth="298.0" text="Amenties" />
+                           </columns>
+                        </TableView>
+                        <Button fx:id="searchButton" layoutX="72.0" layoutY="316.0" mnemonicParsing="false" onAction="#searchButtonClicked" prefHeight="31.0" prefWidth="72.0" style="-fx-background-color: #2f60d0;" text="Search" textFill="WHITE">
+                           <font>
+                              <Font name="Georgia" size="16.0" />
+                           </font>
+                        </Button>
+                     </children></AnchorPane>
             </content>
           </Tab>
           <Tab text="Edit Reservation">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="277.0" layoutY="25.0" prefHeight="27.0" prefWidth="273.0" text="CHANGE CURRENT RESERVATION">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="currentResID" layoutX="307.0" layoutY="80.0" prefHeight="27.0" prefWidth="187.0" promptText="RESERVATION ID" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                           <font>
+                              <Font name="Georgia" size="13.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="25.0" layoutY="77.0" prefHeight="34.0" prefWidth="252.0" text="ENTER CURRENT RESERVATION ID:">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="25.0" layoutY="151.0" prefHeight="27.0" prefWidth="217.0" text="Enter New Start Date:">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="newStartDate" layoutX="308.0" layoutY="151.0" prefHeight="39.0" prefWidth="185.0" promptText="Start Date" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                           <font>
+                              <Font name="Georgia" size="13.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="newEndDate" layoutX="309.0" layoutY="237.0" prefHeight="39.0" prefWidth="183.0" promptText="End Date" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                           <font>
+                              <Font name="Georgia" size="13.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="25.0" layoutY="243.0" prefHeight="27.0" prefWidth="184.0" text="Enter New End Date:">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="submitERButton" layoutX="585.0" layoutY="261.0" mnemonicParsing="false" onAction="#submitERButtonClicked" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: #2f60d0;" text="Submit" textFill="WHITE">
+                           <font>
+                              <Font name="Georgia" size="16.0" />
+                           </font>
+                        </Button>
+                     </children></AnchorPane>
             </content>
           </Tab>
             <Tab text="Cancel Reservation">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="296.0" layoutY="44.0" prefHeight="27.0" prefWidth="273.0" text="CANCEL CURRENT RESERVATION">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="deleteERButton" layoutX="589.0" layoutY="147.0" mnemonicParsing="false" onAction="#deleteERButtonClicked" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: #2f60d0;" text="Delete" textFill="WHITE">
+                           <font>
+                              <Font name="Georgia" size="16.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="deleteResId" layoutX="302.0" layoutY="129.0" prefHeight="39.0" prefWidth="182.0" promptText="RESERVATION ID" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                           <font>
+                              <Font name="Georgia" size="13.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="56.0" layoutY="135.0" prefHeight="27.0" prefWidth="201.0" text="ENTER RESERVATION ID:">
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
                </content>
             </Tab>
             <Tab text="Edit Account Info">

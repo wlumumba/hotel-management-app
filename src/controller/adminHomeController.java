@@ -298,7 +298,6 @@ public class adminHomeController implements Initializable {
             ps.setInt(2, roomPrice);
             ps.setInt(3, Integer.parseInt(addroom_hotelid.getText()));
 
-            
             ps.executeUpdate();
         }
         catch(Exception ex) {
@@ -549,22 +548,31 @@ public class adminHomeController implements Initializable {
     private TextField newEndDate;
 
 
+    /***************LAST FUNCTION TO COMPLETE*******************/
+    //DELETE OLD RESERVATION AND MAKE NEW RESERVATION IN SECOND FXML
+    //ONLY
+    private Room roomIDER;
+
     @FXML
     void submitERButtonClicked(ActionEvent event) throws IOException {
         System.out.println("Edit Reservation Submit Button Clicked");
-        int roomID = -1;
+       // int roomID = -1;
         int hotelID = -1;
-        Connection connectDB = DBConnection.getConnection();
 
-        String reservationQuery = "SELECT * FROM hotel_db.Reservation";
+        Connection connectDB = DBConnection.getConnection();
+        /*********FINAL THINGS TO DO**************/
+        //think on this since after this its nearly done.
+        //you get the rooms then hotelID then display it in next fxml
+        //then after clicking on reserve you delete old reservation
+
+        String query = "SELECT hotel_db.Reservation.Room_roomID, hotel_db.Room.roomID FROM hotel_db.Reservation INNER JOIN hotel_db.RESERVATION ON hotel_db.Reservation.Room_roomID=hotel_db.Room.roomID "  + currentResID.getText();
+        //String query = "SELECT FROM hotel_db.Reservation, hotel_db.Room WHERE reservationId = " + currentResID.getText();
         //should you delete or just look for same room but a different day?
 
         //"DELETE FROM hotel_db.Reservation WHERE reservationId = " + deleteResId.getText();
 
        // reserve.getReservationID();
         //warningLabel.setText(""); // USED TO RESET THE LABEL
-
-        System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
 
         try {
             //Error check to see if Reservation ID exists//Should there be a safeguard? like if RESERVATION ID is equal to EMAIL under admin?
@@ -574,7 +582,15 @@ public class adminHomeController implements Initializable {
                 if (currentResID.getText().isEmpty() || reservationList.get(i).getReservationID() != Integer.parseInt(currentResID.getText())) { //needs to check with list from reservation
                     System.out.println("Please enter a valid reservation ID\n");
                 }
+                /*else if (reservationList.get(i).getReservationID() == Integer.parseInt(currentResID.getText()) )
+                {
+                    if (reservationList.get(i).getRoomID() )
+                    reservationList.get(i).getRoomID();
+                }*/
             }
+            //for loop
+
+            //roomIDER.getRoomID()
 
             //Error checked user startDate and endDate
             final java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy/MM/dd");
@@ -590,23 +606,11 @@ public class adminHomeController implements Initializable {
 
             //compare to the SQL DATABASE FOR CORRECT HOTEL AND PRICE RANGE
             System.out.println("Searching User Input");
+            //RESERVATION does not have a hotelID so you need to get it from roomID?
+            //for()
 
-            //Get hotelID of the user after verifying the reservationID then roomID to get the right hotelID
-            /**********THINK IF THE RESERVATIONS EQUAL THEN YOU HAVE THE ROOM, BUT YOU NEED TO KNOW WHICH HOTEL ITS A PART OF TO LOOK THROUGH*******/
-            /******error here as well*****/
 
-            for(Reservation r : reservationList){ //error is here since hotelID stays as -1
-                System.out.println("R HERE: " + reservationList.get(r.getReservationID()));
-                if (r.getReservationID() == Integer.parseInt(currentResID.getText())) {
-                    roomID = r.getRoomID();
-                    for (Room re : roomList) {
-                        if (re.getRoomID() == roomID) {
-                            hotelID = re.getHotelID();
-                        }
-                    }
-                }
-            }
-
+            /**************MAKE NEW RESERVATION HERE**************/
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/styles/singleReservationRoom.fxml"));
             Parent root = loader.load();
             singleReservationRoomController scene2 = loader.getController();
