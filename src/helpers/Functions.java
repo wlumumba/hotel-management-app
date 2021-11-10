@@ -124,24 +124,73 @@ public class Functions {
 
 
 /***Meant to add the reservations to a list**/
-    public static ObservableList<Reservation> reservationList(){
+    public static ObservableList<Reservation> getNewReservationList(){
+        //MAYBE LINE 129
         ObservableList<Reservation> reservationList = FXCollections.observableArrayList();
 
-        Connection connectDB = DBConnection.getConnection();
-        String selectQuery = "SELECT * FROM hotel_db.Reservation";
+        System.out.println("INSIDE getNewReservationListT ");
 
+        Connection connectDB = DBConnection.getConnection();
+
+        String selectQuery = "SELECT * FROM hotel_db.Reservation";
+        int counter = 0;
+        int counter1 = 0;
         try {
             PreparedStatement ps = connectDB.prepareStatement(selectQuery);
             ResultSet rs = ps.executeQuery();
 
-            while(rs.next()){
-                reservationList.add(new Reservation(rs.getInt(1),rs.getInt(5), rs.getString(2),rs.getString(3), rs.getString(6),rs.getBoolean(4)));
+
+           // System.out.println("INSIDE TRY RESERVATIONLIST ");
+            if (rs.next()) {
+                do {
+               //     System.out.println("INSIDE DO RESERVATIONLIST ");
+                    reservationList.add(new Reservation(rs.getInt(1),rs.getInt(5), rs.getString(2),rs.getString(3), rs.getString(6),rs.getBoolean(4)));
+                } while (rs.next());
+            }
+            else
+            {
+                System.out.println("WE NEED RESERVATIONS. NO RESERVATIONS FOUND");
             }
 
         } catch (Exception e){
             System.out.println(e);
         }
 
-        return reservationList();
+        return reservationList;
+    }
+    /***Meant to add the rooms to a list**/
+    public static ObservableList<Room> getNewRoomList(){
+        //MAYBE LINE 129
+        ObservableList<Room> roomList = FXCollections.observableArrayList();
+
+        System.out.println("INSIDE getNewRoomListT ");
+
+        Connection connectDB = DBConnection.getConnection();
+
+        String selectQuery = "SELECT * FROM hotel_db.Room";
+       // int counter = 0;
+       // int counter1 = 0;
+        try {
+            PreparedStatement ps = connectDB.prepareStatement(selectQuery);
+            ResultSet rs = ps.executeQuery();
+
+
+           // System.out.println("INSIDE TRY roomlist ");
+          if (rs.next()) { //changed from next() . next works though
+                do {
+                //    System.out.println("INSIDE DO roomlist ");
+                    roomList.add(new Room(rs.getInt(1),rs.getString(2), rs.getInt(3),rs.getInt(4)));
+                } while (rs.next());
+            }
+            else
+            {
+                System.out.println("NO ROOMS FOUND");
+            }
+            // System.out.println("INSIDE TRY roomlist ");
+        } catch (Exception e){
+            System.out.println(e);
+        }
+
+        return roomList;
     }
 }

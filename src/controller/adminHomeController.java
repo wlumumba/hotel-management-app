@@ -565,9 +565,12 @@ public class adminHomeController implements Initializable {
         //you get the rooms then hotelID then display it in next fxml
         //then after clicking on reserve you delete old reservation
 
+        System.out.println("INSIDE SUBMIT");
+
+
         /********THE PLAN IS TO GET THE MATCHING ROOMID BETWEEN RESERVATION AND ROOM AND THEN GET THE RIGHT HOTELID*************/
-        //String query = "SELECT hotel_db.Reservation.Room_roomID, hotel_db.Room.roomID FROM hotel_db.Reservation, hotel_db.Room WHERE hotel_db.Reservation.Room_roomID=hotel_db.Room.roomID"  + currentResID.getText();
-        //String query = "SELECT FROM hotel_db.Reservation, hotel_db.Room WHERE reservationId = " + currentResID.getText();
+      //  String query = "SELECT hotel_db.Reservation.Room_roomID, hotel_db.Room.roomID FROM hotel_db.Reservation, hotel_db.Room WHERE hotel_db.Reservation.Room_roomID=hotel_db.Room.roomID"  + currentResID.getText();
+
         //should you delete or just look for same room but a different day?
 
        // reserve.getReservationID();
@@ -576,13 +579,16 @@ public class adminHomeController implements Initializable {
         try {
             //Error check to see if Reservation ID exists//Should there be a safeguard? like if RESERVATION ID is equal to EMAIL under admin?
             //could it be I populated reservationList wrong or roomList wrong?
-            reservationList = Functions.reservationList();
+            reservationList = Functions.getNewReservationList();
+
+            System.out.println("INSIDE TRY ");
             System.out.println("RES OUTSIDE: " + reservationList.size());
-            for(Reservation re : reservationList){
+           /* for(Reservation re : reservationList){
                System.out.println("ResList: "+ reservationList.size());
-                if (currentResID.getText().isEmpty()) { //|| re.getReservationID() != Integer.parseInt(currentResID.getText())) { //needs to check with list from reservation
+
+            }*/
+            if (currentResID.getText().isEmpty()) { //|| re.getReservationID() != Integer.parseInt(currentResID.getText())) { //needs to check with list from reservation
                     System.out.println("Please enter a valid reservation ID\n");
-                }
             }
             System.out.println("OUTSIDE SECOND FOR LOOP: ");
             //Error checked user startDate and endDate
@@ -600,6 +606,7 @@ public class adminHomeController implements Initializable {
             //compare to the SQL DATABASE FOR CORRECT HOTEL AND PRICE RANGE
             System.out.println("Searching User Input");
             //RESERVATION does not have a hotelID so you need to get it from roomID?
+            roomList = Functions.getNewRoomList();
             for(Reservation re : reservationList){
                 if(re.getReservationID() == Integer.parseInt(currentResID.getText())){
                     roomID = re.getRoomID();
