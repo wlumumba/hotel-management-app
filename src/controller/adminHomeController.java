@@ -393,13 +393,11 @@ public class adminHomeController implements Initializable {
         int hotelID = -1;
         //warningLabel.setText(""); // USED TO RESET THE LABEL
 
-
         System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
 
         try {
             //Error check user entered HotelName: Needs work!
            for (int i = 0; i < hotelList.size(); i++) {
-            //   System.out.println("HOTEL LIST: " + hotelList.get(i).getHotelName() + "\n");
 
                if ((hotelNameR.getText().isEmpty()) || (hotelList.get(i).getHotelName().equals(hotelNameR.getText()))) { //it still verify correct hotel yet
                    System.out.println("Please enter a valid hotel\n");
@@ -470,8 +468,6 @@ public class adminHomeController implements Initializable {
 
     }
 
-
-
     /**
      * Helper function, Checks if the maxPrice.getText and minPrice.getText is a numeric value
      * could be modified a bit
@@ -488,17 +484,6 @@ public class adminHomeController implements Initializable {
     }
 
     /*******------------reservationRoom FXML-------------*****/
-   /* //  NEEDS ITS OWN CONTROLLER!!! ///
-    @FXML
-    private TextField roomR;
-    @FXML
-    private TextField emailR;
-    @FXML
-    private TextField startDate; //not sure about these yet
-    @FXML
-    private TextField endDate; //not sure about these yet
-
-*/
 
     @FXML
     private void returnButton(ActionEvent event) throws IOException {
@@ -518,7 +503,7 @@ public class adminHomeController implements Initializable {
          catch (IOException e) {
                     e.printStackTrace();
                     System.out.println("Error in searchButtonClicked ");
-                }
+         }
     }
 
     /******************************************************************************************************/
@@ -622,7 +607,6 @@ public class adminHomeController implements Initializable {
                 }
             }
 
-            //Pass hotelID, startDate, endDate to fill table of next scene
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/styles/singleReservationRoom.fxml"));
             Parent root = loader.load();
             singleReservationRoomController scene2 = loader.getController();
@@ -653,12 +637,7 @@ public class adminHomeController implements Initializable {
 
         Connection connectDB = DBConnection.getConnection();
 
-        //String reservationQuery = "SELECT * FROM hotel_db.Reservation";
-
-        // reserve.getReservationID();
         //warningLabel.setText(""); // USED TO RESET THE LABEL
-
-        //System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
 
         String query = "DELETE FROM hotel_db.Reservation WHERE reservationId = " + deleteResId.getText(); // THIS IS ONLY FOR CUSTOMER SIDE + "email = " + deletEmail.getTxt();
 
@@ -672,27 +651,6 @@ public class adminHomeController implements Initializable {
 
 
         System.out.println(query);
-
-        //not needed below
-/*
-        //Error check to see if Reservation ID exists//Should there be a safeguard? like if RESERVATION ID is equal to EMAIL under admin?
-        //could it be I populated reservationList wrong or roomList wrong?
-        for (int i = 0; i < reservationList.size(); i++) { //error begins here //checks if its not correct to begin with. not sure if its needed or at least if its not empty?
-            System.out.println("ResList: " + reservationList.get(i) + " ");
-            if (currentResID.getText().isEmpty() || reservationList.get(i).getReservationID() != Integer.parseInt(currentResID.getText())) { //needs to check with list from reservation
-                System.out.println("Please enter a valid reservation ID\n");
-            }
-        }
-        for (Reservation r : reservationList) { //error is here since hotelID stays as -1
-            System.out.println("R HERE: " + reservationList.get(r.getReservationID()));
-            if (r.getReservationID() == Integer.parseInt(currentResID.getText())) {
-                //r.setReservationID(
-                //set values to NULL? 0 or how to delete
-            }
-
-        }
-
- */
     }
 
     /***********************************************************************/
