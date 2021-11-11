@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.singleReservationRoomController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.singleReservationRoomController">
    <children>
       <TabPane layoutX="14.0" prefHeight="500.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -14,9 +15,9 @@
                      <children>
                         <TableView fx:id="table_hotelR2" layoutY="-3.0" prefHeight="284.0" prefWidth="581.0">
                            <columns>
-                              <TableColumn fx:id="col_roomidR" prefWidth="167.0" text="RoomType" />
+                              <TableColumn fx:id="col_roomidR" prefWidth="167.0" text="Room #" />
                               <TableColumn fx:id="col_type1" minWidth="0.0" prefWidth="0.0" />
-                              <TableColumn fx:id="col_bedtypeR" minWidth="0.0" prefWidth="175.0" text="Room" />
+                              <TableColumn fx:id="col_bedtypeR" minWidth="0.0" prefWidth="175.0" text="RoomType" />
                               <TableColumn fx:id="col_roompriceR" prefWidth="127.0" text="Price" />
                            </columns>
                         </TableView>
@@ -24,7 +25,7 @@
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></TextField>
-                        <Label layoutX="9.0" layoutY="314.0" prefHeight="27.0" prefWidth="106.0" text="Enter Room:" textFill="#2f60d0">
+                        <Label layoutX="9.0" layoutY="314.0" prefHeight="27.0" prefWidth="106.0" text="Enter Room #:" textFill="#2f60d0">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></Label>
@@ -36,7 +37,7 @@
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></TextField>
-                        <Button fx:id="reserveButton" layoutX="252.0" layoutY="368.0" mnemonicParsing="false" onAction="#reserveButton" style="-fx-background-color: #2f60d0;" text="Reserve" textFill="WHITE">
+                        <Button fx:id="reserveButton" layoutX="265.0" layoutY="368.0" mnemonicParsing="false" onAction="#reserveButton" style="-fx-background-color: #2f60d0;" text="Reserve" textFill="WHITE">
                            <font>
                               <Font name="Georgia" size="16.0" />
                            </font></Button>

@@ -96,6 +96,7 @@ public class loginController {
                 //Obtaining stage information and setting our new scene/fxml
                 Stage currentStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 currentStage.setScene(newScene);
+
                 currentStage.setUserData(currentUser); // PASSING USER TO NEXT SCENE
                 currentStage.show();
 

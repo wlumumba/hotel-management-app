@@ -3,13 +3,11 @@ package helpers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Functions {
 
+/********************************ADMIN HOME*************************************************/
     /*** Returns a List of all Hotels using SQL ***/
     public static ObservableList<Hotel> populateHotelTable(){
         ObservableList<Hotel> hotelList = FXCollections.observableArrayList();
@@ -89,55 +87,111 @@ public class Functions {
             st.executeUpdate();
         }
         catch (SQLException ex) {
+            createAccount(r1.getUserEmail());
+            createReservation(r1);
+            System.out.println("Account not found, creating account then re-calling creating reservation");
             ex.printStackTrace();
         }
     }
 
+    public static void createAccount(String email){
 
 
-/***Meant to add the reservations to a list**/
-    public static ObservableList<Reservation> reservationList(){
+        Connection connectDB = DBConnection.getConnection(); //Below is it hotel_db.Admin?
+        String insertQuery = "INSERT INTO hotel_db.User (username, firstname, lastname, email, password, accType) VALUES (?, ?, ?, ?, ?, 0)";
+
+        try {
+            //Create statement, fill empty fields
+            PreparedStatement statement = connectDB.prepareStatement(insertQuery);
+            statement.setString(1,email);
+            statement.setString(2,"DUMMY");
+            statement.setString(3,"DUMMY");
+            statement.setString(4,email);
+            statement.setString(5,"password");
+            statement.executeUpdate();
+
+            //System.out.println("Success Inserted " + admin.toString());
+
+        }
+        catch (SQLIntegrityConstraintViolationException ex) {
+            System.out.println("Username taken! Try another one");
+        }
+        catch (SQLException ex) {
+            ex.printStackTrace();
+            System.out.println("Error: Failed to insert to DB");
+        }
+
+    }
+
+
+/***Meant to get the reservations to a list**/
+    public static ObservableList<Reservation> getNewReservationList(){
+        //MAYBE LINE 129
         ObservableList<Reservation> reservationList = FXCollections.observableArrayList();
 
+        System.out.println("INSIDE getNewReservationListT ");
+
         Connection connectDB = DBConnection.getConnection();
+
         String selectQuery = "SELECT * FROM hotel_db.Reservation";
 
         try {
             PreparedStatement ps = connectDB.prepareStatement(selectQuery);
             ResultSet rs = ps.executeQuery();
 
-            while(rs.next()){
-                Reservation reservation = new Reservation(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4),rs.getString(5),rs.getBoolean(6));
+
+           // System.out.println("INSIDE TRY RESERVATIONLIST ");
+            if (rs.next()) {
+                do {
+               //     System.out.println("INSIDE DO RESERVATIONLIST ");
+                    reservationList.add(new Reservation(rs.getInt(1),rs.getInt(5), rs.getString(2),rs.getString(3), rs.getString(6),rs.getBoolean(4)));
+                } while (rs.next());
+            }
+            else
+            {
+                System.out.println("WE NEED RESERVATIONS. NO RESERVATIONS FOUND");
             }
 
         } catch (Exception e){
             System.out.println(e);
         }
 
-        return reservationList();
+        return reservationList;
     }
-
-
-    /*  /***Meant to add the rooms to a list
-     * However is this needed or could we just use a column to reservation for hotelID and bypass this for reservation edit?**//*
-    public static ObservableList<Reservation> createReservationList(){
+    /***Meant to get the rooms to a list**/
+    public static ObservableList<Room> getNewRoomList(){
+        //MAYBE LINE 129
         ObservableList<Room> roomList = FXCollections.observableArrayList();
 
-        Connection connectDB = DBConnection.getConnection();
-        String selectQuery = "SELECT * FROM hotel_db.Room";
+        System.out.println("INSIDE getNewRoomListT ");
 
+        Connection connectDB = DBConnection.getConnection();
+
+        String selectQuery = "SELECT * FROM hotel_db.Room";
+       // int counter = 0;
+       // int counter1 = 0;
         try {
             PreparedStatement ps = connectDB.prepareStatement(selectQuery);
             ResultSet rs = ps.executeQuery();
 
-            while(rs.next()){
-                Room room = new Room(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4));
-            }
 
+           // System.out.println("INSIDE TRY roomlist ");
+          if (rs.next()) { //changed from next() . next works though
+                do {
+                //    System.out.println("INSIDE DO roomlist ");
+                    roomList.add(new Room(rs.getInt(1),rs.getString(2), rs.getInt(3),rs.getInt(4)));
+                } while (rs.next());
+            }
+            else
+            {
+                System.out.println("NO ROOMS FOUND");
+            }
+            // System.out.println("INSIDE TRY roomlist ");
         } catch (Exception e){
             System.out.println(e);
         }
 
-        return roomList();
-    }*/
+        return roomList;
+    }
+    /***********************************************************************************************/
 }

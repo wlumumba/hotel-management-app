@@ -298,7 +298,6 @@ public class adminHomeController implements Initializable {
             ps.setInt(2, roomPrice);
             ps.setInt(3, Integer.parseInt(addroom_hotelid.getText()));
 
-            
             ps.executeUpdate();
         }
         catch(Exception ex) {
@@ -393,13 +392,11 @@ public class adminHomeController implements Initializable {
         int hotelID = -1;
         //warningLabel.setText(""); // USED TO RESET THE LABEL
 
-
         System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
 
         try {
             //Error check user entered HotelName: Needs work!
            for (int i = 0; i < hotelList.size(); i++) {
-            //   System.out.println("HOTEL LIST: " + hotelList.get(i).getHotelName() + "\n");
 
                if ((hotelNameR.getText().isEmpty()) || (hotelList.get(i).getHotelName().equals(hotelNameR.getText()))) { //it still verify correct hotel yet
                    System.out.println("Please enter a valid hotel\n");
@@ -431,7 +428,7 @@ public class adminHomeController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/styles/singleReservationRoom.fxml"));
             Parent root = loader.load();
             singleReservationRoomController scene2 = loader.getController();
-            scene2.fillChooseRoomTable(new String[]{String.valueOf(hotelID), startDate.getText(), endDate.getText()});
+            scene2.fillChooseRoomTable(new String[]{String.valueOf(hotelID), startDate.getText(), endDate.getText(), "0"});
 
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene newScene = new Scene(root);
@@ -470,8 +467,6 @@ public class adminHomeController implements Initializable {
 
     }
 
-
-
     /**
      * Helper function, Checks if the maxPrice.getText and minPrice.getText is a numeric value
      * could be modified a bit
@@ -488,46 +483,7 @@ public class adminHomeController implements Initializable {
     }
 
     /*******------------reservationRoom FXML-------------*****/
-   /* //  NEEDS ITS OWN CONTROLLER!!! ///
-    @FXML
-    private TextField roomR;
-    @FXML
-    private TextField emailR;
-    @FXML
-    private TextField startDate; //not sure about these yet
-    @FXML
-    private TextField endDate; //not sure about these yet
 
-
-    *//**
-     * Maybe here check for account type or should it ask before? I think it should check
-     * This Function will let the user select the room and then reserve the room.
-     * Must provide a valid email and room
-     */
-   /* @FXML
-    private void reserveButton(ActionEvent event) throws IOException  {
-        System.out.println("Reserve Room Button");*/
-      //  try {
-           /* if (emailR.getText().isEmpty()) {  //|| (hotelList.equals(hotelNameR.getText()))) { //may be incorrect
-                System.out.println("Please enter a valid email\n");
-                warningLabel.setText("Enter a valid email");
-            } else if (roomR.getText().isEmpty() || (!isNumeric(maxPriceR.getText()))) {
-                System.out.println("Please enter a valid Room\n");
-                warningLabel.setText("Enter a valid Room");
-            }*/
-            //MAYBE ASK USER TO SELECT FROM CALENDAR OR THE USER MUST PUT START DATE IN MONTH/DAY
-            //THEN END DATE MONTH/DAY AND THEN HAVE A DATABASE/RESERVATION FOR THE USER FOR THAT ROOM?
-            //THIS WILL HAVE TO CHECK IF ROOM IS AVAILABLE IF TRUE ELSE DON'T DISPLAY AND WAIT UNTIL ROOM IS AVAILABLE?
-            //DOES THIS HAVE TO BE IN REAL TIME?
-
-       // }
-       /*//* catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Error in ReserveButton");
-        }*//*
-
-    }
-*/
     @FXML
     private void returnButton(ActionEvent event) throws IOException {
         System.out.println("Returning to Home Admin");
@@ -546,7 +502,7 @@ public class adminHomeController implements Initializable {
          catch (IOException e) {
                     e.printStackTrace();
                     System.out.println("Error in searchButtonClicked ");
-                }
+         }
     }
 
     /******************************************************************************************************/
@@ -585,76 +541,72 @@ public class adminHomeController implements Initializable {
 
     /***************************EDIT RESERVATION TAB************************/
     @FXML
-    private TextField currentResID;
+    public TextField currentResID;
     @FXML
     private TextField newStartDate;
     @FXML
     private TextField newEndDate;
 
-    private Reservation reserve; //not sure
+    /*******************GETTER FOR NEXT FXML******/
+    public String getReservationID() {  //This saves the users current reservationId they inputted for SRRController
+        String res = currentResID.getText();
+        return res;
+    }
+    /*************/
+
     @FXML
     void submitERButtonClicked(ActionEvent event) throws IOException {
-        System.out.println("Edit Reservation Submit Button Clicked");
+        System.out.println("Edit Reservation submitERButtonClicked");
         int roomID = -1;
         int hotelID = -1;
-        Connection connectDB = DBConnection.getConnection();
 
-        String reservationQuery = "SELECT * FROM hotel_db.Reservation";
-        //should you delete or just look for same room but a different day?
-
-        //"DELETE FROM hotel_db.Reservation WHERE reservationId = " + deleteResId.getText();
-
-       // reserve.getReservationID();
-        //warningLabel.setText(""); // USED TO RESET THE LABEL
-
-        System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
+        //System.out.println("INSIDE submitERButtonClicked");
 
         try {
             //Error check to see if Reservation ID exists//Should there be a safeguard? like if RESERVATION ID is equal to EMAIL under admin?
             //could it be I populated reservationList wrong or roomList wrong?
-            for (int i = 0; i < reservationList.size(); i++) { //error begins here
-                System.out.println("ResList: "+ reservationList.get(i) + " ");
-                if (currentResID.getText().isEmpty() || reservationList.get(i).getReservationID() != Integer.parseInt(currentResID.getText())) { //needs to check with list from reservation
-                    System.out.println("Please enter a valid reservation ID\n");
-                }
-            }
+            reservationList = Functions.getNewReservationList();
 
+           // System.out.println("INSIDE TRY ");
+          //  System.out.println("RES OUTSIDE: " + reservationList.size());
+
+            if (currentResID.getText().isEmpty()) { //|| re.getReservationID() != Integer.parseInt(currentResID.getText())) { //needs to check with list from reservation
+                    System.out.println("Please enter a valid reservation ID\n");
+            }
+         //   System.out.println("OUTSIDE SECOND FOR LOOP: ");
             //Error checked user startDate and endDate
             final java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy/MM/dd");
-            if (!startDate.getText().isEmpty() || !endDate.getText().isEmpty()) {
-                sdf.parse(startDate.getText());
-                sdf.parse(endDate.getText());
+            if (!newStartDate.getText().isEmpty() || !newEndDate.getText().isEmpty()) {
+                sdf.parse(newStartDate.getText());
+                sdf.parse(newEndDate.getText());
             }
             else{
                 //If user specifies no date range
-                startDate.setText("0000/00/00");
-                endDate.setText("9999/00/00");
+                newStartDate.setText("0000/00/00");
+                newEndDate.setText("9999/00/00");
             }
 
             //compare to the SQL DATABASE FOR CORRECT HOTEL AND PRICE RANGE
             System.out.println("Searching User Input");
-
-            //Get hotelID of the user after verifying the reservationID then roomID to get the right hotelID
-            /**********THINK IF THE RESERVATIONS EQUAL THEN YOU HAVE THE ROOM, BUT YOU NEED TO KNOW WHICH HOTEL ITS A PART OF TO LOOK THROUGH*******/
-            /******error here as well*****/
-
-            for(Reservation r : reservationList){ //error is here since hotelID stays as -1
-                System.out.println("R HERE: " + reservationList.get(r.getReservationID()));
-                if (r.getReservationID() == Integer.parseInt(currentResID.getText())) {
-                    roomID = r.getRoomID();
-                    for (Room re : roomList) {
-                        if (re.getRoomID() == roomID) {
-                            hotelID = re.getHotelID();
+            //Goes backward and getsthe hotelId from ReservationID->RoomID->HotelID
+            roomList = Functions.getNewRoomList();
+            for(Reservation re : reservationList){
+                if(re.getReservationID() == Integer.parseInt(currentResID.getText())){
+                    roomID = re.getRoomID();
+                    for (Room r : roomList) {
+                        if (r.getRoomID() == roomID)
+                        {
+                            hotelID = r.getHotelID();
                         }
                     }
                 }
             }
 
-            //Pass hotelID, startDate, endDate to fill table of next scene
+            /**************MAKE NEW RESERVATION HERE**************/
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/styles/singleReservationRoom.fxml"));
             Parent root = loader.load();
             singleReservationRoomController scene2 = loader.getController();
-            scene2.fillChooseRoomTable(new String[]{String.valueOf(hotelID), startDate.getText(), endDate.getText()});
+            scene2.fillChooseRoomTable(new String[]{String.valueOf(hotelID), newStartDate.getText(), newEndDate.getText(), currentResID.getText()});
 
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene newScene = new Scene(root);
@@ -677,16 +629,11 @@ public class adminHomeController implements Initializable {
 
     @FXML
     void deleteERButtonClicked(ActionEvent event) throws IOException {
-        System.out.println("Edit Reservation delete Button Clicked");
+        System.out.println("Edit Reservation deleteERButtonClicked");
 
         Connection connectDB = DBConnection.getConnection();
 
-        //String reservationQuery = "SELECT * FROM hotel_db.Reservation";
-
-        // reserve.getReservationID();
         //warningLabel.setText(""); // USED TO RESET THE LABEL
-
-        //System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
 
         String query = "DELETE FROM hotel_db.Reservation WHERE reservationId = " + deleteResId.getText(); // THIS IS ONLY FOR CUSTOMER SIDE + "email = " + deletEmail.getTxt();
 
@@ -698,29 +645,7 @@ public class adminHomeController implements Initializable {
             System.out.println(e);
         }
 
-
         System.out.println(query);
-
-        //not needed below
-/*
-        //Error check to see if Reservation ID exists//Should there be a safeguard? like if RESERVATION ID is equal to EMAIL under admin?
-        //could it be I populated reservationList wrong or roomList wrong?
-        for (int i = 0; i < reservationList.size(); i++) { //error begins here //checks if its not correct to begin with. not sure if its needed or at least if its not empty?
-            System.out.println("ResList: " + reservationList.get(i) + " ");
-            if (currentResID.getText().isEmpty() || reservationList.get(i).getReservationID() != Integer.parseInt(currentResID.getText())) { //needs to check with list from reservation
-                System.out.println("Please enter a valid reservation ID\n");
-            }
-        }
-        for (Reservation r : reservationList) { //error is here since hotelID stays as -1
-            System.out.println("R HERE: " + reservationList.get(r.getReservationID()));
-            if (r.getReservationID() == Integer.parseInt(currentResID.getText())) {
-                //r.setReservationID(
-                //set values to NULL? 0 or how to delete
-            }
-
-        }
-
- */
     }
 
     /***********************************************************************/
