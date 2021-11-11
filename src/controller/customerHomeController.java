@@ -282,6 +282,7 @@ public class customerHomeController implements Initializable {
             System.out.println("Searching User Input");
             //Goes backward and getsthe hotelId from ReservationID->RoomID->HotelID
             roomList = Functions.getNewRoomList();
+
             for(Reservation re : reservationList){
                 if((re.getReservationID() == Integer.parseInt(currentResID.getText())) && (re.getUserEmail().equals(u.getEmail()))){
                     roomID = re.getRoomID();
@@ -292,20 +293,21 @@ public class customerHomeController implements Initializable {
                         }
                     }
                 }
-                else
-                    System.out.println("Reservation not found, please try again");
             }
 
             /**************MAKE NEW RESERVATION HERE**************/
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/styles/singleReservationRoom.fxml"));
-            Parent root = loader.load();
-            singleReservationRoomController scene2 = loader.getController();
-            scene2.fillChooseRoomTable(new String[]{String.valueOf(hotelID), newStartDate.getText(), newEndDate.getText(), currentResID.getText()});
+            if (hotelID > -1) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/styles/singleReservationRoom.fxml"));
+                Parent root = loader.load();
+                singleReservationRoomController scene2 = loader.getController();
+                scene2.fillChooseRoomTable(new String[]{String.valueOf(hotelID), newStartDate.getText(), newEndDate.getText(), currentResID.getText()});
 
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene newScene = new Scene(root);
-            currentStage.setScene(newScene);
-            currentStage.show();
+                Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene newScene = new Scene(root);
+                currentStage.setScene(newScene);
+                currentStage.show();
+            }
+            System.out.println("No Reservation Found, Try again");
 
         }
         catch (IOException e) {
