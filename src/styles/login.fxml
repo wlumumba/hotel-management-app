@@ -8,9 +8,9 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.loginController">
    <left>
-      <AnchorPane id="logo" prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #2f60d0;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(to right top, #050528, #091842, #11265e, #17357c, #1d459b, #2956ae, #3467c2, #3f79d6, #5790e0, #71a6e9, #8dbcf1, #abd2f9);" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="172.0" fitWidth="228.0" layoutX="100.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="172.0" fitWidth="206.0" layoutX="100.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../Documents/Adobe Files/BBLogo.png" />
                </image>

@@ -25,7 +25,7 @@
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></TextField>
-                        <Button fx:id="addHotelButton" layoutX="365.0" layoutY="300.0" mnemonicParsing="false" onAction="#addHotelButtonClicked" prefHeight="31.0" prefWidth="70.0" style="-fx-background-color: #2f60d0;" text="Create" textFill="WHITE">
+                        <Button fx:id="addHotelButton" layoutX="365.0" layoutY="310.0" mnemonicParsing="false" onAction="#addHotelButtonClicked" prefHeight="31.0" prefWidth="70.0" style="-fx-background-color: #2f60d0;" text="Create" textFill="WHITE">
                            <font>
                               <Font name="Georgia" size="16.0" />
                            </font></Button>
