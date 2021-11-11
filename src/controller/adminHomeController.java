@@ -33,49 +33,7 @@ public class adminHomeController implements Initializable {
     public ObservableList<Room> roomList;
 
 
-    //FXML Variables
-    @FXML
-    private TextField hotelIDField;
-    @FXML
-    private TextField hotelNameField;
-    @FXML
-    private TextField hotelTypeField;
-    @FXML
-    private TextField amenitiesField;
-    @FXML
-    private TextField maxRoomsField;
-    @FXML
-    private TextField standardPriceField;
-    @FXML
-    private TextField queenPriceField;
-    @FXML
-    private TextField kingPriceField;
-    @FXML
-    private TextField weekendRateField;
-    @FXML
-    private TextField createUserAdmin;
-    @FXML
-    private TextField createPassAdmin;
-    @FXML
-    private TextField createFirstNAdmin;
-    @FXML
-    private TextField createLastNAdmin;
-    @FXML
-    private TextField createEmailAdmin;
-    @FXML
-    private TextField editHotelAmenities;
-    @FXML
-    private TextField editHotelType;
-    @FXML
-    private TextField editHotelWknPrice;
-    @FXML
-    private TextField editHotelKingPrice;
-    @FXML
-    private TextField editHotelStdPrice;
-    @FXML
-    private TextField editHotelQuePrice;
-    @FXML
-    private TextField hotelEditSearch;
+
 
     @FXML
     private TextField editUsername;
@@ -97,9 +55,7 @@ public class adminHomeController implements Initializable {
 
 
 
-    //Buttons
-    @FXML
-    private Button addHotelButton;
+
     @FXML
     private Label errorAdminOutput;
     @FXML
@@ -109,10 +65,7 @@ public class adminHomeController implements Initializable {
     //// ADD ROOM ELEMENTS ///
     @FXML
     private Button createAdminButton;
-    @FXML
-    private Button editHotelButton;
-    @FXML
-    private Button submitHotelEditButton;
+
 
 
     //columns
@@ -139,6 +92,32 @@ public class adminHomeController implements Initializable {
     }
 
     /******************************   Create Hotel Function ***************************************/
+    //FXML Variables
+    @FXML
+    private TextField hotelIDField;
+    @FXML
+    private TextField hotelNameField;
+    @FXML
+    private TextField hotelTypeField;
+    @FXML
+    private TextField amenitiesField;
+    @FXML
+    private TextField maxRoomsField;
+    @FXML
+    private TextField standardPriceField;
+    @FXML
+    private TextField queenPriceField;
+    @FXML
+    private TextField kingPriceField;
+    @FXML
+    private TextField weekendRateField;
+    @FXML
+    private Label addHotelOutput;
+    @FXML
+    private Button addHotelButton;
+
+
+
     @FXML
     public void addHotelButtonClicked(ActionEvent e) throws IOException{
 
@@ -146,35 +125,35 @@ public class adminHomeController implements Initializable {
 
         if (hotelNameField.getText().isEmpty()) {
             System.out.println("Please enter hotel Name");
-            errorAdminOutput.setText("Please enter a hotel Name");
+            addHotelOutput.setText("Please enter a hotel Name");
         }
         else if (hotelTypeField.getText().isEmpty()) {
             System.out.println("Please enter hotel type");
-            errorAdminOutput.setText("Please enter a hotel type");
+            addHotelOutput.setText("Please enter a hotel type");
         }
         else if (amenitiesField.getText().isEmpty()) {
             System.out.println("Please enter amenities");
-            errorAdminOutput.setText("Please enter a amenities");
+            addHotelOutput.setText("Please enter amenities");
         }
         else if (maxRoomsField.getText().isEmpty()) {
             System.out.println("Please enter max rooms");
-            errorAdminOutput.setText("Please enter max rooms");
+            addHotelOutput.setText("Please enter max rooms");
         }
         else if (standardPriceField.getText().isEmpty()) {
             System.out.println("Please enter standard room price");
-            errorAdminOutput.setText("Please enter standard room price");
+            addHotelOutput.setText("Please enter standard room price");
         }
         else if (queenPriceField.getText().isEmpty()) {
             System.out.println("Please enter queen room price");
-            errorAdminOutput.setText("Please enter queen room price");
+            addHotelOutput.setText("Please enter queen room price");
         }
         else if (kingPriceField.getText().isEmpty()) {
             System.out.println("Please enter king room price");
-            errorAdminOutput.setText("Please enter king room price");
+            addHotelOutput.setText("Please enter king room price");
         }
         else if (weekendRateField.getText().isEmpty()) {
             System.out.println("Please enter weekend rate");
-            errorAdminOutput.setText("Please enter weekend rate");
+            addHotelOutput.setText("Please enter weekend rate");
         }
         else {
 
@@ -182,6 +161,8 @@ public class adminHomeController implements Initializable {
             currentHotel = new Hotel(0, hotelNameField.getText(), hotelTypeField.getText(), amenitiesField.getText(), Integer.parseInt(maxRoomsField.getText()), Integer.parseInt(standardPriceField.getText()), Integer.parseInt(queenPriceField.getText()), Integer.parseInt(kingPriceField.getText()), Integer.parseInt(weekendRateField.getText()));
 
             Hotel.addHotel(currentHotel);
+
+            addHotelOutput.setText("Hotel '" + currentHotel.getHotelName() + "' added to system");
 
             hotelNameField.clear();
             hotelTypeField.clear();
@@ -197,35 +178,74 @@ public class adminHomeController implements Initializable {
 
     /************************** EDIT Hotel TAB    **************************************************/
     @FXML
+    private TextField editHotelAmenities;
+    @FXML
+    private TextField editHotelType;
+    @FXML
+    private TextField editHotelWknPrice;
+    @FXML
+    private TextField editHotelKingPrice;
+    @FXML
+    private TextField editHotelStdPrice;
+    @FXML
+    private TextField editHotelQuePrice;
+    @FXML
+    private TextField hotelEditSearch;
+    @FXML
+    private Button editHotelButton;
+    @FXML
+    private Button submitHotelEditButton;
+    @FXML
+    private Label editHotelOutput;
+    @FXML
+    private Label editHotelOutput1;
+
+
+    @FXML
     void editHotelButtonClicked(ActionEvent event) {
         String input = hotelEditSearch.getText();
+        editHotelOutput.setText(" ");
 
         Hotel editHotel = Hotel.getHotelFromName(input);
-        System.out.println(editHotel.toString());
+        //System.out.println(editHotel.toString());
 
-        editHotelAmenities.setText(editHotel.getAmenities());
-        editHotelType.setText(editHotel.getHotelType());
-        editHotelStdPrice.setText(String.valueOf(editHotel.getStandardPrice()));
-        editHotelQuePrice.setText(String.valueOf(editHotel.getQueenPrice()));
-        editHotelKingPrice.setText(String.valueOf(editHotel.getKingPrice()));
-        editHotelWknPrice.setText(String.valueOf(editHotel.getWeekendRate()));
+        if(editHotel.getHotelName().equals("hotel name"))
+            editHotelOutput.setText("Hotel '" + hotelEditSearch.getText() +"' not found, please try again");
 
+        else {
+
+            editHotelOutput.setText("Edit hotel '" + hotelEditSearch.getText() +"'");
+
+            editHotelAmenities.setText(editHotel.getAmenities());
+            editHotelType.setText(editHotel.getHotelType());
+            editHotelStdPrice.setText(String.valueOf(editHotel.getStandardPrice()));
+            editHotelQuePrice.setText(String.valueOf(editHotel.getQueenPrice()));
+            editHotelKingPrice.setText(String.valueOf(editHotel.getKingPrice()));
+            editHotelWknPrice.setText(String.valueOf(editHotel.getWeekendRate()));
+        }
     }
 
     @FXML
     void submitHotelEditButton(ActionEvent event) {
+        editHotelOutput1.setText(" ");
 
         Hotel editHotel = new Hotel(0, hotelEditSearch.getText(), editHotelType.getText(), editHotelAmenities.getText(), 0, Integer.parseInt(editHotelStdPrice.getText()), Integer.parseInt(editHotelQuePrice.getText()), Integer.parseInt(editHotelKingPrice.getText()), Integer.parseInt(editHotelWknPrice.getText()));
-        Hotel.updateHotel(editHotel);
+        int errorCode = Hotel.updateHotel(editHotel);
 
-        editHotelAmenities.clear();
-        editHotelType.clear();
-        editHotelStdPrice.clear();
-        editHotelQuePrice.clear();
-        editHotelKingPrice.clear();
-        editHotelWknPrice.clear();
-        hotelEditSearch.clear();
+        if(errorCode == 0)
+            editHotelOutput1.setText("An error has occurred, please try again. If error persist please contact customer service");
 
+        else {
+            editHotelOutput1.setText("Successfully updated hotel '" + hotelEditSearch.getText() + "'");
+            editHotelOutput.setText(" ");
+            editHotelAmenities.clear();
+            editHotelType.clear();
+            editHotelStdPrice.clear();
+            editHotelQuePrice.clear();
+            editHotelKingPrice.clear();
+            editHotelWknPrice.clear();
+            hotelEditSearch.clear();
+        }
     }
 
     /*********************************  Create Room TAB  ******************************************/
@@ -249,6 +269,8 @@ public class adminHomeController implements Initializable {
     private TableColumn<Hotel, String> col_name;
     @FXML
     private TableView<Hotel> table_hotel;
+    @FXML
+    private Label addRoomOutput;
 
     // Fills the table given a List
     public void fillAddRoomTable()
@@ -271,37 +293,48 @@ public class adminHomeController implements Initializable {
     @FXML
     void addRoomButtonClicked(ActionEvent event){
         System.out.println("Create Room Button");
+        addRoomOutput.setText(" ");
         Connection connectDB = DBConnection.getConnection();
 
-        String hotelQuery = "SELECT * FROM hotel_db.Hotel where hotelID = ";
-        String insertQuery = "INSERT INTO hotel_db.Room (bedType, roomPrice, Hotel_hotelID) VALUES (?, ?, ?)";
-        int roomPrice = 0;
+        if(addroom_hotelid.getText().isEmpty())
+            addRoomOutput.setText("Please enter Hotel ID");
 
-        // INSERT INTO `hotel_db`.`Room` (`roomID`, `bedType`, `price`, `Hotel_hotelID`) VALUES ('', 'Queen', '124', '1');
-        try{
-            PreparedStatement ps = connectDB.prepareStatement(insertQuery);
+        else if (addroom_bed.getText().isEmpty())
+            addRoomOutput.setText("Please enter bed type");
 
-            //Also grab the proper hotel entry to assign each room a price
-            ResultSet rs = ps.executeQuery(hotelQuery + Integer.parseInt(addroom_hotelid.getText()));
-            rs.next();
+        else {
 
-            if (addroom_bed.getText().equalsIgnoreCase("standard"))
-                roomPrice = rs.getInt(6);
-            else if (addroom_bed.getText().equalsIgnoreCase("queen"))
-                roomPrice = rs.getInt(7);
-            else if (addroom_bed.getText().equalsIgnoreCase("king"))
-                roomPrice = rs.getInt(8);
+            String hotelQuery = "SELECT * FROM hotel_db.Hotel where hotelID = ";
+            String insertQuery = "INSERT INTO hotel_db.Room (bedType, roomPrice, Hotel_hotelID) VALUES (?, ?, ?)";
+            int roomPrice = 0;
 
-            System.out.println(roomPrice);
+            // INSERT INTO `hotel_db`.`Room` (`roomID`, `bedType`, `price`, `Hotel_hotelID`) VALUES ('', 'Queen', '124', '1');
+            try {
+                PreparedStatement ps = connectDB.prepareStatement(insertQuery);
 
-            ps.setString(1, addroom_bed.getText());
-            ps.setInt(2, roomPrice);
-            ps.setInt(3, Integer.parseInt(addroom_hotelid.getText()));
+                //Also grab the proper hotel entry to assign each room a price
+                ResultSet rs = ps.executeQuery(hotelQuery + Integer.parseInt(addroom_hotelid.getText()));
+                rs.next();
 
-            ps.executeUpdate();
-        }
-        catch(Exception ex) {
-            System.out.println(ex);
+                if (addroom_bed.getText().equalsIgnoreCase("standard"))
+                    roomPrice = rs.getInt(6);
+                else if (addroom_bed.getText().equalsIgnoreCase("queen"))
+                    roomPrice = rs.getInt(7);
+                else if (addroom_bed.getText().equalsIgnoreCase("king"))
+                    roomPrice = rs.getInt(8);
+
+                System.out.println(roomPrice);
+
+                ps.setString(1, addroom_bed.getText());
+                ps.setInt(2, roomPrice);
+                ps.setInt(3, Integer.parseInt(addroom_hotelid.getText()));
+
+                ps.executeUpdate();
+                addRoomOutput.setText("Successfully added room with type '" + addroom_bed.getText() + "' to hotel '" + addroom_hotelid.getText() + "'");
+            } catch (Exception ex) {
+                addRoomOutput.setText("Could not add room with type '" + addroom_bed.getText() + "' to hotel '" + addroom_hotelid.getText() + "'. Please Try again, if error persist contact customer service");
+                System.out.println(ex);
+            }
         }
     }
 
@@ -309,45 +342,67 @@ public class adminHomeController implements Initializable {
 
 
     //*****************************  Create Admin Account TAB *******************************************/
+
+    @FXML
+    private TextField createUserAdmin;
+    @FXML
+    private TextField createPassAdmin;
+    @FXML
+    private TextField createFirstNAdmin;
+    @FXML
+    private TextField createLastNAdmin;
+    @FXML
+    private TextField createEmailAdmin;
+    @FXML
+    private Label addAdminOutput;
+
     @FXML
     public void createAdminButtonClicked(Event e) throws IOException {
         System.out.println("Create Admin Button");
+        addAdminOutput.setText(" ");
 
         //checks for empty fields
         if (createUserAdmin.getText().isEmpty()) { //errors here if one text box is empty
             System.out.println("Please enter Username");
-            errorAdminOutput.setText("Please enter a Username");
+            addAdminOutput.setText("Please enter a Username");
         }
         else if (createPassAdmin.getText().isEmpty()) {
             System.out.println("Please enter Password");
-            errorAdminOutput.setText("Please enter a Password");
+            addAdminOutput.setText("Please enter a Password");
         }
         else if (createFirstNAdmin.getText().isEmpty()) {
             System.out.println("Please enter First Name");
-            errorAdminOutput.setText("Please enter a First Name");
+            addAdminOutput.setText("Please enter a First Name");
         }
         else if (createLastNAdmin.getText().isEmpty()) {
             System.out.println("Please enter Last Name");
-            errorAdminOutput.setText("Please enter a Last Name");
+            addAdminOutput.setText("Please enter a Last Name");
         }
         else if (createEmailAdmin.getText().isEmpty()) {
             System.out.println("Please enter Email");
-            errorAdminOutput.setText("Please enter an Email");
+            addAdminOutput.setText("Please enter an Email");
         }
         else {
             currentUser = new User(createUserAdmin.getText(), createFirstNAdmin.getText(), createLastNAdmin.getText(), createEmailAdmin.getText(), createPassAdmin.getText(), 1);
 
             //Launching DataBase Instance
-            User.createAdmin(currentUser);
+            int code = User.createAdmin(currentUser);
 
-            //Clear ALL text fields
-            createUserAdmin.clear();
-            createPassAdmin.clear();
-            createFirstNAdmin.clear();
-            createLastNAdmin.clear();
-            createEmailAdmin.clear();
-            errorAdminOutput.setText("");
+            if (code == 0)
+                addAdminOutput.setText("Unknown Error");
 
+            else if(code == 2)
+                addAdminOutput.setText("Username or email taken. Try another username and/or email");
+
+            else {
+                //Clear ALL text fields
+                addAdminOutput.setText("Account with username '" + createUserAdmin.getText() +"' created");
+                createUserAdmin.clear();
+                createPassAdmin.clear();
+                createFirstNAdmin.clear();
+                createLastNAdmin.clear();
+                createEmailAdmin.clear();
+            }
         }
     }
 
@@ -360,6 +415,8 @@ public class adminHomeController implements Initializable {
     private TableColumn<Hotel, String> col_AmenitiesR;
     @FXML
     private TableView<Hotel> table_hotelR;
+    @FXML
+    private Label addResOutput;
     /**
      * Fills out the CreateReservationTable
      */
@@ -387,61 +444,84 @@ public class adminHomeController implements Initializable {
      * and let the user select the room etc.
      */
     @FXML
-    private void searchButtonClicked (ActionEvent event) throws IOException { //Event or ActionEvent?
+    private void searchButtonClicked (ActionEvent event) throws Exception { //Event or ActionEvent?
         System.out.println("Reservation Search Button Clicked");
-        int hotelID = -1;
-        //warningLabel.setText(""); // USED TO RESET THE LABEL
+        addResOutput.setText(" ");
+        boolean hotelNameValid = false;
 
-        System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
+        if(hotelNameR.getText().isEmpty())
+            addResOutput.setText("Please enter hotel name");
 
-        try {
-            //Error check user entered HotelName: Needs work!
-           for (int i = 0; i < hotelList.size(); i++) {
+        else if(startDate.getText().isEmpty())
+            addResOutput.setText("Please enter valid start date");
 
-               if ((hotelNameR.getText().isEmpty()) || (hotelList.get(i).getHotelName().equals(hotelNameR.getText()))) { //it still verify correct hotel yet
-                   System.out.println("Please enter a valid hotel\n");
-               }
-           }
+        else if(endDate.getText().isEmpty())
+            addResOutput.setText("Please enter valid end date");
 
-           //Error checked user startDate and endDate
-            final java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy/MM/dd");
-            if (!startDate.getText().isEmpty() || !endDate.getText().isEmpty()) {
-                sdf.parse(startDate.getText());
-                sdf.parse(endDate.getText());
-            }
-            else{
-                //If user specifies no date range
-                startDate.setText("0000/00/00");
-                endDate.setText("9999/00/00");
-            }
+        else {
 
-            //compare to the SQL DATABASE FOR CORRECT HOTEL AND PRICE RANGE
-            System.out.println("Searching User Input");
+            int hotelID = -1;
+            //warningLabel.setText(""); // USED TO RESET THE LABEL
 
-            //Get hotelID of user entered hotelName
-            for(Hotel h : hotelList){
-                if(h.getHotelName().equalsIgnoreCase(hotelNameR.getText()))
-                    hotelID = h.getHotelID();
-            }
+            System.out.print("This is hotel Name: " + hotelNameR.getText() + "\n");
 
-            //Pass hotelID, startDate, endDate to fill table of next scene
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/styles/singleReservationRoom.fxml"));
-            Parent root = loader.load();
-            singleReservationRoomController scene2 = loader.getController();
-            scene2.fillChooseRoomTable(new String[]{String.valueOf(hotelID), startDate.getText(), endDate.getText(), "0"});
+            try {
+                //Error check user entered HotelName: Needs work!
+                for (int i = 0; i < hotelList.size(); i++) {
 
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene newScene = new Scene(root);
-            currentStage.setScene(newScene);
-            currentStage.show();
+                    if ((hotelList.get(i).getHotelName().equals(hotelNameR.getText()))) { //it still verify correct hotel yet
+                        //addResOutput.setText("Please enter valid hotel name");
+                        System.out.println("Hotel found");
+                        hotelNameValid = true;
+                    }
+                }
 
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Error in searchButtonClicked ");
-        }
-        catch(ParseException e){
-            System.out.println("Date in wrong format! Should be YYYY/MM/DD");
+                if (!hotelNameValid) {
+                    addResOutput.setText("Hotel name not found, please try again");
+                    throw new Exception();
+                }
+
+                    //Error checked user startDate and endDate
+                    final java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy/MM/dd");
+                    if (!startDate.getText().isEmpty() || !endDate.getText().isEmpty()) {
+                        sdf.parse(startDate.getText());
+                        sdf.parse(endDate.getText());
+                    } else {
+                        //If user specifies no date range\
+                        addResOutput.setText("No date range specified");
+                        startDate.setText("0000/00/00");
+                        endDate.setText("9999/00/00");
+                    }
+
+                    //compare to the SQL DATABASE FOR CORRECT HOTEL AND PRICE RANGE
+                    System.out.println("Searching User Input");
+
+                    //Get hotelID of user entered hotelName
+                    for (Hotel h : hotelList) {
+                        if (h.getHotelName().equalsIgnoreCase(hotelNameR.getText()))
+                            hotelID = h.getHotelID();
+                    }
+
+                    //Pass hotelID, startDate, endDate to fill table of next scene
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/styles/singleReservationRoom.fxml"));
+                    Parent root = loader.load();
+                    singleReservationRoomController scene2 = loader.getController();
+                    scene2.fillChooseRoomTable(new String[]{String.valueOf(hotelID), startDate.getText(), endDate.getText(), "0"});
+
+                    Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    Scene newScene = new Scene(root);
+                    currentStage.setScene(newScene);
+                    currentStage.show();
+
+                } catch(IOException e){
+                    e.printStackTrace();
+                    addResOutput.setText("Unknown error!");
+                    System.out.println("Error in searchButtonClicked ");
+                } catch(ParseException e){
+                    addResOutput.setText("Date in wrong format! Should be YYYY/MM/DD");
+                    System.out.println("Date in wrong format! Should be YYYY/MM/DD");
+                }
+
         }
 
     }
@@ -506,20 +586,27 @@ public class adminHomeController implements Initializable {
     }
 
     /******************************************************************************************************/
+    @FXML
+    private Label editUserOutput;
 
     @FXML
     void submitUserEditButtonClicked(ActionEvent event) {
         User updateUser = new User(editUsername.getText(), editUserFName.getText(), editUserLName.getText(), userEditSearch.getText(), editUserPW.getText(), Integer.parseInt(editUserAccountType.getText()));
+        editUserOutput.setText(" ");
+        int code = User.updateUser(updateUser);
 
-        User.updateUser(updateUser);
+        if(code == 0)
+            editUserOutput.setText("Unknown error");
 
-        userEditSearch.clear();
-        editUsername.clear();
-        editUserFName.clear();
-        editUserLName.clear();
-        editUserPW.clear();
-        editUserAccountType.clear();
-
+        else {
+            editUserOutput.setText("Successfully updated user '" + userEditSearch.getText() +"'");
+            userEditSearch.clear();
+            editUsername.clear();
+            editUserFName.clear();
+            editUserLName.clear();
+            editUserPW.clear();
+            editUserAccountType.clear();
+        }
 
     }
 
@@ -527,15 +614,21 @@ public class adminHomeController implements Initializable {
     void editUserSearchButtonClicked(ActionEvent event) {
 
         String input = userEditSearch.getText();
+        editUserOutput.setText(" ");
 
         User editUser = User.getUserFromEmail(input);
-        System.out.println(editUser.toString());
 
-        editUsername.setText(editUser.getUserName());
-        editUserFName.setText(editUser.getFirstName());
-        editUserLName.setText(editUser.getLastName());
-        editUserPW.setText(editUser.getPassword());
-        editUserAccountType.setText(String.valueOf(editUser.getAccountType()));
+        if(editUser.getUserName().equals("user name")) {
+            editUserOutput.setText("Email not found, please try again");
+
+        }
+        else {
+            editUsername.setText(editUser.getUserName());
+            editUserFName.setText(editUser.getFirstName());
+            editUserLName.setText(editUser.getLastName());
+            editUserPW.setText(editUser.getPassword());
+            editUserAccountType.setText(String.valueOf(editUser.getAccountType()));
+        }
 
     }
 
@@ -546,6 +639,11 @@ public class adminHomeController implements Initializable {
     private TextField newStartDate;
     @FXML
     private TextField newEndDate;
+    @FXML
+    private Label editResOutput;
+    @FXML
+    private Label editResOutput1;
+
 
 
     @FXML
@@ -553,6 +651,9 @@ public class adminHomeController implements Initializable {
         System.out.println("Edit Reservation submitERButtonClicked");
         int roomID = -1;
         int hotelID = -1;
+        editResOutput.setText(" ");
+        boolean resIDFound = false;
+
 
         //System.out.println("INSIDE submitERButtonClicked");
 
@@ -565,8 +666,19 @@ public class adminHomeController implements Initializable {
           //  System.out.println("RES OUTSIDE: " + reservationList.size());
 
             if (currentResID.getText().isEmpty()) { //|| re.getReservationID() != Integer.parseInt(currentResID.getText())) { //needs to check with list from reservation
-                    System.out.println("Please enter a valid reservation ID\n");
+                    editResOutput.setText("Please enter reservation ID");
+                    throw new Exception("no id entered");
             }
+           else if (newStartDate.getText().isEmpty()) { //|| re.getReservationID() != Integer.parseInt(currentResID.getText())) { //needs to check with list from reservation
+                editResOutput.setText("Please enter new start date");
+                throw new Exception("new start date empty");
+            }
+            else if (newEndDate.getText().isEmpty()) { //|| re.getReservationID() != Integer.parseInt(currentResID.getText())) { //needs to check with list from reservation
+                editResOutput.setText("Please enter new end date");
+                throw new Exception("new end date empty");
+            }
+
+
          //   System.out.println("OUTSIDE SECOND FOR LOOP: ");
             //Error checked user startDate and endDate
             final java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy/MM/dd");
@@ -586,6 +698,7 @@ public class adminHomeController implements Initializable {
             roomList = Functions.getNewRoomList();
             for(Reservation re : reservationList){
                 if(re.getReservationID() == Integer.parseInt(currentResID.getText())){
+                    resIDFound = true;
                     roomID = re.getRoomID();
                     for (Room r : roomList) {
                         if (r.getRoomID() == roomID)
@@ -594,6 +707,11 @@ public class adminHomeController implements Initializable {
                         }
                     }
                 }
+            }
+
+            if(!resIDFound){
+                editResOutput.setText("Reservation not found.\nCheck Reservation ID and try again");
+                throw new Exception("Res ID not found");
             }
 
             /**************MAKE NEW RESERVATION HERE**************/
@@ -611,9 +729,13 @@ public class adminHomeController implements Initializable {
         catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error in submitButtonClicked ");
+            editResOutput.setText("Unknown error");
         }
         catch(ParseException e){
             System.out.println("Date in wrong format! Should be YYYY/MM/DD");
+            editResOutput.setText("Date in wrong format! Should be YYYY/MM/DD");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
@@ -624,22 +746,45 @@ public class adminHomeController implements Initializable {
     @FXML
     void deleteERButtonClicked(ActionEvent event) throws IOException {
         System.out.println("Edit Reservation deleteERButtonClicked");
+        editResOutput1.setText(" ");
+        int deleteCount;
+
+        if (deleteResId.getText().isEmpty()) {
+            editResOutput1.setText("Please enter Reservation ID");
+        } else {
 
         Connection connectDB = DBConnection.getConnection();
 
-        //warningLabel.setText(""); // USED TO RESET THE LABEL
 
-        String query = "DELETE FROM hotel_db.Reservation WHERE reservationId = " + deleteResId.getText(); // THIS IS ONLY FOR CUSTOMER SIDE + "email = " + deletEmail.getTxt();
 
-        try {
-            PreparedStatement ps = connectDB.prepareStatement(query);
-            ps.executeUpdate();
+            //warningLabel.setText(""); // USED TO RESET THE LABEL
 
-        } catch (Exception e){
-            System.out.println(e);
+            String query = "DELETE FROM hotel_db.Reservation WHERE reservationId = " + deleteResId.getText(); // THIS IS ONLY FOR CUSTOMER SIDE + "email = " + deletEmail.getTxt();
+
+            try {
+                if (deleteResId.getText().isEmpty()) {
+                    editResOutput1.setText("Please enter Reservation ID");
+                    throw new Exception("Res ID not found");
+                }
+
+                PreparedStatement ps = connectDB.prepareStatement(query);
+                deleteCount = ps.executeUpdate();
+
+                if(deleteCount == 0){
+                    editResOutput1.setText("Reservation ID not found.\nCheck ID and try again");
+                }
+
+                else {
+                    editResOutput1.setText("Reservation with ID '" + deleteResId.getText() + "' successfully deleted");
+                    deleteResId.clear();
+                }
+            } catch (Exception e) {
+                editResOutput1.setText("Unknown error. Please try again");
+                System.out.println(e);
+            }
+
+
         }
-
-        System.out.println(query);
     }
 
     /***********************************************************************/

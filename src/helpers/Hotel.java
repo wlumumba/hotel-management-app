@@ -90,8 +90,8 @@ public class Hotel {
 
         return new Hotel(22, "hotel name", "Hotel Type", "amen", 55, 55, 55, 55, 15);
     }
-
-    public static void updateHotel(Hotel hotel){
+    //returns 0 if fails and returns one if it succeeds
+    public static int updateHotel(Hotel hotel){
 
         Connection connectDB = DBConnection.getConnection();
         //Make query to find number of rows in a table
@@ -109,10 +109,12 @@ public class Hotel {
             PreparedStatement ps = connectDB.prepareStatement(query);
             ps.executeUpdate();
 
+
         } catch (Exception e){
             System.out.println(e);
+            return 0;
         }
-
+        return 1;
 
     }
 
