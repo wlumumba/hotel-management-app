@@ -181,7 +181,7 @@ public class customerHomeController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/styles/singleReservationRoom.fxml"));
             Parent root = loader.load();
             singleReservationRoomController scene2 = loader.getController();
-            scene2.fillChooseRoomTable(new String[]{String.valueOf(hotelID), startDate.getText(), endDate.getText(), "0"});
+            scene2.fillChooseRoomTable(new String[] {String.valueOf(hotelID), startDate.getText(), endDate.getText(), "0"});
 
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene newScene = new Scene(root);

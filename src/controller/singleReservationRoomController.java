@@ -134,28 +134,28 @@ public class singleReservationRoomController implements Initializable {
 
 
             try {
-            //Stage stage;
-            Scene scene;
-            Parent root;
+                //Stage stage;
+                Scene scene;
+                Parent root;
 
                 Node node = (Node) event.getSource();
                 Stage stage = (Stage) node.getScene().getWindow();
                 User u = (User) stage.getUserData();
 
-            if(u.getAccountType() == 1)
-                root = FXMLLoader.load((getClass().getResource("/styles/adminHome.fxml")));
-            else
-                root = FXMLLoader.load((getClass().getResource("/styles/customerHome.fxml")));
+                if(u.getAccountType() == 1)
+                    root = FXMLLoader.load((getClass().getResource("/styles/adminHome.fxml")));
+                else
+                    root = FXMLLoader.load((getClass().getResource("/styles/customerHome.fxml")));
 
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene((root));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene((root));
 
-            stage.setScene((scene));
-            stage.show();
+                stage.setScene((scene));
+                stage.show();
             }
             catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Error in searchButtonClicked ");
+                e.printStackTrace();
+                System.out.println("Error in searchButtonClicked ");
             }
     }
 }

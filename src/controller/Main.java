@@ -15,7 +15,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/styles/login.fxml"));
         primaryStage.setTitle("Sleepless Nights B&B");
-        primaryStage.setScene(new Scene(root, 754, 400));
+        primaryStage.setScene(new Scene(root, 800, 500));
         primaryStage.show();
     }
 
