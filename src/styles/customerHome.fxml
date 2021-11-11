@@ -27,11 +27,11 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="editUsername" layoutX="181.0" layoutY="101.0" />
-                        <TextField fx:id="editFirstName" layoutX="181.0" layoutY="146.0" />
-                        <TextField fx:id="editLastName" layoutX="181.0" layoutY="188.0" />
-                        <TextField fx:id="editPassword" layoutX="181.0" layoutY="232.0" />
-                        <TextField fx:id="userEmailEdit" layoutX="181.0" layoutY="61.0" />
+                        <TextField fx:id="editUsername" layoutX="181.0" layoutY="101.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;" />
+                        <TextField fx:id="editFirstName" layoutX="181.0" layoutY="146.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;" />
+                        <TextField fx:id="editLastName" layoutX="181.0" layoutY="188.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;" />
+                        <TextField fx:id="editPassword" layoutX="181.0" layoutY="232.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;" />
+                        <TextField fx:id="userEmailEdit" layoutX="181.0" layoutY="61.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;" />
                         <Button fx:id="editAccountButton" layoutX="95.0" layoutY="60.0" mnemonicParsing="false" onAction="#editAccountButtonClicked" style="-fx-background-color: #2f60d0;" text="Edit" textFill="WHITE">
                            <font>
                               <Font name="Georgia" size="14.0" />

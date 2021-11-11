@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.guestHomeController">
+   <children>
+      <Label layoutX="356.0" layoutY="69.0" text="Guest Page" textFill="#2f60d0">
+         <font>
+            <Font name="Georgia" size="18.0" />
+         </font></Label>
+      <Button fx:id="loginButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#guestLoginButtonClicked" style="-fx-background-color: #2f60d0;" text="Login" textFill="WHITE">
+         <font>
+            <Font name="Georgia" size="16.0" />
+         </font></Button>
+   </children>
+</AnchorPane>
