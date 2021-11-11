@@ -547,12 +547,6 @@ public class adminHomeController implements Initializable {
     @FXML
     private TextField newEndDate;
 
-    /*******************GETTER FOR NEXT FXML******/
-    public String getReservationID() {  //This saves the users current reservationId they inputted for SRRController
-        String res = currentResID.getText();
-        return res;
-    }
-    /*************/
 
     @FXML
     void submitERButtonClicked(ActionEvent event) throws IOException {

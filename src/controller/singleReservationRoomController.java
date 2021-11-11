@@ -82,6 +82,10 @@ public class singleReservationRoomController implements Initializable {
     @FXML
     private void reserveButton(ActionEvent event) throws IOException  {
         System.out.println("INSIDE reserveButton");
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        User u = (User) stage.getUserData();
+
 
         //  try {
         if (emailR.getText().isEmpty()) {  //|| if email is invalid?
@@ -91,43 +95,58 @@ public class singleReservationRoomController implements Initializable {
             System.out.println("Please enter a valid Room\n");
             //warningLabel.setText("Enter a valid Room");
         }
+
+        if(u.getAccountType() == 0 && !emailR.getText().equals(u.getEmail()))
+            System.out.println("Email does not match logged account type");
         //validate for customer email
         /*********DELETES THE OLD RESERVATION*****************/
 
-        Connection connectDB = DBConnection.getConnection();
+        else {
+            Connection connectDB = DBConnection.getConnection();
 
-        System.out.println("RESERVATION ID: " + currResID);
-        String query = "DELETE FROM hotel_db.Reservation WHERE reservationId = " + currResID;
+            System.out.println("RESERVATION ID: " + currResID);
+            String query = "DELETE FROM hotel_db.Reservation WHERE reservationId = " + currResID;
 
-        try {
-            PreparedStatement ps = connectDB.prepareStatement(query);
-            ps.executeUpdate();
+            try {
+                PreparedStatement ps = connectDB.prepareStatement(query);
+                ps.executeUpdate();
 
-        } catch (Exception e){
-            System.out.println(e);
+            } catch (Exception e) {
+                //System.out.println(e);
+            }
+
+            /****************************************************/
+            Reservation reservation = new Reservation(-1, Integer.parseInt(roomR.getText()), resVals[1], resVals[2], emailR.getText(), true);
+            Functions.createReservation(reservation);
+
+            //ADD A LABEL FOR SUCCESS OR FAILURE HERE
+
+            emailR.clear();
+            roomR.clear();
+            fillChooseRoomTable(resVals);
         }
-
-        /****************************************************/
-        Reservation reservation = new Reservation(-1,Integer.parseInt(roomR.getText()), resVals[1], resVals[2],emailR.getText(), true);
-        Functions.createReservation(reservation);
-
-        //ADD A LABEL FOR SUCCESS OR FAILURE HERE
-
-        emailR.clear();
-        roomR.clear();
-        fillChooseRoomTable(resVals);
     }
 
     /******************************************* BACK BUTTON **********************************************/
     @FXML
     private void returnButton(ActionEvent event) throws IOException {
             System.out.println("Returning to Home Admin");
+
+
             try {
-            Stage stage;
+            //Stage stage;
             Scene scene;
             Parent root;
 
-            root = FXMLLoader.load((getClass().getResource("/styles/adminHome.fxml")));
+                Node node = (Node) event.getSource();
+                Stage stage = (Stage) node.getScene().getWindow();
+                User u = (User) stage.getUserData();
+
+            if(u.getAccountType() == 1)
+                root = FXMLLoader.load((getClass().getResource("/styles/adminHome.fxml")));
+            else
+                root = FXMLLoader.load((getClass().getResource("/styles/customerHome.fxml")));
+
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene((root));
 
