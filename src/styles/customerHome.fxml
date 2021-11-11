@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="323.0" prefWidth="600.0" style="-fx-background-color: #2d3349;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.customerHomeController">
    <children>
-      <TabPane prefHeight="500.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutY="68.0" prefHeight="432.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Create Reservation">
             <content>
@@ -160,11 +160,11 @@
                            <font>
                               <Font name="Lucida Sans Unicode" size="16.0" />
                            </font></Button>
-                        <Label layoutX="271.0" layoutY="28.0" text="Enter Email to Edit User Info" textFill="#2f60d0">
+                        <Label layoutX="264.0" layoutY="22.0" text="Enter Email to Edit User Info" textFill="#2f60d0">
                            <font>
                               <Font name="Lucida Sans Unicode" size="20.0" />
                            </font></Label>
-                        <Button fx:id="submitAccEditButton" layoutX="324.0" layoutY="365.0" mnemonicParsing="false" onAction="#submitAccEditButtonClicked" prefHeight="38.0" prefWidth="152.0" style="-fx-background-color: #2f60d0;" text="Submit Changes" textFill="WHITE">
+                        <Button fx:id="submitAccEditButton" layoutX="324.0" layoutY="360.0" mnemonicParsing="false" onAction="#submitAccEditButtonClicked" prefHeight="38.0" prefWidth="152.0" style="-fx-background-color: #2f60d0;" text="Submit Changes" textFill="WHITE">
                            <font>
                               <Font name="Lucida Sans Unicode" size="16.0" />
                            </font></Button>
@@ -188,20 +188,12 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="Logout">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="335.0" prefWidth="654.0">
-                     <children>
-                        <Button fx:id="customerLogoutButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#customerLogoutButtonClicked" prefHeight="38.0" prefWidth="92.0" style="-fx-background-color: #2f60d0;" text="Logout" textFill="WHITE">
-                           <font>
-                              <Font name="Lucida Sans Unicode" size="16.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
         </tabs>
       </TabPane>
+      <Button fx:id="customerLogoutButton" layoutX="694.0" layoutY="8.0" mnemonicParsing="false" onAction="#customerLogoutButtonClicked" prefHeight="38.0" prefWidth="92.0" style="-fx-background-color: #2f60d0;" text="Logout" textFill="WHITE">
+         <font>
+            <Font name="Lucida Sans Unicode" size="16.0" />
+         </font>
+                     </Button>
    </children>
 </AnchorPane>

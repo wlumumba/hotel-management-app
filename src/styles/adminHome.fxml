@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #2d3349;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminHomeController">
    <children>
-      <TabPane prefHeight="500.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutY="66.0" prefHeight="434.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab fx:id="h" text="Add Hotel">
             <content>
@@ -454,18 +454,12 @@
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab text="Logout">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#adminLogoutButtonClicked" style="-fx-background-color: #2f60d0;" text="Logout" textFill="WHITE">
-                           <font>
-                              <Font name="Lucida Sans Unicode" size="16.0" />
-                           </font></Button>
-                     </children></AnchorPane>
-               </content>
-            </Tab>
         </tabs>
       </TabPane>
+      <Button layoutX="709.0" layoutY="14.0" mnemonicParsing="false" onAction="#adminLogoutButtonClicked" style="-fx-background-color: #2f60d0;" text="Logout" textFill="WHITE">
+         <font>
+            <Font name="Lucida Sans Unicode" size="16.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
