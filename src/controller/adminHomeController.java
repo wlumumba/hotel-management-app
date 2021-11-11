@@ -541,56 +541,38 @@ public class adminHomeController implements Initializable {
 
     /***************************EDIT RESERVATION TAB************************/
     @FXML
-    private TextField currentResID;
+    public TextField currentResID;
     @FXML
     private TextField newStartDate;
     @FXML
     private TextField newEndDate;
 
-
-    /***************LAST FUNCTION TO COMPLETE*******************/
-    //DELETE OLD RESERVATION AND MAKE NEW RESERVATION IN SECOND FXML
-    //ONLY
-    private Room roomIDER;
+    /*******************GETTER FOR NEXT FXML******/
+    public String getReservationID() { //This saves the users current reservationId they inputted for SRRController
+        return this.currentResID.getText();
+    }
+    /*************/
 
     @FXML
     void submitERButtonClicked(ActionEvent event) throws IOException {
-        System.out.println("Edit Reservation Submit Button Clicked");
+        System.out.println("Edit Reservation submitERButtonClicked");
         int roomID = -1;
         int hotelID = -1;
 
-       // Connection connectDB = DBConnection.getConnection();
-        /*********FINAL THINGS TO DO**************/
-        //think on this since after this its nearly done.
-        //you get the rooms then hotelID then display it in next fxml
-        //then after clicking on reserve you delete old reservation
-
-        System.out.println("INSIDE SUBMIT");
-
-
-        /********THE PLAN IS TO GET THE MATCHING ROOMID BETWEEN RESERVATION AND ROOM AND THEN GET THE RIGHT HOTELID*************/
-      //  String query = "SELECT hotel_db.Reservation.Room_roomID, hotel_db.Room.roomID FROM hotel_db.Reservation, hotel_db.Room WHERE hotel_db.Reservation.Room_roomID=hotel_db.Room.roomID"  + currentResID.getText();
-
-        //should you delete or just look for same room but a different day?
-
-       // reserve.getReservationID();
-        //warningLabel.setText(""); // USED TO RESET THE LABEL
+        //System.out.println("INSIDE submitERButtonClicked");
 
         try {
             //Error check to see if Reservation ID exists//Should there be a safeguard? like if RESERVATION ID is equal to EMAIL under admin?
             //could it be I populated reservationList wrong or roomList wrong?
             reservationList = Functions.getNewReservationList();
 
-            System.out.println("INSIDE TRY ");
-            System.out.println("RES OUTSIDE: " + reservationList.size());
-           /* for(Reservation re : reservationList){
-               System.out.println("ResList: "+ reservationList.size());
+           // System.out.println("INSIDE TRY ");
+          //  System.out.println("RES OUTSIDE: " + reservationList.size());
 
-            }*/
             if (currentResID.getText().isEmpty()) { //|| re.getReservationID() != Integer.parseInt(currentResID.getText())) { //needs to check with list from reservation
                     System.out.println("Please enter a valid reservation ID\n");
             }
-            System.out.println("OUTSIDE SECOND FOR LOOP: ");
+         //   System.out.println("OUTSIDE SECOND FOR LOOP: ");
             //Error checked user startDate and endDate
             final java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy/MM/dd");
             if (!newStartDate.getText().isEmpty() || !newEndDate.getText().isEmpty()) {
@@ -605,7 +587,7 @@ public class adminHomeController implements Initializable {
 
             //compare to the SQL DATABASE FOR CORRECT HOTEL AND PRICE RANGE
             System.out.println("Searching User Input");
-            //RESERVATION does not have a hotelID so you need to get it from roomID?
+            //Goes backward and getsthe hotelId from ReservationID->RoomID->HotelID
             roomList = Functions.getNewRoomList();
             for(Reservation re : reservationList){
                 if(re.getReservationID() == Integer.parseInt(currentResID.getText())){
@@ -618,7 +600,6 @@ public class adminHomeController implements Initializable {
                     }
                 }
             }
-
 
             /**************MAKE NEW RESERVATION HERE**************/
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/styles/singleReservationRoom.fxml"));
@@ -647,7 +628,7 @@ public class adminHomeController implements Initializable {
 
     @FXML
     void deleteERButtonClicked(ActionEvent event) throws IOException {
-        System.out.println("Edit Reservation delete Button Clicked");
+        System.out.println("Edit Reservation deleteERButtonClicked");
 
         Connection connectDB = DBConnection.getConnection();
 
@@ -662,7 +643,6 @@ public class adminHomeController implements Initializable {
         } catch (Exception e){
             System.out.println(e);
         }
-
 
         System.out.println(query);
     }

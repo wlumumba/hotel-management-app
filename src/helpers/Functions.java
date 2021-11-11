@@ -7,6 +7,7 @@ import java.sql.*;
 
 public class Functions {
 
+/********************************ADMIN HOME*************************************************/
     /*** Returns a List of all Hotels using SQL ***/
     public static ObservableList<Hotel> populateHotelTable(){
         ObservableList<Hotel> hotelList = FXCollections.observableArrayList();
@@ -123,7 +124,7 @@ public class Functions {
     }
 
 
-/***Meant to add the reservations to a list**/
+/***Meant to get the reservations to a list**/
     public static ObservableList<Reservation> getNewReservationList(){
         //MAYBE LINE 129
         ObservableList<Reservation> reservationList = FXCollections.observableArrayList();
@@ -133,8 +134,7 @@ public class Functions {
         Connection connectDB = DBConnection.getConnection();
 
         String selectQuery = "SELECT * FROM hotel_db.Reservation";
-        int counter = 0;
-        int counter1 = 0;
+
         try {
             PreparedStatement ps = connectDB.prepareStatement(selectQuery);
             ResultSet rs = ps.executeQuery();
@@ -158,7 +158,7 @@ public class Functions {
 
         return reservationList;
     }
-    /***Meant to add the rooms to a list**/
+    /***Meant to get the rooms to a list**/
     public static ObservableList<Room> getNewRoomList(){
         //MAYBE LINE 129
         ObservableList<Room> roomList = FXCollections.observableArrayList();
@@ -193,4 +193,5 @@ public class Functions {
 
         return roomList;
     }
+    /***********************************************************************************************/
 }

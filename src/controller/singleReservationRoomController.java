@@ -72,7 +72,7 @@ public class singleReservationRoomController implements Initializable {
     }
 
 
-    private Reservation reserve; //not sure
+    //private Reservation reserve; //not sure
 
         /**
      * Maybe here check for account type or should it ask before? I think it should check
@@ -81,7 +81,7 @@ public class singleReservationRoomController implements Initializable {
      */
     @FXML
     private void reserveButton(ActionEvent event) throws IOException  {
-        System.out.println("Reserve Room Button");
+        System.out.println("INSIDE reserveButton");
         //  try {
         if (emailR.getText().isEmpty()) {  //|| if email is invalid?
             System.out.println("Please enter a valid email\n");
@@ -91,6 +91,28 @@ public class singleReservationRoomController implements Initializable {
             //warningLabel.setText("Enter a valid Room");
         }
         //validate for customer email
+        /*********DELETES THE OLD RESERVATION*****************/
+
+        System.out.println("Before DB CONNECT IN RB");
+
+        adminHomeController resId = new adminHomeController(); //error is here
+        System.out.println("RESERVATION ID1: " + resId.getReservationID());
+
+        Connection connectDB = DBConnection.getConnection();
+
+        //adminHomeController resId = new adminHomeController();
+        System.out.println("RESERVATION ID: " + resId.getReservationID());
+        String query = "DELETE FROM hotel_db.Reservation WHERE reservationId = " + resId.getReservationID();
+
+        try {
+            PreparedStatement ps = connectDB.prepareStatement(query);
+            ps.executeUpdate();
+
+        } catch (Exception e){
+            System.out.println(e);
+        }
+
+        /****************************************************/
         Reservation reservation = new Reservation(-1,Integer.parseInt(roomR.getText()), resVals[1], resVals[2],emailR.getText(), true);
         Functions.createReservation(reservation);
 
