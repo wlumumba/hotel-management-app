@@ -20,12 +20,12 @@
     <right>
         <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #2d3349;" BorderPane.alignment="CENTER">
             <children>
-                <TextField fx:id="userNameCreate" layoutX="126.0" layoutY="148.0" prefHeight="34.0" prefWidth="186.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                <TextField fx:id="userNameCreate" layoutX="126.0" layoutY="148.0" prefHeight="34.0" prefWidth="186.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                     <font>
                         <Font name="Lucida Sans Unicode" size="14.0" />
                     </font>
                 </TextField>
-                <PasswordField fx:id="passwordCreate" layoutX="126.0" layoutY="202.0" prefHeight="34.0" prefWidth="182.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                <PasswordField fx:id="passwordCreate" layoutX="126.0" layoutY="202.0" prefHeight="34.0" prefWidth="182.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                     <font>
                         <Font name="Lucida Sans Unicode" size="14.0" />
                     </font>
@@ -44,17 +44,17 @@
                     </font>
                 </Text>
                 <Button layoutX="355.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
-            <TextField fx:id="firstNameCreate" layoutX="125.0" layoutY="260.0" prefHeight="25.0" prefWidth="184.0" promptText="First Name" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+            <TextField fx:id="firstNameCreate" layoutX="125.0" layoutY="260.0" prefHeight="25.0" prefWidth="184.0" promptText="First Name" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                <font>
                   <Font name="Lucida Sans Unicode" size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="lastNameCreate" layoutX="125.0" layoutY="319.0" prefHeight="25.0" prefWidth="184.0" promptText="Last Name" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+            <TextField fx:id="lastNameCreate" layoutX="125.0" layoutY="319.0" prefHeight="25.0" prefWidth="184.0" promptText="Last Name" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                <font>
                   <Font name="Lucida Sans Unicode" size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="emailCreate" layoutX="125.0" layoutY="374.0" prefHeight="25.0" prefWidth="184.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+            <TextField fx:id="emailCreate" layoutX="125.0" layoutY="374.0" prefHeight="25.0" prefWidth="184.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                <font>
                   <Font name="Lucida Sans Unicode" size="14.0" />
                </font>

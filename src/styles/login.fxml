@@ -22,12 +22,12 @@
    <right>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #2d3349;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="userNameLog" layoutX="126.0" layoutY="205.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+            <TextField fx:id="userNameLog" layoutX="126.0" layoutY="205.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                <font>
                   <Font name="Lucida Sans Unicode" size="14.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="passwordLog" layoutX="126.0" layoutY="262.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+            <PasswordField fx:id="passwordLog" layoutX="126.0" layoutY="262.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                <font>
                   <Font name="Lucida Sans Unicode" size="14.0" />
                </font>
@@ -39,7 +39,7 @@
                   <Font name="Lucida Sans Unicode" size="18.0" />
                </font>
             </Button>
-            <Hyperlink layoutX="142.0" layoutY="454.0" onAction="#createAccountLinkClicked" text="Create Account">
+            <Hyperlink layoutX="127.0" layoutY="449.0" onAction="#createAccountLinkClicked" text="Create Account">
                <font>
                   <Font name="Lucida Sans Unicode" size="18.0" />
                </font>
@@ -50,7 +50,7 @@
                   <Font name="Lucida Sans Unicode" size="22.0" />
                </font>
             </Text>
-            <Text fill="#2f60d0" layoutX="154.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not a member?">
+            <Text fill="#2f60d0" layoutX="141.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not a member?">
                <font>
                   <Font name="Lucida Sans Unicode" size="16.0" />
                </font>

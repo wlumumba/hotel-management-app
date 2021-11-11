@@ -20,7 +20,7 @@
                               <TableColumn fx:id="col_roompriceR" prefWidth="127.0" text="Price" />
                            </columns>
                         </TableView>
-                        <TextField fx:id="roomR" layoutX="115.0" layoutY="311.0" prefHeight="27.0" prefWidth="194.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="roomR" layoutX="115.0" layoutY="311.0" prefHeight="27.0" prefWidth="194.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
@@ -32,7 +32,7 @@
                            <font>
                               <Font name="Lucida Sans Unicode" size="16.0" />
                            </font></Label>
-                        <TextField fx:id="emailR" layoutX="418.0" layoutY="309.0" prefHeight="31.0" prefWidth="172.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="emailR" layoutX="418.0" layoutY="309.0" prefHeight="31.0" prefWidth="172.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>

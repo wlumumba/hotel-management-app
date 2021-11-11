@@ -13,39 +13,39 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="356.0" prefWidth="793.0">
                      <children>
-                        <TextField fx:id="hotelNameField" layoutX="163.0" layoutY="114.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="hotelNameField" layoutX="163.0" layoutY="114.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
-                              <Font name="Georgia" size="14.0" />
+                              <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="hotelTypeField" layoutX="163.0" layoutY="151.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="hotelTypeField" layoutX="163.0" layoutY="151.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
-                              <Font name="Georgia" size="14.0" />
+                              <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="amenitiesField" layoutX="161.0" layoutY="197.0" prefHeight="28.0" prefWidth="207.0" promptText="(comma separated)" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="amenitiesField" layoutX="161.0" layoutY="197.0" prefHeight="28.0" prefWidth="207.0" promptText="(comma separated)" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
-                              <Font name="Georgia" size="14.0" />
+                              <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
                         <Button fx:id="addHotelButton" layoutX="357.0" layoutY="314.0" mnemonicParsing="false" onAction="#addHotelButtonClicked" prefHeight="38.0" prefWidth="87.0" style="-fx-background-color: #2f60d0;" text="Create" textFill="WHITE">
                            <font>
                               <Font name="Lucida Sans Unicode" size="16.0" />
                            </font></Button>
-                        <TextField fx:id="maxRoomsField" layoutX="161.0" layoutY="245.0" prefHeight="27.0" prefWidth="185.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="maxRoomsField" layoutX="161.0" layoutY="245.0" prefHeight="27.0" prefWidth="185.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
+                           <font>
+                              <Font name="Lucida Sans Unicode" size="14.0" />
+                           </font></TextField>
+                        <TextField fx:id="standardPriceField" layoutX="506.0" layoutY="114.0" prefHeight="27.0" prefWidth="165.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="standardPriceField" layoutX="506.0" layoutY="114.0" prefHeight="27.0" prefWidth="165.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="queenPriceField" layoutX="506.0" layoutY="151.0" prefHeight="27.0" prefWidth="164.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="queenPriceField" layoutX="506.0" layoutY="151.0" prefHeight="27.0" prefWidth="164.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="kingPriceField" layoutX="506.0" layoutY="197.0" prefHeight="27.0" prefWidth="185.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="kingPriceField" layoutX="506.0" layoutY="197.0" prefHeight="27.0" prefWidth="185.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
-                           <font>
-                              <Font name="Georgia" size="14.0" />
-                           </font></TextField>
-                        <TextField fx:id="weekendRateField" layoutX="506.0" layoutY="245.0" prefHeight="27.0" prefWidth="194.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="weekendRateField" layoutX="506.0" layoutY="245.0" prefHeight="27.0" prefWidth="194.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Georgia" size="14.0" />
                            </font></TextField>
@@ -98,33 +98,33 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="editHotelAmenities" layoutX="153.0" layoutY="77.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="editHotelAmenities" layoutX="153.0" layoutY="77.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="editHotelType" layoutX="153.0" layoutY="29.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="editHotelType" layoutX="153.0" layoutY="29.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="editHotelWknPrice" layoutX="153.0" layoutY="299.0" prefHeight="28.0" prefWidth="176.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="editHotelWknPrice" layoutX="153.0" layoutY="299.0" prefHeight="28.0" prefWidth="176.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
-                              <Font name="Georgia" size="14.0" />
+                              <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="editHotelKingPrice" layoutX="153.0" layoutY="236.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="editHotelKingPrice" layoutX="153.0" layoutY="236.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="editHotelStdPrice" layoutX="153.0" layoutY="130.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="editHotelStdPrice" layoutX="153.0" layoutY="130.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="editHotelQuePrice" layoutX="151.0" layoutY="191.0" prefHeight="28.0" prefWidth="179.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="editHotelQuePrice" layoutX="151.0" layoutY="191.0" prefHeight="28.0" prefWidth="179.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
-                              <Font name="Georgia" size="14.0" />
+                              <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="hotelEditSearch" layoutX="534.0" layoutY="114.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="hotelEditSearch" layoutX="534.0" layoutY="114.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
                         <Button fx:id="editHotelButton" layoutX="582.0" layoutY="162.0" mnemonicParsing="false" onAction="#editHotelButtonClicked" prefHeight="33.0" prefWidth="61.0" style="-fx-background-color: #2f60d0;" text="Edit" textFill="WHITE">
                            <font>
@@ -184,11 +184,11 @@
                               <TableColumn fx:id="col_rate" prefWidth="101.0" text="Weekend Rate" />
                           </columns>
                         </TableView>
-                        <TextField fx:id="addroom_hotelid" layoutX="223.0" layoutY="283.0" prefHeight="23.0" prefWidth="151.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="addroom_hotelid" layoutX="223.0" layoutY="283.0" prefHeight="23.0" prefWidth="151.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="addroom_bed" layoutX="506.0" layoutY="283.0" prefHeight="23.0" prefWidth="170.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="addroom_bed" layoutX="506.0" layoutY="283.0" prefHeight="23.0" prefWidth="170.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
@@ -206,7 +206,7 @@
                               <Font name="Lucida Sans Unicode" size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="addRoomOutput" alignment="CENTER" layoutX="124.0" layoutY="400.0" prefHeight="17.0" prefWidth="539.0" text="   a" textFill="#2f60d0" />
+                        <Label fx:id="addRoomOutput" alignment="CENTER" layoutX="124.0" layoutY="400.0" prefHeight="17.0" prefWidth="539.0" textFill="#2f60d0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -223,7 +223,7 @@
                               <TableColumn fx:id="col_AmenitiesR" prefWidth="298.0" text="Amenties" />
                            </columns>
                         </TableView>
-                        <TextField fx:id="hotelNameR" layoutX="15.0" layoutY="68.0" prefHeight="27.0" prefWidth="187.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="hotelNameR" layoutX="15.0" layoutY="68.0" prefHeight="27.0" prefWidth="187.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
@@ -239,7 +239,7 @@
                            <font>
                               <Font name="Lucida Sans Unicode" size="16.0" />
                            </font></Label>
-                        <TextField fx:id="startDate" layoutX="17.0" layoutY="141.0" prefHeight="39.0" prefWidth="181.0" promptText="yyyy/mm/dd" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="startDate" layoutX="17.0" layoutY="141.0" prefHeight="39.0" prefWidth="181.0" promptText="yyyy/mm/dd" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
@@ -247,7 +247,7 @@
                            <font>
                               <Font name="Lucida Sans Unicode" size="16.0" />
                            </font></Label>
-                        <TextField fx:id="endDate" layoutX="15.0" layoutY="228.0" prefHeight="39.0" prefWidth="182.0" promptText="yyyy/mm/dd" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="endDate" layoutX="15.0" layoutY="228.0" prefHeight="39.0" prefWidth="182.0" promptText="yyyy/mm/dd" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
@@ -259,15 +259,15 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="currentResID" layoutX="307.0" layoutY="86.0" prefHeight="27.0" prefWidth="187.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="currentResID" layoutX="307.0" layoutY="86.0" prefHeight="27.0" prefWidth="187.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="newStartDate" layoutX="308.0" layoutY="143.0" prefHeight="39.0" prefWidth="185.0" promptText="yyyy/mm/dd" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="newStartDate" layoutX="308.0" layoutY="143.0" prefHeight="39.0" prefWidth="185.0" promptText="yyyy/mm/dd" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="newEndDate" layoutX="309.0" layoutY="208.0" prefHeight="39.0" prefWidth="183.0" promptText="yyyy/mm/dd" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="newEndDate" layoutX="309.0" layoutY="208.0" prefHeight="39.0" prefWidth="183.0" promptText="yyyy/mm/dd" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
@@ -289,7 +289,7 @@
                               <Font name="Lucida Sans Unicode" size="16.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="deleteResId" layoutX="310.0" layoutY="365.0" prefHeight="39.0" prefWidth="182.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="deleteResId" layoutX="310.0" layoutY="365.0" prefHeight="39.0" prefWidth="182.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
@@ -351,23 +351,23 @@
                            <font>
                               <Font name="Lucida Sans Unicode" size="16.0" />
                            </font></Button>
-                        <TextField fx:id="createUserAdmin" layoutX="166.0" layoutY="78.0" prefHeight="27.0" prefWidth="187.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="createUserAdmin" layoutX="166.0" layoutY="78.0" prefHeight="27.0" prefWidth="187.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="createPassAdmin" layoutX="166.0" layoutY="134.0" prefHeight="25.0" prefWidth="187.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="createPassAdmin" layoutX="166.0" layoutY="134.0" prefHeight="25.0" prefWidth="187.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="createFirstNAdmin" layoutX="166.0" layoutY="172.0" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="createFirstNAdmin" layoutX="166.0" layoutY="172.0" prefHeight="39.0" prefWidth="187.0" promptText="First Name" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="createLastNAdmin" layoutX="166.0" layoutY="222.0" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="createLastNAdmin" layoutX="166.0" layoutY="222.0" prefHeight="39.0" prefWidth="187.0" promptText="Last Name" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="createEmailAdmin" layoutX="167.0" layoutY="286.0" prefHeight="25.0" prefWidth="185.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="createEmailAdmin" layoutX="167.0" layoutY="286.0" prefHeight="25.0" prefWidth="185.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
@@ -385,23 +385,23 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="editUsername" layoutX="209.0" layoutY="111.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="editUsername" layoutX="209.0" layoutY="111.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="editUserFName" layoutX="209.0" layoutY="160.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="editUserFName" layoutX="209.0" layoutY="160.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="editUserLName" layoutX="209.0" layoutY="215.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="editUserLName" layoutX="209.0" layoutY="215.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="editUserPW" layoutX="209.0" layoutY="269.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="editUserPW" layoutX="209.0" layoutY="269.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="editUserAccountType" layoutX="209.0" layoutY="319.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="editUserAccountType" layoutX="209.0" layoutY="319.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
@@ -429,9 +429,9 @@
                            <font>
                               <Font name="Lucida Sans Unicode" size="16.0" />
                            </font></Label>
-                        <TextField fx:id="userEditSearch" layoutX="492.0" layoutY="126.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
+                        <TextField fx:id="userEditSearch" layoutX="492.0" layoutY="126.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
-                              <Font name="Georgia" size="14.0" />
+                              <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
                         <Button fx:id="editUserSearchButton" layoutX="557.0" layoutY="177.0" mnemonicParsing="false" onAction="#editUserSearchButtonClicked" prefHeight="26.0" prefWidth="53.0" style="-fx-background-color: #2f60d0;" text="Edit" textFill="WHITE">
                            <font>
