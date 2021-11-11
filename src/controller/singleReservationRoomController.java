@@ -131,12 +131,22 @@ public class singleReservationRoomController implements Initializable {
     @FXML
     private void returnButton(ActionEvent event) throws IOException {
             System.out.println("Returning to Home Admin");
+
+
             try {
-            Stage stage;
+            //Stage stage;
             Scene scene;
             Parent root;
 
-            root = FXMLLoader.load((getClass().getResource("/styles/adminHome.fxml")));
+                Node node = (Node) event.getSource();
+                Stage stage = (Stage) node.getScene().getWindow();
+                User u = (User) stage.getUserData();
+
+            if(u.getAccountType() == 1)
+                root = FXMLLoader.load((getClass().getResource("/styles/adminHome.fxml")));
+            else
+                root = FXMLLoader.load((getClass().getResource("/styles/customerHome.fxml")));
+
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene((root));
 
