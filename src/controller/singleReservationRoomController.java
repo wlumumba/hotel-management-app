@@ -112,7 +112,7 @@ public class singleReservationRoomController implements Initializable {
                 ps.executeUpdate();
 
             } catch (Exception e) {
-                System.out.println(e);
+                //System.out.println(e);
             }
 
             /****************************************************/
