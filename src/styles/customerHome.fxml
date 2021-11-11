@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="323.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.customerHomeController">
    <children>
-      <TabPane prefHeight="500.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="500.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Create Reservation">
             <content>

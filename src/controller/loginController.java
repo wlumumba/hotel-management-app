@@ -12,10 +12,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.*;
+import java.net.URL;
 import java.sql.*;
+import java.util.ResourceBundle;
 
 public class loginController {
 
@@ -45,7 +49,8 @@ public class loginController {
     private TextField emailCreate;
     @FXML
     private Label errorText;
-
+    @FXML
+    private ImageView logo;
 
     @FXML
     public void customerButtonClicked(Event e) throws IOException {
