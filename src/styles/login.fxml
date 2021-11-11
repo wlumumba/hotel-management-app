@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.loginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.loginController">
    <left>
-      <AnchorPane id="logo" prefHeight="200.0" prefWidth="375.0" style="-fx-background-color: #2f60d0;" BorderPane.alignment="CENTER">
+      <AnchorPane id="logo" prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #2f60d0;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="172.0" fitWidth="228.0" layoutX="100.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -19,7 +19,7 @@
       </AnchorPane>
    </left>
    <right>
-      <AnchorPane prefHeight="200.0" prefWidth="375.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="userNameLog" layoutX="126.0" layoutY="205.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px;">
                <font>
