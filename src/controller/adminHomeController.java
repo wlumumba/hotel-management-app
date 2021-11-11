@@ -428,7 +428,7 @@ public class adminHomeController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/styles/singleReservationRoom.fxml"));
             Parent root = loader.load();
             singleReservationRoomController scene2 = loader.getController();
-            scene2.fillChooseRoomTable(new String[]{String.valueOf(hotelID), startDate.getText(), endDate.getText()});
+            scene2.fillChooseRoomTable(new String[]{String.valueOf(hotelID), startDate.getText(), endDate.getText(), "0"});
 
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene newScene = new Scene(root);
@@ -548,8 +548,9 @@ public class adminHomeController implements Initializable {
     private TextField newEndDate;
 
     /*******************GETTER FOR NEXT FXML******/
-    public String getReservationID() { //This saves the users current reservationId they inputted for SRRController
-        return this.currentResID.getText();
+    public String getReservationID() {  //This saves the users current reservationId they inputted for SRRController
+        String res = currentResID.getText();
+        return res;
     }
     /*************/
 
@@ -605,7 +606,7 @@ public class adminHomeController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/styles/singleReservationRoom.fxml"));
             Parent root = loader.load();
             singleReservationRoomController scene2 = loader.getController();
-            scene2.fillChooseRoomTable(new String[]{String.valueOf(hotelID), newStartDate.getText(), newEndDate.getText()});
+            scene2.fillChooseRoomTable(new String[]{String.valueOf(hotelID), newStartDate.getText(), newEndDate.getText(), currentResID.getText()});
 
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene newScene = new Scene(root);

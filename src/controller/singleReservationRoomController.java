@@ -31,7 +31,7 @@ public class singleReservationRoomController implements Initializable {
     //Method called when screen is loaded
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //fillChooseRoomTable() gets called from adminHomeController!
+        //fillChooseRoomTable(); //gets called from adminHomeController!
     }
 
 
@@ -57,9 +57,11 @@ public class singleReservationRoomController implements Initializable {
     private TableView<Room> table_hotelR2;
 
     private String[] resVals; //HotelID, startDate, endDate
+    private int currResID; //currResID
 
     public void fillChooseRoomTable(String[] values){
         resVals = values;
+        currResID = Integer.parseInt(values[3]);
 
         col_roomidR.setCellValueFactory(new PropertyValueFactory<Room, Integer>("roomID"));
         col_bedtypeR.setCellValueFactory(new PropertyValueFactory<Room, String>("bedType"));
@@ -71,9 +73,6 @@ public class singleReservationRoomController implements Initializable {
         table_hotelR2.setItems(Functions.populateAvailableRooms(values[0], values[1], values[2]));
     }
 
-
-    //private Reservation reserve; //not sure
-
         /**
      * Maybe here check for account type or should it ask before? I think it should check
      * This Function will let the user select the room and then reserve the room.
@@ -82,6 +81,7 @@ public class singleReservationRoomController implements Initializable {
     @FXML
     private void reserveButton(ActionEvent event) throws IOException  {
         System.out.println("INSIDE reserveButton");
+
         //  try {
         if (emailR.getText().isEmpty()) {  //|| if email is invalid?
             System.out.println("Please enter a valid email\n");
@@ -93,16 +93,10 @@ public class singleReservationRoomController implements Initializable {
         //validate for customer email
         /*********DELETES THE OLD RESERVATION*****************/
 
-        System.out.println("Before DB CONNECT IN RB");
-
-        adminHomeController resId = new adminHomeController(); //error is here
-        System.out.println("RESERVATION ID1: " + resId.getReservationID());
-
         Connection connectDB = DBConnection.getConnection();
 
-        //adminHomeController resId = new adminHomeController();
-        System.out.println("RESERVATION ID: " + resId.getReservationID());
-        String query = "DELETE FROM hotel_db.Reservation WHERE reservationId = " + resId.getReservationID();
+        System.out.println("RESERVATION ID: " + currResID);
+        String query = "DELETE FROM hotel_db.Reservation WHERE reservationId = " + currResID;
 
         try {
             PreparedStatement ps = connectDB.prepareStatement(query);
@@ -116,19 +110,11 @@ public class singleReservationRoomController implements Initializable {
         Reservation reservation = new Reservation(-1,Integer.parseInt(roomR.getText()), resVals[1], resVals[2],emailR.getText(), true);
         Functions.createReservation(reservation);
 
-        //String query = "DELETE FROM hotel_db.Reservation WHERE reservationId = " + deleteResId.getText();
+        //ADD A LABEL FOR SUCCESS OR FAILURE HERE
 
-
-
-        //THIS WILL HAVE TO CHECK IF ROOM IS AVAILABLE IF TRUE ELSE DON'T DISPLAY AND WAIT UNTIL ROOM IS AVAILABLE?
-        //DOES THIS HAVE TO BE IN REAL TIME?
-
-        //   }
-       /* catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Error in ReserveButton");
-        }*/
-
+        emailR.clear();
+        roomR.clear();
+        fillChooseRoomTable(resVals);
     }
 
     /******************************************* BACK BUTTON **********************************************/
