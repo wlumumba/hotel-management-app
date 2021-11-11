@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="323.0" prefWidth="600.0" style="-fx-background-color: #2d3349;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.customerHomeController">
    <children>
-      <TabPane layoutY="68.0" prefHeight="432.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutY="58.0" prefHeight="442.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Create Reservation">
             <content>
@@ -190,6 +190,7 @@
             </Tab>
         </tabs>
       </TabPane>
+      <Pane prefHeight="61.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(to right top, #050528, #091842, #11265e, #17357c, #1d459b, #2956ae, #3467c2, #3f79d6, #5790e0, #71a6e9, #8dbcf1, #abd2f9);" />
       <Button fx:id="customerLogoutButton" layoutX="694.0" layoutY="8.0" mnemonicParsing="false" onAction="#customerLogoutButtonClicked" prefHeight="38.0" prefWidth="92.0" style="-fx-background-color: #2f60d0;" text="Logout" textFill="WHITE">
          <font>
             <Font name="Lucida Sans Unicode" size="16.0" />
