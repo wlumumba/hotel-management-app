@@ -55,7 +55,8 @@ public class User {
         return "User " + userName + " " + firstName + " " + lastName + " " + email + " " + password + " " + accountType;
     }
 
-    public static void createAdmin(User admin){
+    //returns 0 if fails, 2 if username is taken and returns one if it succeeds
+    public static int createAdmin(User admin){
         Connection connectDB = DBConnection.getConnection(); //Below is it hotel_db.Admin?
         String insertQuery = "INSERT INTO hotel_db.User (username, firstname, lastname, email, password, accType) VALUES (?, ?, ?, ?, ?, 1)";
 
@@ -70,14 +71,18 @@ public class User {
             statement.executeUpdate();
 
             System.out.println("Success Inserted " + admin.toString());
+            return 1;
 
         }
         catch (SQLIntegrityConstraintViolationException ex) {
             System.out.println("Username taken! Try another one");
+            return 2;
+
         }
         catch (SQLException ex) {
             ex.printStackTrace();
             System.out.println("Error: Failed to insert to DB");
+            return 0;
         }
     }
 
@@ -104,8 +109,8 @@ public class User {
 
         return new User("user name", "first name", "last name", "email", "password", 3);
     }
-
-    public static void updateUser(User user){
+//returns 0 if fails, 1 if user is found and updated
+    public static int updateUser(User user){
 
         Connection connectDB = DBConnection.getConnection();
         //Make query to find number of rows in a table
@@ -123,10 +128,15 @@ public class User {
 
         try {
             PreparedStatement ps = connectDB.prepareStatement(query);
-            ps.executeUpdate();
+            int count = ps.executeUpdate();
+            return 1;
+
+
+
 
         } catch (Exception e){
             System.out.println(e);
+            return 0;
         }
 
 

@@ -8,11 +8,11 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.createAccountController">
     <left>
-        <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #2f60d0;" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(to right top, #050528, #091842, #11265e, #17357c, #1d459b, #2956ae, #3467c2, #3f79d6, #5790e0, #71a6e9, #8dbcf1, #abd2f9);;" BorderPane.alignment="CENTER">
             <children>
-                <ImageView fitHeight="220.0" fitWidth="223.0" layoutX="89.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="220.0" fitWidth="223.0" layoutX="100.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../../Documents/Adobe Files/BB_Logo.png" />
+                        <Image url="@../../../../Documents/Adobe Files/BBLogo.png" />
                     </image>
                 </ImageView>
             </children></AnchorPane>
@@ -60,17 +60,17 @@
                </font>
             </TextField>
             <FontAwesomeIcon fill="#2f60d0" glyphName="ENVELOPE" layoutX="88.0" layoutY="395.0" size="20" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Button fx:id="returnButton" layoutX="295.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnButtonClicked" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #2f60d0;" text="Return" textFill="WHITE">
+            <Button fx:id="returnButton" layoutX="274.0" layoutY="9.0" mnemonicParsing="false" onAction="#returnButtonClicked" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #2f60d0;" text="Return" textFill="WHITE">
                <font>
                   <Font name="Georgia" size="16.0" />
                </font>
             </Button>
-            <Label fx:id="errorText" alignment="CENTER" layoutX="66.0" layoutY="129.0" prefHeight="17.0" prefWidth="269.0" textAlignment="RIGHT" textFill="RED" >
+            <Label fx:id="errorText" alignment="CENTER" layoutX="66.0" layoutY="129.0" prefHeight="17.0" prefWidth="269.0" textAlignment="RIGHT" textFill="RED">
                 <font>
                     <Font name="Georgia" size="12.0" />
                 </font>
             </Label>
-            <Label fx:id="successText" alignment="CENTER" layoutX="66.0" layoutY="410.0" prefHeight="17.0" prefWidth="269.0" textFill="#2300ff" >
+            <Label fx:id="successText" alignment="CENTER" layoutX="66.0" layoutY="410.0" prefHeight="17.0" prefWidth="269.0" textFill="#2300ff">
                 <font>
                     <Font name="Georgia" size="12.0" />
                 </font>
