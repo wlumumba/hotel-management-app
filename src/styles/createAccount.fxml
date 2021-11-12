@@ -12,7 +12,7 @@
             <children>
                 <ImageView fitHeight="220.0" fitWidth="223.0" layoutX="100.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../../Documents/Adobe Files/BBLogo.png" />
+                        <Image url="@BBLogo.png" />
                     </image>
                 </ImageView>
             </children></AnchorPane>
