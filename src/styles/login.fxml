@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import de.jensd.fx.glyphs.fontawesome.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.loginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.loginController">
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(to right top, #050528, #091842, #11265e, #17357c, #1d459b, #2956ae, #3467c2, #3f79d6, #5790e0, #71a6e9, #8dbcf1, #abd2f9);" BorderPane.alignment="CENTER">
          <children>
@@ -47,7 +46,7 @@
             <FontAwesomeIcon fill="#2f60d0" glyphName="USERS" layoutX="181.0" layoutY="122.0" size="35" strokeType="OUTSIDE" strokeWidth="0.0" />
             <Text fill="#2f60d0" layoutX="148.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login">
                <font>
-                  <Font name="Lucida Sans Unicode" size="22.0" />
+                  <Font name="Lucida Sans Unicode" size="24.0" />
                </font>
             </Text>
             <Text fill="#2f60d0" layoutX="141.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not a member?">

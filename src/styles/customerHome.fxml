@@ -42,7 +42,7 @@
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font>
                         </TextField>
-                        <TableView fx:id="table_hotelR" layoutX="220.0" prefHeight="370.0" prefWidth="566.0">
+                        <TableView fx:id="table_hotelR" layoutX="220.0" prefHeight="370.0" prefWidth="580.0">
                            <columns>
                               <TableColumn fx:id="col_HotelR" prefWidth="108.0" text="Hotel" />
                               <TableColumn fx:id="col_type1" minWidth="0.0" prefWidth="0.0" />
