@@ -8,7 +8,7 @@
    <children>
       <TabPane layoutY="58.0" prefHeight="442.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Create Reservation">
+          <Tab style="-fx-background-color: #2d3349; -fx-text-base-color: white;" text="Create Reservation">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -27,7 +27,7 @@
                               <Font name="Lucida Sans Unicode" size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="startDate" layoutX="14.0" layoutY="174.0" prefHeight="39.0" prefWidth="181.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
+                        <TextField fx:id="startDate" layoutX="14.0" layoutY="174.0" prefHeight="39.0" prefWidth="181.0" promptText="yyyy/mm/dd" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font>
@@ -37,7 +37,7 @@
                               <Font name="Lucida Sans Unicode" size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="endDate" layoutX="14.0" layoutY="255.0" prefHeight="39.0" prefWidth="182.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
+                        <TextField fx:id="endDate" layoutX="14.0" layoutY="255.0" prefHeight="39.0" prefWidth="182.0" promptText="yyyy/mm/dd" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font>
@@ -58,7 +58,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab text="Edit Reservation">
+          <Tab style="-fx-background-color: #2d3349; -fx-text-base-color: white;" text="Edit Reservation">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -105,7 +105,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="Cancel Reservation">
+            <Tab style="-fx-background-color: #2d3349; -fx-text-base-color: white;" text="Cancel Reservation">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -132,7 +132,7 @@
                      </children></AnchorPane>
                </content>
             </Tab>
-            <Tab text="Edit Account Info">
+            <Tab style="-fx-background-color: #2d3349; -fx-text-base-color: white;" text="Edit Account Info">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
