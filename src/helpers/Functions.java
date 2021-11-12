@@ -69,9 +69,8 @@ public class Functions {
     {
         Connection connectDB = DBConnection.getConnection();
         //INSERT INTO `hotel_db`.`Reservation` (`reservationID`, `startDate`, `endDate`, `status`, `Room_roomID`, `Room_Hotel_hotelID`, `User_email`) VALUES ('1', '2', '3', '4', '5', '6', '7');
-        String insertQuery = "INSERT INTO hotel_db.Reservation (startDate, endDate, status, Room_roomID, User_email) VALUES (?, ?, ?, ?, ?)";
+        String insertQuery = "INSERT INTO hotel_db.Reservation (startDate, endDate, status, Room_roomID, User_email, finalPrice) VALUES (?, ?, ?, ?, ?, ?)";
 
-        // Add a if statement to check if their are duplicates such as similar date or room ID possibly?
         try{
             System.out.println(r1);
             PreparedStatement st = connectDB.prepareStatement(insertQuery);
@@ -81,6 +80,7 @@ public class Functions {
             st.setBoolean(3, true);
             st.setInt(4, r1.getRoomID());
             st.setString(5, r1.getUserEmail());
+            st.setInt(6, r1.getFinalPrice());
 
             //UPDATE hotel_db.Hotel SET hotelID = '', hotelName = '', hotelType = '', amenities = '', maxRooms = '', standardPrice = '', queenPrice = '', kingPrice = '' WHERE (hotelID = '');
 
@@ -144,7 +144,7 @@ public class Functions {
             if (rs.next()) {
                 do {
                //     System.out.println("INSIDE DO RESERVATIONLIST ");
-                    reservationList.add(new Reservation(rs.getInt(1),rs.getInt(5), rs.getString(2),rs.getString(3), rs.getString(6),rs.getBoolean(4)));
+                    reservationList.add(new Reservation(rs.getInt(1),rs.getInt(5), rs.getString(2),rs.getString(3), rs.getString(6),rs.getBoolean(4), rs.getInt(7)));
                 } while (rs.next());
             }
             else

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3349;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.singleReservationRoomController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3349;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.singleReservationRoomController">
    <children>
       <TabPane layoutY="67.0" prefHeight="433.0" prefWidth="803.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -40,6 +41,7 @@
                            <font>
                               <Font name="Lucida Sans Unicode" size="16.0" />
                            </font></Button>
+                        <Label fx:id="successLabel" layoutX="652.0" layoutY="52.0" prefHeight="201.0" prefWidth="133.0" style="-fx-text-fill: white;" />
                      </children></AnchorPane>
                </content>
             </Tab>

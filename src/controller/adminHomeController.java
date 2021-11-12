@@ -22,6 +22,7 @@ import java.net.URL;
 import java.sql.*;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class adminHomeController implements Initializable {
@@ -481,46 +482,51 @@ public class adminHomeController implements Initializable {
                     throw new Exception();
                 }
 
-                    //Error checked user startDate and endDate
-                    final java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy/MM/dd");
-                    if (!startDate.getText().isEmpty() || !endDate.getText().isEmpty()) {
-                        sdf.parse(startDate.getText());
-                        sdf.parse(endDate.getText());
-                    } else {
-                        //If user specifies no date range\
-                        addResOutput.setText("No date range specified");
-                        startDate.setText("0000/00/00");
-                        endDate.setText("9999/00/00");
+                //Error checked user startDate and endDate
+                final java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy/MM/dd");
+                if (!startDate.getText().isEmpty() || !endDate.getText().isEmpty()) {
+                    Date dateS = sdf.parse(startDate.getText());
+                    Date dateE = sdf.parse(endDate.getText());
+
+                    if(dateS.after(dateE) || dateS.equals(dateE)) {
+                        throw new ParseException("", -1);
                     }
 
-                    //compare to the SQL DATABASE FOR CORRECT HOTEL AND PRICE RANGE
-                    System.out.println("Searching User Input");
-
-                    //Get hotelID of user entered hotelName
-                    for (Hotel h : hotelList) {
-                        if (h.getHotelName().equalsIgnoreCase(hotelNameR.getText()))
-                            hotelID = h.getHotelID();
-                    }
-
-                    //Pass hotelID, startDate, endDate to fill table of next scene
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/styles/singleReservationRoom.fxml"));
-                    Parent root = loader.load();
-                    singleReservationRoomController scene2 = loader.getController();
-                    scene2.fillChooseRoomTable(new String[]{String.valueOf(hotelID), startDate.getText(), endDate.getText(), "0"});
-
-                    Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    Scene newScene = new Scene(root);
-                    currentStage.setScene(newScene);
-                    currentStage.show();
-
-                } catch(IOException e){
-                    e.printStackTrace();
-                    addResOutput.setText("Unknown error!");
-                    System.out.println("Error in searchButtonClicked ");
-                } catch(ParseException e){
-                    addResOutput.setText("Date in wrong format! Should be YYYY/MM/DD");
-                    System.out.println("Date in wrong format! Should be YYYY/MM/DD");
+                } else {
+                    //If user specifies no date range
+                    addResOutput.setText("No date range specified");
+                    startDate.setText("0000/00/00");
+                    endDate.setText("9999/00/00");
                 }
+
+                //compare to the SQL DATABASE FOR CORRECT HOTEL AND PRICE RANGE
+                System.out.println("Searching User Input");
+
+                //Get hotelID of user entered hotelName
+                for (Hotel h : hotelList) {
+                    if (h.getHotelName().equalsIgnoreCase(hotelNameR.getText()))
+                        hotelID = h.getHotelID();
+                }
+
+                //Pass hotelID, startDate, endDate to fill table of next scene
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/styles/singleReservationRoom.fxml"));
+                Parent root = loader.load();
+                singleReservationRoomController scene2 = loader.getController();
+                scene2.fillChooseRoomTable(new String[]{String.valueOf(hotelID), startDate.getText(), endDate.getText(), "0"});
+
+                Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene newScene = new Scene(root);
+                currentStage.setScene(newScene);
+                currentStage.show();
+
+            } catch(IOException e){
+                e.printStackTrace();
+                addResOutput.setText("Unknown error!");
+                System.out.println("Error in searchButtonClicked ");
+            } catch(ParseException e){
+                addResOutput.setText("Date in wrong format!");
+                System.out.println("Date in wrong format!");
+            }
 
         }
 
@@ -632,7 +638,7 @@ public class adminHomeController implements Initializable {
 
     }
 
-    /***************************EDIT RESERVATION TAB************************/
+    /********************************************  EDIT RESERVATION TAB ******************************************/
     @FXML
     public TextField currentResID;
     @FXML
@@ -643,9 +649,6 @@ public class adminHomeController implements Initializable {
     private Label editResOutput;
     @FXML
     private Label editResOutput1;
-
-
-
     @FXML
     void submitERButtonClicked(ActionEvent event) throws IOException {
         System.out.println("Edit Reservation submitERButtonClicked");
@@ -655,19 +658,13 @@ public class adminHomeController implements Initializable {
         boolean resIDFound = false;
 
 
-        //System.out.println("INSIDE submitERButtonClicked");
-
         try {
-            //Error check to see if Reservation ID exists//Should there be a safeguard? like if RESERVATION ID is equal to EMAIL under admin?
             //could it be I populated reservationList wrong or roomList wrong?
             reservationList = Functions.getNewReservationList();
 
-           // System.out.println("INSIDE TRY ");
-          //  System.out.println("RES OUTSIDE: " + reservationList.size());
-
             if (currentResID.getText().isEmpty()) { //|| re.getReservationID() != Integer.parseInt(currentResID.getText())) { //needs to check with list from reservation
-                    editResOutput.setText("Please enter reservation ID");
-                    throw new Exception("no id entered");
+                editResOutput.setText("Please enter reservation ID");
+                throw new Exception("no id entered");
             }
            else if (newStartDate.getText().isEmpty()) { //|| re.getReservationID() != Integer.parseInt(currentResID.getText())) { //needs to check with list from reservation
                 editResOutput.setText("Please enter new start date");
@@ -679,12 +676,12 @@ public class adminHomeController implements Initializable {
             }
 
 
-         //   System.out.println("OUTSIDE SECOND FOR LOOP: ");
             //Error checked user startDate and endDate
             final java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy/MM/dd");
             if (!newStartDate.getText().isEmpty() || !newEndDate.getText().isEmpty()) {
-                sdf.parse(newStartDate.getText());
-                sdf.parse(newEndDate.getText());
+                Date dateS = sdf.parse(newStartDate.getText());
+                Date dateE = sdf.parse(newEndDate.getText());
+
             }
             else{
                 //If user specifies no date range
@@ -732,14 +729,15 @@ public class adminHomeController implements Initializable {
             editResOutput.setText("Unknown error");
         }
         catch(ParseException e){
-            System.out.println("Date in wrong format! Should be YYYY/MM/DD");
-            editResOutput.setText("Date in wrong format! Should be YYYY/MM/DD");
+            System.out.println("Date in wrong format!");
+            editResOutput.setText("Date in wrong format!");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
-    /*********************/
+
+    /***********************************************************************************************************/
     @FXML
     private TextField deleteResId;
 
@@ -782,10 +780,6 @@ public class adminHomeController implements Initializable {
                 editResOutput1.setText("Unknown error. Please try again");
                 System.out.println(e);
             }
-
-
         }
     }
-
-    /***********************************************************************/
 } //PUBLIC CLASS END

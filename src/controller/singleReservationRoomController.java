@@ -22,6 +22,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.text.ParseException;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoField;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
@@ -43,9 +49,7 @@ public class singleReservationRoomController implements Initializable {
     @FXML
     private TextField emailR;
     @FXML
-    private TextField maxPrice; //not sure about these yet
-    @FXML
-    private TextField minPrice; //not sure about these yet
+    private Label successLabel;
 
     @FXML
     private TableColumn<Room, Integer> col_roomidR;
@@ -80,54 +84,82 @@ public class singleReservationRoomController implements Initializable {
      */
 
     @FXML
-    private void reserveButton(ActionEvent event) throws IOException  {
+    private void reserveButton(ActionEvent event) throws IOException {
         System.out.println("INSIDE reserveButton");
         Node node = (Node) event.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         User u = (User) stage.getUserData();
 
+        int priceTotal = 0;
 
-        //  try {
-        if (emailR.getText().isEmpty()) {  //|| if email is invalid?
-            System.out.println("Please enter a valid email\n");
-           // warningLabel.setText("Enter a valid email");
-        } else if (roomR.getText().isEmpty()) { //|| ?
-            System.out.println("Please enter a valid Room\n");
-            //warningLabel.setText("Enter a valid Room");
-        }
-
-        if(u.getAccountType() == 0 && !emailR.getText().equals(u.getEmail()))
-            System.out.println("Email does not match logged account type");
-        //validate for customer email
-        /*********DELETES THE OLD RESERVATION*****************/
-
-        else {
-            Connection connectDB = DBConnection.getConnection();
-
-            System.out.println("RESERVATION ID: " + currResID);
-            String query = "DELETE FROM hotel_db.Reservation WHERE reservationId = " + currResID;
-
-            try {
-                PreparedStatement ps = connectDB.prepareStatement(query);
-                ps.executeUpdate();
-
-            } catch (Exception e) {
-                //System.out.println(e);
+        try {
+            //Error check user inputs
+            if (emailR.getText().isEmpty()) {  //|| if email is invalid?
+                System.out.println("Please enter a valid email\n");
+                throw new Exception();
+            } else if (roomR.getText().isEmpty()) { //|| ?
+                System.out.println("Please enter a valid Room\n");
+                throw new Exception();
             }
 
-            /****************************************************/
-            Reservation reservation = new Reservation(-1, Integer.parseInt(roomR.getText()), resVals[1], resVals[2], emailR.getText(), true);
-            Functions.createReservation(reservation);
+            //Check if customer is logged in
+            if (u.getAccountType() == 0 && !emailR.getText().equals(u.getEmail()))
+                System.out.println("Email does not match logged account type");
+            else {
+                Connection connectDB = DBConnection.getConnection();
 
-            //ADD A LABEL FOR SUCCESS OR FAILURE HERE
+                //WE delete old reservation!
+                System.out.println("RESERVATION ID: " + currResID);
+                String deleteQuery = "DELETE FROM hotel_db.Reservation WHERE reservationId = " + currResID;
+                String getPrice = "SELECT roomPrice, weekendRate FROM hotel_db.Room as Room INNER JOIN hotel_db.Hotel as Hotel ON Room.Hotel_hotelID = Hotel.hotelID WHERE roomID = " + roomR.getText();
 
-            emailR.clear();
-            roomR.clear();
-            fillChooseRoomTable(resVals);
+                PreparedStatement ps = connectDB.prepareStatement(deleteQuery);
+                ps.executeUpdate();
+
+
+                //Calculate final price with differential
+                final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+                LocalDate startDT = LocalDate.parse(resVals[1], dtf);
+                LocalDate endDT = LocalDate.parse(resVals[2], dtf);
+                int numOfDays = (int) ChronoUnit.DAYS.between(startDT, endDT);
+
+                DayOfWeek day1 = DayOfWeek.of(startDT.get(ChronoField.DAY_OF_WEEK));
+                DayOfWeek day2 = DayOfWeek.of(endDT.get(ChronoField.DAY_OF_WEEK));
+
+                ResultSet rs = ps.executeQuery(getPrice);
+                rs.next();
+                if (day1 == DayOfWeek.SATURDAY || day1 == DayOfWeek.SUNDAY || day2 == DayOfWeek.SATURDAY || day2 == DayOfWeek.SUNDAY) {
+                    //Retrieve roomPrice and weekendRate
+                    System.out.println("Weekend detected");
+                    priceTotal = (int) (numOfDays * rs.getInt(1) * (1 + rs.getDouble(2) / 100));
+                    successLabel.setText("Success! \n\nRoom price = " + rs.getInt(1) + "\nNumber of nights = " + numOfDays + "\nWeekend Rate = " + (1 + rs.getDouble(2) / 100) + "\n\nTotal Price = " + priceTotal);
+
+                }
+                else{
+                    priceTotal = numOfDays * rs.getInt(1);
+                    successLabel.setText("Success! \n\nRoom price = " + rs.getInt(1) + "\nNumber of nights = " + numOfDays + "\nWeekend Rate = 0" + "\n\nTotal Price = " + priceTotal);
+
+                }
+
+                System.out.println("total price= " + priceTotal);
+
+
+                //Insert the reservation to DB
+                Reservation reservation = new Reservation(-1, Integer.parseInt(roomR.getText()), resVals[1], resVals[2], emailR.getText(), true, priceTotal);
+                Functions.createReservation(reservation);
+
+                //ADD A LABEL FOR SUCCESS OR FAILURE HERE
+
+                emailR.clear();
+                roomR.clear();
+                fillChooseRoomTable(resVals);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
-    /******************************************* BACK BUTTON **********************************************/
+        /******************************************* BACK BUTTON **********************************************/
     @FXML
     private void returnButton(ActionEvent event) throws IOException {
             System.out.println("Returning to Home Admin");

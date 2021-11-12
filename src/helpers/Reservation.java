@@ -3,18 +3,19 @@ package helpers;
 public class Reservation {
 
     //Instance variables
-    private int reservationID, roomID;
+    private int reservationID, roomID, finalPrice;
     String startDate, endDate, userEmail;
     boolean status;
 
     //Default constructor
-    public Reservation(int reservationID, int roomID, String startDate, String endDate, String userEmail, boolean status) {
+    public Reservation(int reservationID, int roomID, String startDate, String endDate, String userEmail, boolean status, int finalPrice) {
         this.reservationID = reservationID;
         this.roomID = roomID;
         this.startDate = startDate;
         this.endDate = endDate;
         this.userEmail = userEmail;
         this.status = status;
+        this.finalPrice = finalPrice;
     }
 
     //Get methods
@@ -41,15 +42,20 @@ public class Reservation {
         return userEmail;
     }
 
+    public int getFinalPrice() {
+        return finalPrice;
+    }
+
     public boolean isStatus() {
         return status;
     }
 
     @Override
     public String toString() {
-        return "Reservation {" +
+        return "Reservation{" +
                 "reservationID=" + reservationID +
                 ", roomID=" + roomID +
+                ", finalPrice=" + finalPrice +
                 ", startDate='" + startDate + '\'' +
                 ", endDate='" + endDate + '\'' +
                 ", userEmail='" + userEmail + '\'' +
