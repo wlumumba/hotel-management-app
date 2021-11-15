@@ -8,7 +8,7 @@
    <children>
       <TabPane layoutY="58.0" prefHeight="442.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab style="-fx-background-color: #2d3349; -fx-text-base-color: white;" text="Create Reservation">
+          <Tab style="-fx-background-color: #2d3349; -fx-text-base-color: white; -fx-text-base-font: Lucida Sans Unicode;" text="Create Reservation">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -190,11 +190,13 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Pane prefHeight="61.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(to right top, #050528, #091842, #11265e, #17357c, #1d459b, #2956ae, #3467c2, #3f79d6, #5790e0, #71a6e9, #8dbcf1, #abd2f9);" />
-      <Button fx:id="customerLogoutButton" layoutX="694.0" layoutY="8.0" mnemonicParsing="false" onAction="#customerLogoutButtonClicked" prefHeight="38.0" prefWidth="92.0" style="-fx-background-color: #2f60d0;" text="Logout" textFill="WHITE">
-         <font>
-            <Font name="Lucida Sans Unicode" size="16.0" />
-         </font>
-                     </Button>
+      <Pane prefHeight="61.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(to right top, #050528, #091842, #11265e, #17357c, #1d459b, #2956ae, #3467c2, #3f79d6, #5790e0, #71a6e9, #8dbcf1, #abd2f9);">
+         <children>
+            <Button fx:id="customerLogoutButton" layoutX="701.0" layoutY="10.0" mnemonicParsing="false" onAction="#customerLogoutButtonClicked" prefHeight="38.0" prefWidth="85.0" style="-fx-background-color: #2f60d0;" text="Logout" textFill="WHITE">
+               <font>
+                  <Font name="Lucida Sans Unicode" size="16.0" />
+               </font>
+                           </Button>
+         </children></Pane>
    </children>
 </AnchorPane>
