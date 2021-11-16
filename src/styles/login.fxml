@@ -55,7 +55,7 @@
                </font>
             </Text>
             <Button layoutX="355.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
-            <Label fx:id="errorText" alignment="CENTER" layoutX="82.0" layoutY="176.0" prefHeight="17.0" prefWidth="239.0" textFill="RED">
+            <Label fx:id="errorText" alignment="CENTER" layoutX="88.0" layoutY="305.0" prefHeight="17.0" prefWidth="239.0" textFill="RED">
                <font>
                   <Font name="Lucida Sans Unicode" size="12.0" />
                </font>
