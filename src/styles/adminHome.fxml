@@ -124,7 +124,7 @@
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="hotelEditSearch" layoutX="524.0" layoutY="156.0" prefHeight="34.0" prefWidth="187.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
+                        <TextField fx:id="hotelEditSearch" layoutX="522.0" layoutY="156.0" prefHeight="34.0" prefWidth="187.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
@@ -179,11 +179,11 @@
                             <TableColumn fx:id="col_name" prefWidth="83.0" text="Name" />
                               <TableColumn fx:id="col_type" prefWidth="83.0" text="Type" />
                               <TableColumn fx:id="col_amen" prefWidth="83.0" text="Amenities" />
-                              <TableColumn fx:id="col_max" prefWidth="83.0" text="Max Rooms" />
-                              <TableColumn fx:id="col_std" prefWidth="83.0" text="Standard" />
-                              <TableColumn fx:id="col_qprice" prefWidth="83.0" text="Queen" />
-                              <TableColumn fx:id="col_kprice" prefWidth="83.0" text="King" />
-                              <TableColumn fx:id="col_rate" prefWidth="101.0" text="Weekend Rate" />
+                              <TableColumn fx:id="col_max" prefWidth="95.0" text="Max Rooms" />
+                              <TableColumn fx:id="col_std" prefWidth="97.0" text="Standard" />
+                              <TableColumn fx:id="col_qprice" text="Queen" />
+                              <TableColumn fx:id="col_kprice" prefWidth="76.0" text="King" />
+                              <TableColumn fx:id="col_rate" prefWidth="119.0" text="Weekend Rate" />
                           </columns>
                         </TableView>
                         <TextField fx:id="addroom_hotelid" layoutX="224.0" layoutY="266.0" prefHeight="23.0" prefWidth="151.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
@@ -273,16 +273,16 @@
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <Label layoutX="39.0" layoutY="94.0" prefHeight="34.0" prefWidth="252.0" text="Enter Current Reservation ID:" textFill="#2f60d0">
+                        <Label layoutX="66.0" layoutY="88.0" prefHeight="34.0" prefWidth="252.0" text="Enter Current Reservation ID:" textFill="#2f60d0">
                            <font>
                               <Font name="Lucida Sans Unicode" size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="101.0" layoutY="155.0" prefHeight="27.0" prefWidth="217.0" text="Enter New Start Date:" textFill="#2f60d0">
+                        <Label layoutX="127.0" layoutY="155.0" prefHeight="27.0" prefWidth="217.0" text="Enter New Start Date:" textFill="#2f60d0">
                            <font>
                               <Font name="Lucida Sans Unicode" size="16.0" />
                            </font></Label>
-                        <Label layoutX="107.0" layoutY="214.0" prefHeight="27.0" prefWidth="184.0" text="Enter New End Date:" textFill="#2f60d0">
+                        <Label layoutX="134.0" layoutY="214.0" prefHeight="27.0" prefWidth="184.0" text="Enter New End Date:" textFill="#2f60d0">
                            <font>
                               <Font name="Lucida Sans Unicode" size="16.0" />
                            </font></Label>
@@ -317,7 +317,7 @@
                              <Font name="Lucida Sans Unicode" size="20.0" />
                           </font>
                        </Label>
-                       <Label layoutX="108.0" layoutY="93.0" prefHeight="27.0" prefWidth="201.0" text="Enter Reservation ID:" textFill="#2f60d0">
+                       <Label layoutX="131.0" layoutY="93.0" prefHeight="27.0" prefWidth="201.0" text="Enter Reservation ID:" textFill="#2f60d0">
                           <font>
                              <Font name="Lucida Sans Unicode" size="16.0" />
                           </font>
@@ -387,7 +387,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="editUsername" layoutX="302.0" layoutY="79.0" prefHeight="34.0" prefWidth="187.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
+                        <TextField fx:id="editUsername" layoutX="301.0" layoutY="82.0" prefHeight="34.0" prefWidth="187.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
@@ -407,7 +407,7 @@
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <Label layoutX="600.0" layoutY="100.0" prefHeight="26.0" prefWidth="96.0" text="Enter Email:" textFill="#2f60d0">
+                        <Label layoutX="609.0" layoutY="103.0" prefHeight="26.0" prefWidth="96.0" text="Enter Email:" textFill="#2f60d0">
                            <font>
                               <Font name="Lucida Sans Unicode" size="16.0" />
                            </font></Label>
@@ -415,15 +415,15 @@
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font></TextField>
-                        <Button fx:id="editUserSearchButton" layoutX="621.0" layoutY="184.0" mnemonicParsing="false" onAction="#editUserSearchButtonClicked" prefHeight="26.0" prefWidth="53.0" style="-fx-background-color: #2f60d0;" text="Edit" textFill="WHITE">
+                        <Button fx:id="editUserSearchButton" layoutX="630.0" layoutY="184.0" mnemonicParsing="false" onAction="#editUserSearchButtonClicked" prefHeight="26.0" prefWidth="53.0" style="-fx-background-color: #2f60d0;" text="Edit" textFill="WHITE">
                            <font>
                               <Font name="Lucida Sans Unicode" size="16.0" />
                            </font></Button>
-                        <Button fx:id="editUserSubmitButton" layoutX="348.0" layoutY="345.0" mnemonicParsing="false" onAction="#submitUserEditButtonClicked" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: #2f60d0;" text="Submit" textFill="WHITE">
+                        <Button fx:id="editUserSubmitButton" layoutX="354.0" layoutY="346.0" mnemonicParsing="false" onAction="#submitUserEditButtonClicked" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: #2f60d0;" text="Submit" textFill="WHITE">
                            <font>
                               <Font name="Lucida Sans Unicode" size="16.0" />
                            </font></Button>
-                        <Label layoutX="493.0" layoutY="301.0" text="(0 = Customer 1 = Admin)" textFill="#2f60d0">
+                        <Label layoutX="501.0" layoutY="301.0" text="(0 = Customer 1 = Admin)" textFill="#2f60d0">
                            <font>
                               <Font name="Lucida Sans Unicode" size="14.0" />
                            </font>
