@@ -70,7 +70,7 @@
                     <Font name="Lucida Sans Unicode" size="12.0" />
                 </font>
             </Label>
-            <Label fx:id="successText" alignment="CENTER" layoutX="66.0" layoutY="410.0" prefHeight="17.0" prefWidth="269.0" textFill="#2300ff">
+            <Label fx:id="successText" alignment="CENTER" layoutX="66.0" layoutY="410.0" prefHeight="17.0" prefWidth="269.0" textFill="#2f60d0">
                 <font>
                     <Font name="Georgia" size="12.0" />
                 </font>
