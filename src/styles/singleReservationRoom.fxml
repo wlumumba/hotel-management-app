@@ -14,10 +14,10 @@
                      <children>
                         <TableView fx:id="table_hotelR2" layoutY="-3.0" prefHeight="313.0" prefWidth="634.0">
                            <columns>
-                              <TableColumn fx:id="col_roomidR" prefWidth="167.0" text="Room #" />
+                              <TableColumn fx:id="col_roomidR" prefWidth="167.0" resizable="false" text="Room #" />
                               <TableColumn fx:id="col_type1" minWidth="0.0" prefWidth="0.0" />
-                              <TableColumn fx:id="col_bedtypeR" minWidth="0.0" prefWidth="175.0" text="Room Type" />
-                              <TableColumn fx:id="col_roompriceR" prefWidth="127.0" text="Price" />
+                              <TableColumn fx:id="col_bedtypeR" minWidth="0.0" prefWidth="175.0" resizable="false" text="Room Type" />
+                              <TableColumn fx:id="col_roompriceR" prefWidth="127.0" resizable="false" text="Price" />
                            </columns>
                         </TableView>
                         <TextField fx:id="roomR" layoutX="133.0" layoutY="311.0" prefHeight="27.0" prefWidth="187.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">

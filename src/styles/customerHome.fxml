@@ -44,10 +44,10 @@
                         </TextField>
                         <TableView fx:id="table_hotelR" layoutX="220.0" prefHeight="370.0" prefWidth="580.0">
                            <columns>
-                              <TableColumn fx:id="col_HotelR" prefWidth="108.0" text="Hotel" />
+                              <TableColumn fx:id="col_HotelR" prefWidth="142.0" resizable="false" text="Hotel" />
                               <TableColumn fx:id="col_type1" minWidth="0.0" prefWidth="0.0" />
-                              <TableColumn fx:id="col_HotelTypeR" minWidth="0.0" prefWidth="116.0" text="Hotel Type" />
-                              <TableColumn fx:id="col_AmenitiesR" prefWidth="213.0" text="Amenties" />
+                              <TableColumn fx:id="col_HotelTypeR" minWidth="0.0" prefWidth="130.0" resizable="false" text="Hotel Type" />
+                              <TableColumn fx:id="col_AmenitiesR" prefWidth="307.0" resizable="false" text="Amenties" />
                            </columns>
                         </TableView>
                         <Button fx:id="searchButton" layoutX="63.0" layoutY="316.0" mnemonicParsing="false" onAction="#searchButtonClicked" prefHeight="38.0" prefWidth="90.0" style="-fx-background-color: #2f60d0;" text="Search" textFill="WHITE">

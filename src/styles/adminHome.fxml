@@ -219,10 +219,10 @@
                      <children>
                         <TableView fx:id="table_hotelR" layoutX="222.0" layoutY="-1.0" prefHeight="374.0" prefWidth="579.0">
                            <columns>
-                              <TableColumn fx:id="col_HotelR" prefWidth="108.0" text="Hotel" />
+                              <TableColumn fx:id="col_HotelR" prefWidth="147.0" text="Hotel" />
                               <TableColumn fx:id="col_type1" minWidth="0.0" prefWidth="0.0" />
-                              <TableColumn fx:id="col_HotelTypeR" minWidth="0.0" prefWidth="116.0" text="Hotel Type" />
-                              <TableColumn fx:id="col_AmenitiesR" prefWidth="298.0" text="Amenties" />
+                              <TableColumn fx:id="col_HotelTypeR" minWidth="0.0" prefWidth="119.0" text="Hotel Type" />
+                              <TableColumn fx:id="col_AmenitiesR" prefWidth="312.0" text="Amenties" />
                            </columns>
                         </TableView>
                         <TextField fx:id="hotelNameR" layoutX="15.0" layoutY="68.0" prefHeight="27.0" prefWidth="187.0" style="-fx-background-color: transparent; -fx-border-color: #2f60d0; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
