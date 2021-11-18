@@ -50,10 +50,9 @@ public class Functions {
 
             ResultSet rs = ps.executeQuery();
 
-            while(rs.next()){
+            while(rs.next()) {
                 roomsList.add(new Room(rs.getInt("roomID"), rs.getString("bedType"), rs.getInt("roomPrice"), rs.getInt("Hotel_hotelID")));
             }
-            System.out.println(roomsList);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -86,10 +85,13 @@ public class Functions {
 
             st.executeUpdate();
         }
-        catch (SQLException ex) {
+        catch (SQLIntegrityConstraintViolationException ex) {
             createAccount(r1.getUserEmail());
             createReservation(r1);
             System.out.println("Account not found, creating account then re-calling creating reservation");
+        }
+        catch(SQLException ex)
+        {
             ex.printStackTrace();
         }
     }
